@@ -4,9 +4,15 @@
     box-sizing: border-box;
 }
 
+:root {
+    --primary-color: #354ead;
+}
+
+html,
 body {
-    background-color: #fff;
+    height: 100%;
     font-family: "Poppins", sans-serif;
+    background: linear-gradient(180deg, #EFF1F7 5.41%, #23326ac9 108.25%);
 }
 
 a {
@@ -48,7 +54,7 @@ a {
     color: #8392cc;
 }
 
-.login-btn a {
+.nav-list-right .login-btn a {
     font-size: 1rem;
     letter-spacing: 1px;
     color: #354ead;
@@ -56,11 +62,11 @@ a {
     transition: all 400ms ease-in-out;
 }
 
-.login-btn a:hover {
+.nav-list-right .login-btn a:hover {
     color: #8392cc;
 }
 
-.signup-btn a {
+.nav-list-right .signup-btn a {
     font-size: 1rem;
     font-weight: 500;
     letter-spacing: 1px;
@@ -76,8 +82,10 @@ a {
     gap: 0.25em;
 
     transition: all 400ms ease-in-out;
+    color: #fff;
+
 }
 
-.signup-btn a:hover {
+.nav-list-right .signup-btn a:hover {
     background-color: #586dbb;
 }

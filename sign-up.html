@@ -28,41 +28,72 @@
         />
       </a>
 
-      <ul class="nav-list-center">
-        <li>
-          <a href="/">Home</a>
-        </li>
-        <li>
-          <a href="#">Features</a>
-        </li>
-        <li>
-          <a href="#">About Us</a>
-        </li>
-        <li>
-          <a href="#">Contact Us</a>
-        </li>
-      </ul>
-
-      <ul class="nav-list-right">
-        <li class="login-btn">
-          <a href="#">Log In</a>
-        </li>
-        <li class="signup-btn">
-          <a href="./sign-up.html">Sign Up</a>
-        </li>
-      </ul>
+      <div class="nav-item">
+        <img src="./assests/icons/chevron-left.svg" alt="chevron left icon" />
+        <a href="./index.html"> Go Back To Home</a>
+      </div>
     </nav>
 
     <section class="signup-main">
       <div class="form-box">
         <div class="form-box-left">
           <div class="form-box-head">
-            <div></div>
-            <h1>Sign Up</h1>
-            <p>Welcome to Spendly - Let's create your account</p>
+            <img
+              src="./assests/logo-signup.png"
+              alt="spendly logo"
+              width="auto"
+              height="48px"
+            />
+            <h1>Sign Up Now</h1>
+            <p>
+              Welcome to Spendly - Let's create <br />
+              your account!
+            </p>
           </div>
+
+          <form action="" class="form">
+            <div class="form-container">
+              <label for="email" class="input-text">Email*</label>
+              <input
+                type="email"
+                class="input-field"
+                id="email"
+                name="email"
+                required
+                placeholder="Enter your email address"
+              />
+
+              <label for="password" class="input-text">Password*</label>
+              <input
+                type="password"
+                class="input-field"
+                id="password"
+                name="password"
+                placeholder="create a password"
+                required
+              />
+
+              <p class="error-text">Lorem ipsum dolor sit.</p>
+            </div>
+
+            <button type="submit" class="submit-btn">
+              create my account
+              <img src="./assests/icons/arrow-right.svg" alt="" />
+            </button>
+            <div class="login-para">
+              <p>Already have an account?</p>
+              <a href="#">Log In</a>
+            </div>
+          </form>
         </div>
-        <div class="form-box-right"></div>
+        <div class="form-box-right">
+          <img
+            src="./assests/form-right.png"
+            width="auto"
+            height="640px"
+            alt="img bg"
+          />
+        </div>
       </div>
     </section>
   </body>

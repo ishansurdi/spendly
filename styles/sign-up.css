@@ -1,0 +1,182 @@
+/* 'go back to home' in nav */
+.nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+}
+
+.nav-item a {
+    font-size: 1rem;
+    letter-spacing: 1px;
+    color: #354ead;
+    font-weight: 500;
+    transition: all 400ms ease-in-out;
+}
+
+.nav-item a:hover {
+    color: #8392cc;
+}
+
+/* sign up starts here */
+.signup-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 91%;
+    background: linear-gradient(180deg, #EFF1F7 5.41%, #23326ac9 108.25%);
+}
+
+.form-box {
+    padding: 1.2em;
+    display: inline-flex;
+    justify-content: center;
+    gap: 3.2em;
+    background-color: #fff;
+    border-radius: 1em;
+    box-shadow: 5px 5px 13px -3px rgb(168 175 206 / 18%);
+    border: 2px solid #bababa00;
+}
+
+.form-box .form-box-left {
+    padding: 2em;
+    padding-right: 0;
+    width: 428px;
+    height: auto;
+}
+
+.form-box-left .form-box-head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-box-left .form-box-head h1 {
+    margin-top: 0.25em;
+    font-size: 1.8em;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.form-box-left .form-box-head p {
+    text-align: center;
+    font-size: 1em;
+    letter-spacing: 0.2px;
+    color: #686868;
+}
+
+.form-box .form {
+    margin-top: 3.2em;
+}
+
+.form .form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-container .input-text {
+    font-size: 1em;
+    color: #5f5f5f;
+    letter-spacing: 0.2px;
+    margin-bottom: 0.5em;
+}
+
+.form-container .input-field {
+    font-size: 1em;
+    outline: none;
+    border: none;
+    padding: 1em;
+    border: 1px solid #e1e5f1;
+    border-radius: 0.5em;
+    margin-left: 2px;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+    color: #3e3e3e;
+    font-weight: 500;
+}
+
+.form-container .input-field:nth-of-type(2) {
+    margin-bottom: 0.5em;
+}
+
+.form-container .input-field::placeholder {
+    font-size: 1em;
+    letter-spacing: 0.2px;
+}
+
+.form-container .input-field:focus {
+    box-shadow: 0 0 0px 2px #354ead29;
+    border-color: #e1e5f1;
+    transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.form-container .error-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: #f20000;
+}
+
+.form .submit-btn {
+    outline: none;
+    border: none;
+
+    font-size: 1em;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    color: #fff;
+    background-color: #354ead;
+    padding: 0.8em 1.8rem;
+    border-radius: 0.25em;
+
+    transition: all 400ms ease-in-out;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25em;
+    cursor: pointer;
+    margin: 0 auto;
+    margin-top: 3.2em;
+}
+
+.form .submit-btn:hover {
+    background-color: #586dbb;
+}
+
+.form .login-para {
+    display: flex;
+    gap: 0.25em;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+}
+
+.form .login-para a {
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+    transition: all 400ms ease-in-out;
+}
+
+
+.form .login-para a:hover {
+    color: #9449d9;
+}
+
+.form-box-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-box-right img {
+    margin: 0;
+    padding: 0;
+    border-radius: 1em;
+    border: 2px solid #eaeaea29;
+}

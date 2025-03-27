@@ -4,7 +4,7 @@
 include '../credentials/db_details.php';
 $servername = "localhost"; // Change this to your database server
 $username = "root"; // Your database username
-$password = "123456789"; // Your database password
+$password = ""; // Your database password
 $dbname = "spendly"; // Your database name
 
 // Create connection

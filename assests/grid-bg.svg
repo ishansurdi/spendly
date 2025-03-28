@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 2000 1400" xmlns="http://www.w3.org/2000/svg">
+  <mask id="b" x="0" y="0" width="2000" height="1400">
+    <path fill="url(#a)" d="M0 0h2000v1400H0z"/>
+  </mask>
+  <path fill="#eff1f7" d="M0 0h2000v1400H0z"/>
+  <g style="transform-origin:center center" stroke="#7586c7" stroke-width=".2" mask="url(#b)">
+    <path fill="none" d="M0 0h80v80H0z"/>
+    <path fill="#7586c76a" d="M80 0h80v80H80z"/>
+    <path fill="#7586c78a" d="M160 0h80v80h-80z"/>
+    <path fill="none" d="M240 0h80v80h-80zM320 0h80v80h-80z"/>
+    <path fill="#7586c7b1" d="M400 0h80v80h-80z"/>
+    <path fill="#7586c764" d="M480 0h80v80h-80z"/>
+    <path fill="none" d="M560 0h80v80h-80zM640 0h80v80h-80zM720 0h80v80h-80z"/>
+    <path fill="#7586c776" d="M800 0h80v80h-80z"/>
+    <path fill="none" d="M880 0h80v80h-80zM960 0h80v80h-80zM1040 0h80v80h-80z"/>
+    <path fill="#7586c74c" d="M1120 0h80v80h-80z"/>
+    <path fill="none" d="M1200 0h80v80h-80zM1280 0h80v80h-80zM1360 0h80v80h-80zM1440 0h80v80h-80zM1520 0h80v80h-80z"/>
+    <path fill="#7586c734" d="M1600 0h80v80h-80z"/>
+    <path fill="none" d="M1680 0h80v80h-80zM1760 0h80v80h-80zM1840 0h80v80h-80zM1920 0h80v80h-80z"/>
+    <path fill="#7586c7b4" d="M0 80h80v80H0z"/>
+    <path fill="#7586c7b1" d="M80 80h80v80H80z"/>
+    <path fill="none" d="M160 80h80v80h-80zM240 80h80v80h-80zM320 80h80v80h-80zM400 80h80v80h-80z"/>
+    <path fill="#7586c74d" d="M480 80h80v80h-80z"/>
+    <path fill="none" d="M560 80h80v80h-80z"/>
+    <path fill="#7586c7b4" d="M640 80h80v80h-80z"/>
+    <path fill="none" d="M720 80h80v80h-80zM800 80h80v80h-80zM880 80h80v80h-80zM960 80h80v80h-80z"/>
+    <path fill="#7586c7b8" d="M1040 80h80v80h-80z"/>
+    <path fill="none" d="M1120 80h80v80h-80z"/>
+    <path fill="#7586c752" d="M1200 80h80v80h-80z"/>
+    <path fill="none" d="M1280 80h80v80h-80z"/>
+    <path fill="#7586c713" d="M1360 80h80v80h-80z"/>
+    <path fill="none" d="M1440 80h80v80h-80zM1520 80h80v80h-80z"/>
+  </g>
+</svg>

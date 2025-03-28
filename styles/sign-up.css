@@ -1,3 +1,11 @@
+
+html,
+body {
+    height: 100%;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(180deg, #EFF1F7 5.41%, #23326ac9 108.25%);
+}
+
 /* 'go back to home' in nav */
 .nav-item {
     display: flex;

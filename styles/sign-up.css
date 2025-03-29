@@ -1,9 +1,9 @@
-
-html,
-body {
-    height: 100%;
-    font-family: "Poppins", sans-serif;
-    background: linear-gradient(180deg, #EFF1F7 5.41%, #23326ac9 108.25%);
+/* Golbal styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* Ensure full height */
+    overflow-x: hidden;
 }
 
 /* 'go back to home' in nav */
@@ -31,11 +31,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 91%;
+    min-height: 100vh; /* Ensures background extends fully */
     background: linear-gradient(180deg, #EFF1F7 5.41%, #23326ac9 108.25%);
+    padding-bottom: 0; /* Adds space at the bottom */
 }
 
 .form-box {
+    margin-top: 20px;
     padding: 1.2em;
     display: inline-flex;
     justify-content: center;
@@ -120,11 +122,23 @@ body {
     transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-.form-container .error-text {
+/* .form-container .error-text {
     font-size: 14px;
     font-weight: 500;
     color: #f20000;
+} */
+.error {
+    color: red !important;
+    font-size: 14px;
+    margin-top: 5px;
 }
+
+.success {
+    color: green;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
 
 .form .submit-btn {
     outline: none;

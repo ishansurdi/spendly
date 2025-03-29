@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../db_connection/db_connection.php';
-include '../email_module/send_email.php'; // Email function
+// include '../email_with_python/email_sender.py'; // Email function
 
 
 
@@ -62,9 +62,13 @@ function submit_data_to_db($conn, $name, $email, $password) {
         }
 
         // Send welcome email
-        if (!sendMembershipWelcomeEmail($name, $email, $uid)) {
-            throw new Exception("Email Sending Failed");
-        }
+        // ✅ Call Python script to send email
+        $pythonScript = escapeshellcmd("python ../email_with_python/email_sender.py") . 
+                " " . escapeshellarg($email) . 
+                " " . escapeshellarg($name) . 
+                " " . escapeshellarg($uid);
+        $output = shell_exec($pythonScript . " 2>&1"); // ✅ Capture stderr output too
+        error_log("Python Output: " . $output); // ✅ Log the error output for debugging
 
         // Commit transaction if both DB insert and email sending succeed
         $conn->commit();

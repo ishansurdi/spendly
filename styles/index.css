@@ -6,24 +6,28 @@
 
 :root {
     --primary-color: #354ead;
+    --secondary-color: #eff1f7;
 }
 
 html,
 body {
     height: 100%;
     font-family: "Poppins", sans-serif;
-    background: linear-gradient(180deg, #EFF1F7 5.41%, #23326ac9 108.25%);
+    cursor: default;
+    scroll-behavior: smooth;
 }
 
 a {
     text-decoration: none;
+    color: inherit;
 }
 
+/* NAVIGATION MENU BAR */
 .nav-main {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background-color: #eff1f7;
+    background-color: var(--secondary-color);
     padding: 1em 0;
     border-bottom: 1.5px solid #354ead12;
 }
@@ -42,39 +46,48 @@ a {
 }
 
 .nav-list-center li a {
-    font-size: 1rem;
-    letter-spacing: 1px;
-    color: #354ead;
+    font-size: 14px;
+    letter-spacing: 0.6px;
+    color: #5e5e5e;
     font-weight: 500;
-
+    text-transform: uppercase;
     transition: all 400ms ease-in-out;
 }
 
 .nav-list-center li a:hover {
-    color: #8392cc;
+    color: #5e5e5e78;
+}
+
+.nav-list-right {
+    gap: 0.5em;
 }
 
 .nav-list-right .login-btn a {
-    font-size: 1rem;
+    font-size: 14px;
     letter-spacing: 1px;
-    color: #354ead;
+    color: var(--primary-color);
     font-weight: 500;
+    text-transform: uppercase;
     transition: all 400ms ease-in-out;
+
+    padding: 0.8em 1.5rem;
+    border-radius: 0.25em;
+    border: 1px solid var(--primary-color);
 }
 
 .nav-list-right .login-btn a:hover {
-    color: #8392cc;
+    background-color: #dadfee;
 }
 
 .nav-list-right .signup-btn a {
-    font-size: 1rem;
+    font-size: 14px;
     font-weight: 500;
     letter-spacing: 1px;
-    color: #eff1f7;
-    background-color: #354ead;
+    color: var(--secondary-color);
+    background-color: var(--primary-color);
     padding: 0.8em 1.5rem;
     border-radius: 0.25em;
-    margin-left: 0.5em;
+    text-transform: uppercase;
 
     display: flex;
     align-items: center;
@@ -82,10 +95,467 @@ a {
     gap: 0.25em;
 
     transition: all 400ms ease-in-out;
-    color: #fff;
-
 }
 
 .nav-list-right .signup-btn a:hover {
     background-color: #586dbb;
+}
+
+/* HERO SECTION */
+.hero-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4.8em 0 5em 0;
+}
+
+.magicpattern {
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: repeat;
+    background-image: url("data:image/svg+xml;utf8,%3Csvg viewBox=%220 0 2000 1400%22 xmlns=%22http:%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cmask id=%22b%22 x=%220%22 y=%220%22 width=%222000%22 height=%221400%22%3E%3Cpath fill=%22url(%23a)%22 d=%22M0 0h2000v1400H0z%22%2F%3E%3C%2Fmask%3E%3Cpath fill=%22%23eff1f7%22 d=%22M0 0h2000v1400H0z%22%2F%3E%3Cg style=%22transform-origin:center center%22 stroke=%22%235a6fbc%22 stroke-width=%22.2%22 mask=%22url(%23b)%22%3E%3Cpath fill=%22%235a6fbc09%22 d=%22M0 0h80v80H0z%22%2F%3E%3Cpath fill=%22none%22 d=%22M80 0h80v80H80zM160 0h80v80h-80zM240 0h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbcbd%22 d=%22M320 0h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M400 0h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbceb%22 d=%22M480 0h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbcee%22 d=%22M560 0h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M640 0h80v80h-80zM720 0h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc83%22 d=%22M800 0h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M880 0h80v80h-80zM960 0h80v80h-80zM1040 0h80v80h-80zM1120 0h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc2f%22 d=%22M1200 0h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1280 0h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbced%22 d=%22M1360 0h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1440 0h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbcb1%22 d=%22M1520 0h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1600 0h80v80h-80zM1680 0h80v80h-80zM1760 0h80v80h-80zM1840 0h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbcdb%22 d=%22M1920 0h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M0 80h80v80H0zM80 80h80v80H80zM160 80h80v80h-80zM240 80h80v80h-80zM320 80h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc8c%22 d=%22M400 80h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M480 80h80v80h-80zM560 80h80v80h-80zM640 80h80v80h-80zM720 80h80v80h-80zM800 80h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbcf7%22 d=%22M880 80h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M960 80h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc89%22 d=%22M1040 80h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1120 80h80v80h-80zM1200 80h80v80h-80zM1280 80h80v80h-80zM1360 80h80v80h-80zM1440 80h80v80h-80zM1520 80h80v80h-80zM1600 80h80v80h-80zM1680 80h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc29%22 d=%22M1760 80h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1840 80h80v80h-80zM1920 80h80v80h-80zM0 160h80v80H0zM80 160h80v80H80zM160 160h80v80h-80zM240 160h80v80h-80zM320 160h80v80h-80zM400 160h80v80h-80zM480 160h80v80h-80zM560 160h80v80h-80zM640 160h80v80h-80zM720 160h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc56%22 d=%22M800 160h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M880 160h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbcd8%22 d=%22M960 160h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbcf0%22 d=%22M1040 160h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1120 160h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbcf2%22 d=%22M1200 160h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc33%22 d=%22M1280 160h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbcb9%22 d=%22M1360 160h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1440 160h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc05%22 d=%22M1520 160h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1600 160h80v80h-80zM1680 160h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc65%22 d=%22M1760 160h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1840 160h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc3d%22 d=%22M1920 160h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M0 240h80v80H0zM80 240h80v80H80zM160 240h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc41%22 d=%22M240 240h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc83%22 d=%22M320 240h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M400 240h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc4a%22 d=%22M480 240h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M560 240h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc0e%22 d=%22M640 240h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M720 240h80v80h-80zM800 240h80v80h-80zM880 240h80v80h-80zM960 240h80v80h-80zM1040 240h80v80h-80zM1120 240h80v80h-80zM1200 240h80v80h-80zM1280 240h80v80h-80zM1360 240h80v80h-80zM1440 240h80v80h-80zM1520 240h80v80h-80zM1600 240h80v80h-80zM1680 240h80v80h-80zM1760 240h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc2c%22 d=%22M1840 240h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1920 240h80v80h-80zM0 320h80v80H0zM80 320h80v80H80zM160 320h80v80h-80zM240 320h80v80h-80zM320 320h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbce7%22 d=%22M400 320h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbcd1%22 d=%22M480 320h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M560 320h80v80h-80zM640 320h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc19%22 d=%22M720 320h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M800 320h80v80h-80zM880 320h80v80h-80zM960 320h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc80%22 d=%22M1040 320h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc88%22 d=%22M1120 320h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1200 320h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbcb0%22 d=%22M1280 320h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1360 320h80v80h-80zM1440 320h80v80h-80zM1520 320h80v80h-80zM1600 320h80v80h-80zM1680 320h80v80h-80zM1760 320h80v80h-80zM1840 320h80v80h-80zM1920 320h80v80h-80zM0 400h80v80H0zM80 400h80v80H80zM160 400h80v80h-80zM240 400h80v80h-80zM320 400h80v80h-80zM400 400h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc95%22 d=%22M480 400h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M560 400h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc0a%22 d=%22M640 400h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M720 400h80v80h-80zM800 400h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc9a%22 d=%22M880 400h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc42%22 d=%22M960 400h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1040 400h80v80h-80zM1120 400h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc71%22 d=%22M1200 400h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1280 400h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc51%22 d=%22M1360 400h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1440 400h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbca0%22 d=%22M1520 400h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1600 400h80v80h-80zM1680 400h80v80h-80zM1760 400h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc57%22 d=%22M1840 400h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1920 400h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbccc%22 d=%22M0 480h80v80H0z%22%2F%3E%3Cpath fill=%22%235a6fbcce%22 d=%22M80 480h80v80H80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M160 480h80v80h-80zM240 480h80v80h-80zM320 480h80v80h-80zM400 480h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc4e%22 d=%22M480 480h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M560 480h80v80h-80zM640 480h80v80h-80zM720 480h80v80h-80zM800 480h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbcbd%22 d=%22M880 480h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M960 480h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc26%22 d=%22M1040 480h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1120 480h80v80h-80zM1200 480h80v80h-80zM1280 480h80v80h-80zM1360 480h80v80h-80zM1440 480h80v80h-80zM1520 480h80v80h-80zM1600 480h80v80h-80zM1680 480h80v80h-80zM1760 480h80v80h-80zM1840 480h80v80h-80zM1920 480h80v80h-80zM0 560h80v80H0zM80 560h80v80H80zM160 560h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc7b%22 d=%22M240 560h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M320 560h80v80h-80zM400 560h80v80h-80zM480 560h80v80h-80zM560 560h80v80h-80zM640 560h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc4f%22 d=%22M720 560h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M800 560h80v80h-80zM880 560h80v80h-80zM960 560h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc84%22 d=%22M1040 560h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1120 560h80v80h-80zM1200 560h80v80h-80zM1280 560h80v80h-80zM1360 560h80v80h-80zM1440 560h80v80h-80zM1520 560h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc59%22 d=%22M1600 560h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1680 560h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc43%22 d=%22M1760 560h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc74%22 d=%22M1840 560h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbcf4%22 d=%22M1920 560h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc7f%22 d=%22M0 640h80v80H0z%22%2F%3E%3Cpath fill=%22none%22 d=%22M80 640h80v80H80zM160 640h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbcd1%22 d=%22M240 640h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc23%22 d=%22M320 640h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M400 640h80v80h-80zM480 640h80v80h-80zM560 640h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbcb7%22 d=%22M640 640h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M720 640h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc55%22 d=%22M800 640h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M880 640h80v80h-80zM960 640h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbcdb%22 d=%22M1040 640h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc36%22 d=%22M1120 640h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1200 640h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc85%22 d=%22M1280 640h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbcaa%22 d=%22M1360 640h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1440 640h80v80h-80zM1520 640h80v80h-80zM1600 640h80v80h-80zM1680 640h80v80h-80zM1760 640h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc3f%22 d=%22M1840 640h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1920 640h80v80h-80zM0 720h80v80H0zM80 720h80v80H80zM160 720h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbcac%22 d=%22M240 720h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M320 720h80v80h-80zM400 720h80v80h-80zM480 720h80v80h-80zM560 720h80v80h-80zM640 720h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbcfe%22 d=%22M720 720h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M800 720h80v80h-80zM880 720h80v80h-80zM960 720h80v80h-80zM1040 720h80v80h-80zM1120 720h80v80h-80zM1200 720h80v80h-80zM1280 720h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbce7%22 d=%22M1360 720h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1440 720h80v80h-80zM1520 720h80v80h-80zM1600 720h80v80h-80zM1680 720h80v80h-80zM1760 720h80v80h-80zM1840 720h80v80h-80zM1920 720h80v80h-80zM0 800h80v80H0z%22%2F%3E%3Cpath fill=%22%235a6fbc20%22 d=%22M80 800h80v80H80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M160 800h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbcd4%22 d=%22M240 800h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M320 800h80v80h-80zM400 800h80v80h-80zM480 800h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbce1%22 d=%22M560 800h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M640 800h80v80h-80zM720 800h80v80h-80zM800 800h80v80h-80zM880 800h80v80h-80zM960 800h80v80h-80zM1040 800h80v80h-80zM1120 800h80v80h-80zM1200 800h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc38%22 d=%22M1280 800h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1360 800h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc39%22 d=%22M1440 800h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1520 800h80v80h-80zM1600 800h80v80h-80zM1680 800h80v80h-80zM1760 800h80v80h-80zM1840 800h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc40%22 d=%22M1920 800h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M0 880h80v80H0zM80 880h80v80H80zM160 880h80v80h-80zM240 880h80v80h-80zM320 880h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbcfc%22 d=%22M400 880h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M480 880h80v80h-80zM560 880h80v80h-80zM640 880h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbca8%22 d=%22M720 880h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbcda%22 d=%22M800 880h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M880 880h80v80h-80zM960 880h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc41%22 d=%22M1040 880h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1120 880h80v80h-80zM1200 880h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbcd5%22 d=%22M1280 880h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1360 880h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc78%22 d=%22M1440 880h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbcb2%22 d=%22M1520 880h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc55%22 d=%22M1600 880h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1680 880h80v80h-80zM1760 880h80v80h-80zM1840 880h80v80h-80zM1920 880h80v80h-80zM0 960h80v80H0zM80 960h80v80H80zM160 960h80v80h-80zM240 960h80v80h-80zM320 960h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc78%22 d=%22M400 960h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M480 960h80v80h-80zM560 960h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc72%22 d=%22M640 960h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M720 960h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc77%22 d=%22M800 960h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M880 960h80v80h-80zM960 960h80v80h-80zM1040 960h80v80h-80zM1120 960h80v80h-80zM1200 960h80v80h-80zM1280 960h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbcab%22 d=%22M1360 960h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc41%22 d=%22M1440 960h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc25%22 d=%22M1520 960h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc93%22 d=%22M1600 960h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc98%22 d=%22M1680 960h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1760 960h80v80h-80zM1840 960h80v80h-80zM1920 960h80v80h-80zM0 1040h80v80H0zM80 1040h80v80H80zM160 1040h80v80h-80zM240 1040h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbca6%22 d=%22M320 1040h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M400 1040h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc9e%22 d=%22M480 1040h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M560 1040h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbcec%22 d=%22M640 1040h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M720 1040h80v80h-80zM800 1040h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbcec%22 d=%22M880 1040h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbceb%22 d=%22M960 1040h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc69%22 d=%22M1040 1040h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1120 1040h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbcaa%22 d=%22M1200 1040h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1280 1040h80v80h-80zM1360 1040h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc96%22 d=%22M1440 1040h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1520 1040h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc04%22 d=%22M1600 1040h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1680 1040h80v80h-80zM1760 1040h80v80h-80zM1840 1040h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbcbf%22 d=%22M1920 1040h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbcae%22 d=%22M0 1120h80v80H0z%22%2F%3E%3Cpath fill=%22%235a6fbcc8%22 d=%22M80 1120h80v80H80z%22%2F%3E%3Cpath fill=%22%235a6fbcb9%22 d=%22M160 1120h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M240 1120h80v80h-80zM320 1120h80v80h-80zM400 1120h80v80h-80zM480 1120h80v80h-80zM560 1120h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbcab%22 d=%22M640 1120h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M720 1120h80v80h-80zM800 1120h80v80h-80zM880 1120h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc32%22 d=%22M960 1120h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1040 1120h80v80h-80zM1120 1120h80v80h-80zM1200 1120h80v80h-80zM1280 1120h80v80h-80zM1360 1120h80v80h-80zM1440 1120h80v80h-80zM1520 1120h80v80h-80zM1600 1120h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc31%22 d=%22M1680 1120h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1760 1120h80v80h-80zM1840 1120h80v80h-80zM1920 1120h80v80h-80zM0 1200h80v80H0zM80 1200h80v80H80z%22%2F%3E%3Cpath fill=%22%235a6fbc6a%22 d=%22M160 1200h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc10%22 d=%22M240 1200h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M320 1200h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbcf3%22 d=%22M400 1200h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M480 1200h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc31%22 d=%22M560 1200h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M640 1200h80v80h-80zM720 1200h80v80h-80zM800 1200h80v80h-80zM880 1200h80v80h-80zM960 1200h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbce4%22 d=%22M1040 1200h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbcbc%22 d=%22M1120 1200h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc4d%22 d=%22M1200 1200h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1280 1200h80v80h-80zM1360 1200h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc0c%22 d=%22M1440 1200h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1520 1200h80v80h-80zM1600 1200h80v80h-80zM1680 1200h80v80h-80zM1760 1200h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbccc%22 d=%22M1840 1200h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1920 1200h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbcdf%22 d=%22M0 1280h80v80H0z%22%2F%3E%3Cpath fill=%22none%22 d=%22M80 1280h80v80H80zM160 1280h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc91%22 d=%22M240 1280h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M320 1280h80v80h-80zM400 1280h80v80h-80zM480 1280h80v80h-80zM560 1280h80v80h-80zM640 1280h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc52%22 d=%22M720 1280h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M800 1280h80v80h-80zM880 1280h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc72%22 d=%22M960 1280h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1040 1280h80v80h-80zM1120 1280h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc4f%22 d=%22M1200 1280h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc57%22 d=%22M1280 1280h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1360 1280h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbcae%22 d=%22M1440 1280h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1520 1280h80v80h-80zM1600 1280h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbcb3%22 d=%22M1680 1280h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1760 1280h80v80h-80zM1840 1280h80v80h-80zM1920 1280h80v80h-80zM0 1360h80v80H0zM80 1360h80v80H80zM160 1360h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc95%22 d=%22M240 1360h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc9a%22 d=%22M320 1360h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc40%22 d=%22M400 1360h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M480 1360h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc94%22 d=%22M560 1360h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M640 1360h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc61%22 d=%22M720 1360h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M800 1360h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc8b%22 d=%22M880 1360h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M960 1360h80v80h-80zM1040 1360h80v80h-80zM1120 1360h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbcf0%22 d=%22M1200 1360h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1280 1360h80v80h-80zM1360 1360h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc2f%22 d=%22M1440 1360h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc35%22 d=%22M1520 1360h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1600 1360h80v80h-80z%22%2F%3E%3Cpath fill=%22%235a6fbc1c%22 d=%22M1680 1360h80v80h-80z%22%2F%3E%3Cpath fill=%22none%22 d=%22M1760 1360h80v80h-80zM1840 1360h80v80h-80zM1920 1360h80v80h-80z%22%2F%3E%3C%2Fg%3E%3Cdefs%3E%3CradialGradient id=%22a%22%3E%3Cstop offset=%2263.2%25%22 stop-color=%22%23fff%22 stop-opacity=%220%22%2F%3E%3Cstop offset=%22100%25%22 stop-color=%22%23fff%22 stop-opacity=%22.368%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3C%2Fsvg%3E");
+}
+
+.hero-main .hero-container {
+    width: 700px;
+}
+
+.hero-container .hero-heading {
+    font-size: 3.2em;
+    letter-spacing: 0.3px;
+    line-height: 145%;
+    margin-bottom: 0.25em;
+    color: #232323e3;
+    text-align: center;
+}
+
+.hero-container .hero-heading .highlight {
+    padding: 0 0.25em;
+    text-decoration: underline wavy #e6a247;
+    text-underline-offset: 8px;
+}
+
+.hero-container .hero-para {
+    text-align: left;
+    font-size: 1.1em;
+    letter-spacing: 0.2px;
+    color: #686868;
+    line-height: 145%;
+    margin-bottom: 1.6em;
+    text-align: center;
+}
+
+.hero-container .hero-cta {
+    outline: none;
+    border: none;
+    cursor: pointer;
+
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    background-color: #354ead;
+    padding: 1.2em 1.8rem;
+    border-radius: 0.25em;
+    margin-left: 0.5em;
+    width: fit-content;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    text-align: center;
+    transition: all 400ms ease-in-out;
+    margin: 0 auto;
+    color: #fff;
+}
+
+.hero-container .hero-cta:hover {
+    background-color: #586dbb;
+}
+
+.hero-main .hero-demo {
+    margin-top: 2.8em;
+}
+
+.hero-main .hero-demo img {
+    border-radius: 14px;
+    border: 2px solid #b6c0e1;
+}
+
+/* FEATURES SECTION  */
+.features-main {
+    padding: 5.6em 0;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.features-main .features-capsule {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    gap: 0.5em;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+    color: #232323;
+    border: 1px solid #dadada;
+    width: fit-content;
+    padding: 6px 20px;
+    border-radius: 1.8em;
+    text-transform: uppercase;
+    margin-bottom: 1.2em;
+}
+
+.features-main h2 {
+    font-size: 2.4em;
+    letter-spacing: 0.3px;
+    line-height: 125%;
+    color: #232323e3;
+    text-align: left;
+    margin-bottom: 0.25em;
+}
+
+.features-main p {
+    text-align: left;
+    font-size: 1em;
+    letter-spacing: 0.2px;
+    color: #686868;
+    line-height: 145%;
+    width: 842px;
+    margin-bottom: 2.8em;
+}
+
+.features-main .features-list {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(400px, 1fr));
+    gap: 0.5em;
+    justify-content: center;
+}
+
+.features-main .features-list .feature-item {
+    padding: 1.4em 2.8em;
+    border-radius: 0.5em;
+    height: 256px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.card-1 {
+    background-color: #f5fcf4;
+    border: 3px solid #05610003;
+}
+
+.card-2 {
+    background-color: #fcf8fb;
+    border: 3px solid #ff00db03;
+}
+
+.card-3 {
+    background-color: #fff7f5;
+    border: 3px solid #ffe0da08;
+}
+
+.card-4 {
+    background-color: #fffdf1;
+    border: 3px solid #ffd20005;
+}
+
+.features-list .feature-item h3 {
+    font-size: 1.4em;
+    letter-spacing: 0.6px;
+    line-height: 125%;
+    margin-top: 1em;
+    margin-bottom: 0.25em;
+    color: #575757;
+    font-weight: 600;
+}
+
+.features-list .feature-item p {
+    font-size: 1em;
+    letter-spacing: 0.6px;
+    color: #686868;
+    line-height: 145%;
+    width: 100%;
+}
+
+
+/* PRICING SECTION */
+.pricing-main {
+    padding: 6.4em 0;
+    margin: 0 auto;
+    background-color: #f0f0f0;
+}
+
+.pricing-container {
+    margin: 0 auto;
+    width: 1200px;
+}
+
+.pricing-container .pricing-capsule {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    gap: 0.5em;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+    color: #232323;
+    border: 1px solid #dadada;
+    width: fit-content;
+    padding: 6px 20px;
+    border-radius: 1.8em;
+    text-transform: uppercase;
+    margin-bottom: 1.2em;
+}
+
+.pricing-container .pricing-heading {
+    font-size: 2.4em;
+    letter-spacing: 0.3px;
+    line-height: 125%;
+    color: #232323e3;
+    text-align: left;
+    margin-bottom: 0.25em;
+}
+
+.pricing-container .pricing-para {
+    font-size: 1em;
+    letter-spacing: 0.2px;
+    color: #686868;
+    line-height: 145%;
+    text-align: left;
+    width: 842px;
+    margin-bottom: 2.8em;
+}
+
+.pricing-container .pricing-list {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+    gap: 1.8rem;
+}
+
+.pricing-container .pricing-list .pricing-item {
+    padding: 1.8em 1.8em;
+    border-radius: 0.5em;
+}
+
+.pricing-list .free-plan {
+    border: 2px solid transparent;
+    background-color: #d2d0d057;
+}
+
+.pricing-list .plus-plan {
+    border: 2px solid #e4e4e4;
+    background-image: linear-gradient(208deg,
+            #354ead9c,
+            #6475c27a,
+            #909ed56b,
+            #bec7e680,
+            #e4e4e4);
+}
+
+.pricing-list .pro-plan {
+    border: 2px solid #e9e9e9;
+    background: linear-gradient(31deg, #e9e9e9, #ffc221);
+}
+
+.pricing-list .pricing-item .plan-name {
+    font-size: 1.4em;
+    letter-spacing: 0.6px;
+    line-height: 125%;
+    margin-top: 1em;
+    margin-bottom: 0.25em;
+    color: #464646;
+    font-weight: 600;
+}
+
+.pricing-list .pricing-item .plan-price {
+    font-size: 3.2rem;
+    letter-spacing: 0.6px;
+    line-height: 125%;
+    color: #232323;
+    font-weight: 600;
+    margin-top: 0.25rem;
+}
+
+.pricing-list .pricing-item .plan-price .monthly-text {
+    font-size: 1rem;
+    letter-spacing: 0.6px;
+    line-height: 125%;
+    color: #232323;
+    font-weight: 500;
+}
+
+.pricing-list .pricing-item .pricing-plan-details {
+    list-style-type: none;
+    margin-top: 1.8rem;
+}
+
+.pricing-item .pricing-plan-details li {
+    font-size: 1em;
+    letter-spacing: 0.2px;
+    color: #686868;
+    line-height: 145%;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.45rem;
+}
+
+.pricing-list .pricing-item .pricing-cta {
+    outline: none;
+    border: none;
+    cursor: pointer;
+
+    margin-top: 3.2rem;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    background-color: #232323;
+    padding: 1rem;
+    border-radius: 0.25em;
+    transition: all 400ms ease-in-out;
+    color: #fff;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+}
+
+.pricing-list .pricing-item .pricing-cta:hover {
+    background-color: #464646;
+}
+
+
+/* MICDROP SECTION */
+.micdrop-main {}
+
+.micdrop-container {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 9.6rem 0;
+}
+
+.micdrop-container h2 {
+    font-size: 2em;
+    letter-spacing: 0.3px;
+    line-height: 125%;
+    color: #232323e3;
+    text-align: center;
+    margin-bottom: 0.25em;
+}
+
+.micdrop-container p {
+    font-size: 1em;
+    letter-spacing: 0.2px;
+    color: #686868;
+    line-height: 145%;
+    text-align: center;
+    width: 842px;
+    margin-bottom: 2.8em;
+    margin: 0 auto;
+}
+
+.micdrop-container .micdrop-cta {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: var(--secondary-color);
+    background-color: var(--primary-color);
+    padding: 1em 1.4rem;
+    margin: 0 auto;
+    margin-top: 1.8rem;
+    width: fit-content;
+    border-radius: 1.8em;
+    text-transform: uppercase;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+
+    transition: all 400ms ease-in-out;
+}
+
+.micdrop-container .micdrop-cta:hover {
+    background-color: #354eadb5;
+}
+
+
+/* FOOTER */
+.footer-main {
+    background-color: var(--primary-color);
+    padding: 4.8rem 0;
+}
+
+.footer-container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-container .footer-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer-top .footer-top-left .footer-para {
+    font-size: 1em;
+    letter-spacing: 0.2px;
+    color: #cecece;
+    line-height: 145%;
+    width: 448px;
+    margin-top: 0.25rem;
+}
+
+.footer-top .footer-top-right {
+    display: flex;
+    gap: 2.8rem;
+}
+
+.footer-top .footer-top-right ul {
+    list-style-type: none;
+    font-size: 1em;
+    letter-spacing: 0.2px;
+    color: var(--secondary-color);
+    line-height: 145%;
+}
+
+.footer-top .footer-top-right ul li {
+    margin-bottom: 1.2rem;
+    cursor: pointer;
+    transition: all 400ms ease-in-out;
+}
+
+
+.footer-top .footer-top-right ul li:hover {
+    color: #eff1f78c;
+}
+
+.footer-top .footer-top-right ul .footer-signup {
+    color: var(--secondary-color);
+    font-size: 1em;
+    letter-spacing: 0.2px;
+    display: flex;
+    gap: 2px;
+
+}
+
+.footer-main + .footer-bottom {
+    font-size: 14px;
+    letter-spacing: 0.2px;
+    color: var(--secondary-color);
+    line-height: 145%;
+    background-color: var(--primary-color);
+    border-top: 1px solid #c6c6c630;
+    padding: 0.5rem 0;
+    text-align: center;
 }

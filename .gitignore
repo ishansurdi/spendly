@@ -1,4 +1,5 @@
 credentials
 email_module
 vendor
-.gitignore
+email_with_python/credentials.json
+email_with_python/token.json

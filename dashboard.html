@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- FAVICON -->
+    <link rel="icon" href="./assests/favicon.ico" type="image/x-icon" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="stylesheet" href="./styles/sign-up.css" />
+    <link rel="stylesheet" href="./styles/dashboard.css" />
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Dashboard | Spendly</title>
+  </head>
+  <body>
+    <!-- Navigation Menu Bar -->
+    <nav class="nav-main">
+      <a href="/" class="nav-logo">
+        <img
+          src="./assests/logo-nav.png"
+          height="36px"
+          width="auto"
+          alt="spendly logo"
+        />
+      </a>
+
+      <div class="dashboard-items">
+        <div class="dashboard-items-goback">
+          <img src="./assests/icons/chevron-left.svg" alt="chevron left icon" />
+          <a href="./index.html"> Go Back To Home</a>
+        </div>
+        <div class="user-dropdown-wrapper">
+          <div class="dashboard-items-user" onclick="toggleDropdown()">
+            <p class="username">Himanshu Pal</p>
+            <img
+              src="./assests/icons/triangle.png"
+              height="11px"
+              alt="dropdown icon"
+            />
+          </div>
+          <div class="dashboard-dropdown hidden" id="dashboard-dropdown">
+            <ul>
+              <li>
+                You are signed in as <br />
+                <span>himanshu@gmail.com</span>
+              </li>
+              <li>
+                <img
+                  src="./assests/icons/log-out.svg"
+                  alt="log out icon"
+                  height="20px"
+                />
+                Log Out
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </body>
+  <script>
+    function toggleDropdown() {
+      const dropdown = document.getElementById("dashboard-dropdown");
+      dropdown.classList.toggle("hidden");
+      console.log("first");
+    }
+
+    document.addEventListener("click", function (event) {
+      const trigger = document.querySelector(".dashboard-items-user");
+      const dropdown = document.getElementById("dashboard-dropdown");
+      if (!trigger.contains(event.target) && !dropdown.contains(event.target)) {
+        dropdown.classList.add("hidden");
+      }
+    });
+  </script>
+</html>

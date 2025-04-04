@@ -1,0 +1,107 @@
+.dashboard-items {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.8rem;
+}
+
+.dashboard-items .dashboard-items-goback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+}
+
+.dashboard-items .dashboard-items-goback a {
+    font-size: 1rem;
+    letter-spacing: 1px;
+    color: var(--primary-color);
+    font-weight: 500;
+    transition: all 400ms ease-in-out;
+}
+
+.dashboard-items .dashboard-items-goback a:hover {
+    color: #8392cc;
+}
+
+.user-dropdown-wrapper {
+    position: relative;
+}
+
+.dashboard-items .dashboard-items-user {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: var(--secondary-color);
+    background-color: var(--primary-color);
+    padding: 0.8em 1.5rem;
+    border-radius: 0.25em;
+    text-transform: uppercase;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75em;
+
+    transition: all 400ms ease-in-out;
+    cursor: pointer;
+}
+
+
+.dashboard-items .dashboard-items-user:hover {
+    background-color: #586dbb;
+}
+
+.dashboard-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 0.5rem;
+    width: fit-content;
+    z-index: 99;
+    border: 1.5px solid #354ead12;
+    border-radius: 0.25rem;
+}
+
+.dashboard-dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-dropdown ul li {
+    font-size: 14px;
+    font-weight: 500;
+    color: #5e5e5e;
+    background-color: #fbfbfb;
+    padding: 0.75rem 1.6rem;
+    word-wrap: normal;
+    width: 100%;
+    border-radius: 0.25rem;
+}
+
+.dashboard-dropdown ul li:nth-child(2) {
+    color: #dd0000;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 0.5rem;
+}
+
+
+.dashboard-dropdown ul li:nth-child(2):hover {
+    background-color: #f0f0f0;
+    border-radius: 0;
+}
+
+.dashboard-dropdown ul li span {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* Hidden class to toggle visibility */
+.hidden {
+    display: none;
+}

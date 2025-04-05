@@ -20,20 +20,18 @@
       rel="stylesheet"
     />
 
+    <!--  -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+
     <title>Dashboard | Spendly</title>
   </head>
+
   <body>
     <!-- Navigation Menu Bar -->
-    <nav class="nav-main">
-      <a href="/" class="nav-logo">
-        <img
-          src="./assests/logo-nav.png"
-          height="36px"
-          width="auto"
-          alt="spendly logo"
-        />
-      </a>
-
+    <nav class="dashboard-nav-main">
       <div class="dashboard-items">
         <div class="dashboard-items-goback">
           <img src="./assests/icons/chevron-left.svg" alt="chevron left icon" />
@@ -41,6 +39,7 @@
         </div>
         <div class="user-dropdown-wrapper">
           <div class="dashboard-items-user" onclick="toggleDropdown()">
+            <!-- UPDATE -->
             <p class="username">Himanshu Pal</p>
             <img
               src="./assests/icons/triangle.png"
@@ -52,6 +51,7 @@
             <ul>
               <li>
                 You are signed in as <br />
+                <!-- UPDATE -->
                 <span>himanshu@gmail.com</span>
               </li>
               <li>
@@ -67,6 +67,94 @@
         </div>
       </div>
     </nav>
+
+    <!-- Side Menu Bar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <img src="./assests/logo-circle-white.png" alt="logo" />
+        <h2>Spendly.</h2>
+      </div>
+      <ul class="sidebar-links">
+        <h4>
+          <span>Main Menu</span>
+          <div class="menu-separator"></div>
+        </h4>
+        <li>
+          <a href="#">
+            <img
+              src="./assests/icons/transaction-icon.svg"
+              height="28px"
+              width="auto"
+              alt="transaction icon"
+            />
+            Transactions</a
+          >
+        </li>
+        <li>
+          <a href="#">
+            <img
+              src="./assests/icons/budget-icon.svg"
+              height="26px"
+              width="auto"
+              alt="budget icon"
+            />
+            Budget</a
+          >
+        </li>
+        <li>
+          <a href="#">
+            <img
+              src="./assests/icons/report-icon.png"
+              height="26px"
+              width="auto"
+              alt="report icon"
+            />
+            Reports</a
+          >
+        </li>
+        <li>
+          <a href="#">
+            <img
+              src="./assests/icons/history-icon.svg"
+              height="26px"
+              width="auto"
+              alt="history icon"
+            />
+            History</a
+          >
+        </li>
+      </ul>
+      <div class="other-menu">
+        <ul class="sidebar-links">
+          <h4>
+            <span>Others</span>
+            <div class="menu-separator"></div>
+          </h4>
+          <li>
+            <a href="#">
+              <img
+                src="./assests/icons/help-icon.svg"
+                height="26px"
+                width="auto"
+                alt="help icon"
+              />
+              Help</a
+            >
+          </li>
+          <li>
+            <a href="#">
+              <img
+                src="./assests/icons/logout-icon.svg"
+                height="26px"
+                width="auto"
+                alt="log out icon"
+              />
+              Log Out</a
+            >
+          </li>
+        </ul>
+      </div>
+    </aside>
   </body>
   <script>
     function toggleDropdown() {

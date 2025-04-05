@@ -155,7 +155,91 @@
       </div>
     </aside>
 
-    <section class="transaction-body">this is transaction panel</section>
+    <!-- Transaction Body -->
+    <section class="transaction-body">
+      <h2>Hello Ashish 👋</h2>
+      <div class="row-1">
+        <div class="income-box">
+          <div class="income-head">
+            <div class="income-img">
+              <img
+                src="/assests/icons/income.svg"
+                alt="note symbol"
+                height="28px"
+                width="auto"
+              />
+            </div>
+            <h3 class="income-text">Total Monthly Income</h3>
+          </div>
+          <p class="money">₹43,624</p>
+        </div>
+
+        <div class="expense-box">
+          <div class="expense-head">
+            <div class="expense-img">
+              <img
+                src="/assests/icons/expense.svg"
+                alt="note symbol"
+                height="28px"
+                width="auto"
+              />
+            </div>
+            <h3 class="expense-text">Total Monthly Expense</h3>
+          </div>
+          <p class="money">₹6,514</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FLOATING ACTION BUTTON (ADD MONEY) -->
+    <div class="fab" title="Add" onclick="openDialog()">
+      <img src="/assests/icons/plus.svg" height="28px" alt="plus symbol" />
+      <p>Add Money</p>
+    </div>
+
+    <!-- DIALOG BOX WHEN FAB IS CLICKLED -->
+    <div class="overlay" id="dialogOverlay">
+      <div class="form-container">
+        <h3>Adding money to spendly</h3>
+        <form class="add-form">
+          <label for="moneyType" class="add-form-label">Money Type</label>
+          <select name="moneyType" required class="add-form-field">
+            <option value="" disabled selected hidden>Select</option>
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+          </select>
+
+          <label for="amount" class="add-form-label">Total Amount</label>
+          <input
+            type="number"
+            class="add-form-field"
+            placeholder="1234"
+            name="amount"
+            required
+          />
+
+          <label for="source" class="add-form-label">Source</label>
+          <input
+            type="text"
+            class="add-form-field"
+            name="source"
+            placeholder="eg- Food, Travel etc"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+            required
+          />
+
+          <div class="form-actions">
+            <button type="button" class="cancel-btn" onclick="closeDialog()">
+              Cancel
+            </button>
+            <button type="submit" class="save-btn">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </body>
   <script>
     function toggleDropdown() {
@@ -171,5 +255,15 @@
         dropdown.classList.add("hidden");
       }
     });
+  </script>
+
+  <script>
+    function openDialog() {
+      document.getElementById("dialogOverlay").style.display = "flex";
+    }
+
+    function closeDialog() {
+      document.getElementById("dialogOverlay").style.display = "none";
+    }
   </script>
 </html>

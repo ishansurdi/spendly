@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <!-- FAVICON -->
-    <link rel="icon" href="./assests/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="../assests/favicon.ico" type="image/x-icon" />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="./styles/index.css" />
-    <link rel="stylesheet" href="./styles/dashboard.css" />
+    <link rel="stylesheet" href="../styles/index.css" />
+    <link rel="stylesheet" href="../styles/dashboard.css" />
+    <link rel="stylesheet" href="../styles/Transaction.css" />
 
     <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -21,7 +21,6 @@
 
     <title>Dashboard | Spendly</title>
   </head>
-
   <body>
     <!-- Navigation Menu Bar -->
     <nav class="dashboard-nav-main">
@@ -31,7 +30,7 @@
             <!-- UPDATE -->
             <p class="username">Himanshu Pal</p>
             <img
-              src="./assests/icons/triangle.png"
+              src="../assests/icons/triangle.png"
               height="11px"
               alt="dropdown icon"
             />
@@ -45,7 +44,7 @@
               </li>
               <li>
                 <img
-                  src="./assests/icons/log-out.svg"
+                  src="../assests/icons/log-out.svg"
                   alt="log out icon"
                   height="20px"
                 />
@@ -60,7 +59,7 @@
     <!-- Side Menu Bar -->
     <aside class="sidebar">
       <div class="sidebar-header">
-        <img src="./assests/logo-circle-white.png" alt="logo" />
+        <img src="../assests/logo-circle-white.png" alt="logo" />
         <h2>Spendly.</h2>
       </div>
       <ul class="sidebar-links">
@@ -71,7 +70,7 @@
         <li>
           <a href="/dashboard.html">
             <img
-              src="./assests/icons/home-icon.svg"
+              src="../assests/icons/home-icon.svg"
               height="28px"
               width="auto"
               alt="house icon"
@@ -82,7 +81,7 @@
         <li>
           <a href="/dashboard/transaction.html">
             <img
-              src="./assests/icons/transaction-icon.svg"
+              src="../assests/icons/transaction-icon.svg"
               height="28px"
               width="auto"
               alt="transaction icon"
@@ -93,7 +92,7 @@
         <li>
           <a href="#">
             <img
-              src="./assests/icons/budget-icon.svg"
+              src="../assests/icons/budget-icon.svg"
               height="26px"
               width="auto"
               alt="budget icon"
@@ -104,7 +103,7 @@
         <li>
           <a href="#">
             <img
-              src="./assests/icons/report-icon.png"
+              src="../assests/icons/report-icon.png"
               height="26px"
               width="auto"
               alt="report icon"
@@ -115,7 +114,7 @@
         <li>
           <a href="#">
             <img
-              src="./assests/icons/history-icon.svg"
+              src="../assests/icons/history-icon.svg"
               height="26px"
               width="auto"
               alt="history icon"
@@ -133,7 +132,7 @@
           <li>
             <a href="#">
               <img
-                src="./assests/icons/help-icon.svg"
+                src="../assests/icons/help-icon.svg"
                 height="26px"
                 width="auto"
                 alt="help icon"
@@ -144,7 +143,7 @@
           <li>
             <a href="#">
               <img
-                src="./assests/icons/logout-icon.svg"
+                src="../assests/icons/logout-icon.svg"
                 height="26px"
                 width="auto"
                 alt="log out icon"
@@ -156,7 +155,91 @@
       </div>
     </aside>
 
-    <section class="dashboard-body">this is main dashboard</section>
+    <!-- Transaction Body -->
+    <section class="transaction-body">
+      <h2>Hello Ashish 👋</h2>
+      <div class="row-1">
+        <div class="income-box">
+          <div class="income-head">
+            <div class="income-img">
+              <img
+                src="../assests/icons/income.svg"
+                alt="note symbol"
+                height="28px"
+                width="auto"
+              />
+            </div>
+            <h3 class="income-text">Total Monthly Income</h3>
+          </div>
+          <p class="money">₹43,624</p>
+        </div>
+
+        <div class="expense-box">
+          <div class="expense-head">
+            <div class="expense-img">
+              <img
+                src="../assests/icons/expense.svg"
+                alt="note symbol"
+                height="28px"
+                width="auto"
+              />
+            </div>
+            <h3 class="expense-text">Total Monthly Expense</h3>
+          </div>
+          <p class="money">₹6,514</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FLOATING ACTION BUTTON (ADD MONEY) -->
+    <div class="fab" title="Add" onclick="openDialog()">
+      <img src="../assests/icons/plus.svg" height="28px" alt="plus symbol" />
+      <p>Add Money</p>
+    </div>
+
+    <!-- DIALOG BOX WHEN FAB IS CLICKLED -->
+    <div class="overlay" id="dialogOverlay">
+      <div class="form-container">
+        <h3>Adding money to spendly</h3>
+        <form class="add-form">
+          <label for="moneyType" class="add-form-label">Money Type</label>
+          <select name="moneyType" required class="add-form-field">
+            <option value="" disabled selected hidden>Select</option>
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+          </select>
+
+          <label for="amount" class="add-form-label">Total Amount</label>
+          <input
+            type="number"
+            class="add-form-field"
+            placeholder="1234"
+            name="amount"
+            required
+          />
+
+          <label for="source" class="add-form-label">Source</label>
+          <input
+            type="text"
+            class="add-form-field"
+            name="source"
+            placeholder="eg- Food, Travel etc"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+            required
+          />
+
+          <div class="form-actions">
+            <button type="button" class="cancel-btn" onclick="closeDialog()">
+              Cancel
+            </button>
+            <button type="submit" class="save-btn">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </body>
   <script>
     function toggleDropdown() {
@@ -172,5 +255,15 @@
         dropdown.classList.add("hidden");
       }
     });
+  </script>
+
+  <script>
+    function openDialog() {
+      document.getElementById("dialogOverlay").style.display = "flex";
+    }
+
+    function closeDialog() {
+      document.getElementById("dialogOverlay").style.display = "none";
+    }
   </script>
 </html>

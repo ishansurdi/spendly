@@ -25,3 +25,9 @@
 2025-03-29 15:47:37,306 - INFO - file_cache is only supported with oauth2client<4.0.0
 2025-03-29 15:47:37,334 - DEBUG - URL being requested: POST https://gmail.googleapis.com/gmail/v1/users/me/messages/send?alt=json
 2025-03-29 15:47:37,334 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-03-30 19:13:30,068 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-03-30 19:13:30,084 - DEBUG - URL being requested: POST https://gmail.googleapis.com/gmail/v1/users/me/messages/send?alt=json
+2025-03-30 19:13:30,084 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-04-04 10:29:58,170 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-04-04 10:29:58,184 - DEBUG - URL being requested: POST https://gmail.googleapis.com/gmail/v1/users/me/messages/send?alt=json
+2025-04-04 10:29:58,184 - DEBUG - Making request: POST https://oauth2.googleapis.com/token

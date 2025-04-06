@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Prepare query to fetch user details
-    $stmt = $conn->prepare("SELECT user_id, userpassword, enkey FROM sign_up WHERE user_email = ?");
+    $stmt = $conn->prepare("SELECT user_id, userpassword, enkey, user_name, user_email FROM sign_up WHERE user_email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $stmt->store_result();
@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Fetch user data
-    $stmt->bind_result($uid, $encrypted_password, $user_encryption_key);
+    $stmt->bind_result($uid, $encrypted_password, $user_encryption_key, $user_name, $user_email);
     $stmt->fetch();
     $stmt->close();
 
@@ -43,6 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Set session variables
         $_SESSION['user_id'] = $uid;
         $_SESSION['user_email'] = $email;
+        $_SESSION['user_name'] = $user_name;
 
         echo json_encode(["status" => "success", "message" => "Login successful! Redirecting..."]);
     } else {

@@ -1,3 +1,15 @@
+<?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+$full_name = $_SESSION['user_name'];
+$email = $_SESSION['user_email'];
+$uid = $_SESSION['user_id'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -28,7 +40,8 @@
         <div class="user-dropdown-wrapper">
           <div class="dashboard-items-user" onclick="toggleDropdown()">
             <!-- UPDATE -->
-            <p class="username">Himanshu Pal</p>
+             <!--From database-->
+             <p class="username"><?= htmlspecialchars($full_name) ?></p>
             <img
               src="../assests/icons/triangle.png"
               height="11px"
@@ -40,7 +53,8 @@
               <li>
                 You are signed in as <br />
                 <!-- UPDATE -->
-                <span>himanshu@gmail.com</span>
+                 <!--From database-->
+                 <span><?= htmlspecialchars($email) ?></span>
               </li>
               <li>
                 <img
@@ -141,7 +155,7 @@
             >
           </li>
           <li>
-            <a href="#">
+            <a href="../backend_process/logout_process.php">
               <img
                 src="../assests/icons/logout-icon.svg"
                 height="26px"
@@ -156,8 +170,19 @@
     </aside>
 
     <!-- Transaction Body -->
+    <?php
+if (isset($_GET['status'])) {
+    $message = ($_GET['status'] === 'success')
+        ? '<p style="color: green; text-align: center;">Money added successfully!</p>'
+        : '<p style="color: red; text-align: center;">Error adding money. Please try again.</p>';
+    echo '<div id="statusMessage">' . $message . '</div>';
+}
+?>
+
+
     <section class="transaction-body">
-      <h2>Hello Ashish 👋</h2>
+      <!--From database-->
+      <h2>Hello <?= htmlspecialchars($full_name) ?> 👋</h2>
       <div class="row-1">
         <div class="income-box">
           <div class="income-head">
@@ -171,6 +196,7 @@
             </div>
             <h3 class="income-text">Total Monthly Income</h3>
           </div>
+          <!--From database-->
           <p class="money">₹43,624</p>
         </div>
 
@@ -186,7 +212,9 @@
             </div>
             <h3 class="expense-text">Total Monthly Expense</h3>
           </div>
-          <p class="money">₹6,514</p>
+          <!--From database-->
+          <p class="money">
+          <?php include '../backend_process/get_income_expense_summary.php'; ?></p>
         </div>
       </div>
     </section>
@@ -201,7 +229,7 @@
     <div class="overlay" id="dialogOverlay">
       <div class="form-container">
         <h3>Adding money to spendly</h3>
-        <form class="add-form">
+        <form class="add-form" method="POST" action="../backend_process/add_income_expense.php">
           <label for="moneyType" class="add-form-label">Money Type</label>
           <select name="moneyType" required class="add-form-field">
             <option value="" disabled selected hidden>Select</option>
@@ -266,4 +294,15 @@
       document.getElementById("dialogOverlay").style.display = "none";
     }
   </script>
+  <script>
+  window.onload = function () {
+    const msg = document.getElementById("statusMessage");
+    if (msg) {
+      setTimeout(() => {
+        msg.style.display = "none";
+      }, 3000); // 3000 milliseconds = 3 seconds
+    }
+  };
+</script>
+
 </html>

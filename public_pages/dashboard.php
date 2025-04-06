@@ -1,3 +1,17 @@
+<?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+$full_name = $_SESSION['user_name'];
+$email = $_SESSION['user_email'];
+$uid = $_SESSION['user_id'];
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -30,7 +44,8 @@
         <div class="user-dropdown-wrapper">
           <div class="dashboard-items-user" onclick="toggleDropdown()">
             <!-- UPDATE -->
-            <p class="username">Himanshu Pal</p>
+            <!--From database-->
+            <p class="username"><?= htmlspecialchars($full_name) ?></p>
             <img
               src="../assests/icons/triangle.png"
               height="11px"
@@ -42,7 +57,8 @@
               <li>
                 You are signed in as <br />
                 <!-- UPDATE -->
-                <span>himanshu@gmail.com</span>
+                <!--From database-->
+                <span><?= htmlspecialchars($email) ?></span>
               </li>
               <li>
                 <img

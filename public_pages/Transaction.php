@@ -171,13 +171,15 @@ $uid = $_SESSION['user_id'];
 
     <!-- Transaction Body -->
     <?php
-if (isset($_GET['status'])) {
-    $message = ($_GET['status'] === 'success')
-        ? '<p style="color: green; text-align: center;">Money added successfully!</p>'
-        : '<p style="color: red; text-align: center;">Error adding money. Please try again.</p>';
-    echo '<div id="statusMessage">' . $message . '</div>';
+if ($_GET['status'] === 'success') {
+  $message = '<p id="statusMessage" style="color: green; text-align: center;">Money added successfully!</p>';
+} else {
+  $msg = isset($_GET['msg']) ? urldecode($_GET['msg']) : "Error adding money. Please try again.";
+  $message = '<p id="statusMessage" style="color: red; text-align: center;">' . htmlspecialchars($msg) . '</p>';
 }
 ?>
+<?php if (isset($message)) echo $message; ?>
+
 
 
     <section class="transaction-body">
@@ -197,7 +199,8 @@ if (isset($_GET['status'])) {
             <h3 class="income-text">Total Monthly Income</h3>
           </div>
           <!--From database-->
-          <p class="money">₹43,624</p>
+          <p class="money">
+          <?php include '../backend_process/get_income_summary.php'; ?></p>
         </div>
 
         <div class="expense-box">
@@ -214,7 +217,7 @@ if (isset($_GET['status'])) {
           </div>
           <!--From database-->
           <p class="money">
-          <?php include '../backend_process/get_income_expense_summary.php'; ?></p>
+          <?php include '../backend_process/get_expense_summary.php'; ?></p>
         </div>
       </div>
     </section>

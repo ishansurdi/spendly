@@ -9,8 +9,8 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="../styles/index.css" />
-    <link rel="stylesheet" href="./styles/dashboard.css" />
-    <link rel="stylesheet" href="./styles/questions.css" />
+    <link rel="stylesheet" href="../styles/dashboard.css" />
+    <link rel="stylesheet" href="../styles/questions.css" />
 
     <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

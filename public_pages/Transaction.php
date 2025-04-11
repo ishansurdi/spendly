@@ -171,9 +171,9 @@ $uid = $_SESSION['user_id'];
 
     <!-- Transaction Body -->
     <?php
-if ($_GET['status'] === 'success') {
+if (isset($_GET['status']) && $_GET['status'] === 'success') {
   $message = '<p id="statusMessage" style="color: green; text-align: center;">Money added successfully!</p>';
-} else {
+} elseif (isset($_GET['status'])) {
   $msg = isset($_GET['msg']) ? urldecode($_GET['msg']) : "Error adding money. Please try again.";
   $message = '<p id="statusMessage" style="color: red; text-align: center;">' . htmlspecialchars($msg) . '</p>';
 }

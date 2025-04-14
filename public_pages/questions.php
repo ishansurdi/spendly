@@ -1,3 +1,14 @@
+<?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+$full_name = $_SESSION['user_name'];
+$email = $_SESSION['user_email'];
+$uid = $_SESSION['user_id'];
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -23,12 +34,13 @@
     <title>Set Up Your Money Profile | Spendly</title>
   </head>
   <body>
+
     <!-- Navigation Menu Bar -->
     <nav class="dashboard-nav-main">
       <div class="dashboard-items">
         <div class="user-dropdown-wrapper">
           <div class="dashboard-items-user" onclick="toggleDropdown()">
-            <p class="username">Himanshu Pal</p>
+          <p class="username"><?= htmlspecialchars($full_name) ?></p>
             <img
               src="../assests/icons/triangle.png"
               height="11px"
@@ -39,7 +51,7 @@
             <ul>
               <li>
                 You are signed in as <br />
-                <span>himanshu@gmail.com</span>
+                <span><?= htmlspecialchars($email) ?></span>
               </li>
               <li>
                 <img
@@ -55,7 +67,7 @@
       </div>
     </nav>
 
-    <!--  -->
+<!--  -->
     <section class="ques-main">
       <h2 class="ques-main-heading">Let's Talk About Your Money!</h2>
       <div>
@@ -130,419 +142,210 @@
             </li>
           </ul>
           <!-- Step Wise Form Content -->
-          <form id="" name="" enctype="" method="POST">
-            <!-- Step 1 Content -->
-            <section id="step-1" class="form-step">
-              <h2 class="form-heading">Financial Goals</h2>
-              <!-- Step 1 input fields -->
+          <form id="" name="" action="../backend_process/questions_db_process.php" method="POST">
+  <!-- Step 1 Content -->
+  <section id="step-1" class="form-step">
+    <h2 class="form-heading">Financial Goals</h2>
+    <div class="form-content">
+      <label>Weekly Financial Goals</label>
+      <input type="number" name="weekly_goals" placeholder="e.g., Save ₹500 on groceries, skip ordering food" />
 
-              <div class="form-content">
-                <label>Weekly Financial Goals</label>
-                <input
-                  type="text"
-                  placeholder="e.g., Save ₹500 on groceries, skip ordering food"
-                />
+      <label>Monthly Financial Goals</label>
+      <input type="number" name="monthly_goals" placeholder="e.g., Invest ₹5,000 in SIP, save ₹2,000 on outings" />
 
-                <label>Monthly Financial Goals</label>
-                <input
-                  type="text"
-                  placeholder="e.g., Invest ₹5,000 in SIP, save ₹2,000 on outings"
-                />
+      <label>Yearly Financial Goals</label>
+      <input type="number" name="yearly_goals" placeholder="e.g., Save ₹1.2L overall, build ₹50K emergency fund" />
 
-                <label>Yearly Financial Goals</label>
-                <input
-                  type="text"
-                  placeholder="e.g., Save ₹1.2L overall, build ₹50K emergency fund"
-                />
+      <label>Short-Term Goals (1-3 years)</label>
+      <input type="text" name="short_term_goals" placeholder="e.g., Buy a two-wheeler, ₹80K for solo trip" />
 
-                <label>Short-Term Goals (1-3 years)</label>
-                <input
-                  type="text"
-                  placeholder="e.g., Buy a two-wheeler, ₹80K for solo trip"
-                />
+      <label>Long-Term Goals (5+ years)</label>
+      <input type="text" name="long_term_goals" placeholder="e.g., Buy a flat in Pune, ₹15L for higher studies" />
 
-                <label>Long-Term Goals (5+ years)</label>
-                <input
-                  type="text"
-                  placeholder="e.g., Buy a flat in Pune, ₹15L for higher studies"
-                />
+      <label>Investment Interests</label>
+      <select name="investment_interest">
+        <option>Stocks (NSE/BSE)</option>
+        <option>Mutual Funds</option>
+        <option>PPF/FD/LIC</option>
+        <option>Gold</option>
+      </select>
 
-                <label>Investment Interests</label>
-                <select>
-                  <option>Stocks (NSE/BSE)</option>
-                  <option>Mutual Funds</option>
-                  <option>PPF/FD/LIC</option>
-                  <option>Gold</option>
-                </select>
+      <label>Risk Tolerance</label>
+      <select name="risk_tolerance">
+        <option>Low (PPF, FD, LIC)</option>
+        <option>Medium (Mutual Funds)</option>
+        <option>High (Stocks, Crypto)</option>
+      </select>
+    </div>
+    <div class="form-buttons">
+      <button class="hide-btn">back</button>
+      <button class="button btn-navigate-form-step" type="button" step_number="2">
+        <span>Continue</span>
+        <img src="/assests/icons/arrow-right-stretched.svg" height="11px" width="auto" alt="" />
+      </button>
+    </div>
+  </section>
 
-                <label>Risk Tolerance</label>
-                <select>
-                  <option>Low (PPF, FD, LIC)</option>
-                  <option>Medium (Mutual Funds)</option>
-                  <option>High (Stocks, Crypto)</option>
-                </select>
-              </div>
+  <!-- Step 2 -->
+  <section id="step-2" class="form-step d-none">
+    <h2 class="form-heading">Income Details</h2>
+    <div class="form-content">
+      <label for="source">Primary Income Source</label>
+      <input id="source" name="primary_income_source" type="text" placeholder="e.g., Software job at TCS, freelance projects" />
 
-              <div class="form-buttons">
-                <button class="hide-btn">back</button>
-                <button
-                  class="button btn-navigate-form-step"
-                  type="button"
-                  step_number="2"
-                >
-                  <span>Continue</span>
-                  <img
-                    src="/assests/icons/arrow-right-stretched.svg"
-                    height="11px"
-                    width="auto"
-                    alt=""
-                  />
-                </button>
-              </div>
-            </section>
-            <!-- Step 2 Content, default hidden on page load. -->
-            <section id="step-2" class="form-step d-none">
-              <h2 class="form-heading">Income Details</h2>
-              <!-- Step 2 input fields -->
-              <div class="form-content">
-                <label for="source">Primary Income Source</label>
-                <input
-                  id="source"
-                  type="text"
-                  placeholder="e.g., Software job at TCS, freelance projects"
-                />
+      <label for="monthlyIncome">Monthly Income (in ₹)</label>
+      <input id="monthlyIncome" name="monthly_income" type="text" placeholder="e.g., ₹60,000" />
 
-                <label for="monthlyIncome">Monthly Income (in ₹)</label>
-                <input
-                  id="monthlyIncome"
-                  type="number"
-                  placeholder="e.g., ₹60,000"
-                />
+      <label for="passiveIncome">Monthly Passive Income (in ₹)</label>
+      <input id="passiveIncome" name="passive_income" type="number" placeholder="e.g., ₹5,000 from FD interest or rent" />
 
-                <label for="passiveIncome">Monthly Passive Income (in ₹)</label>
-                <input
-                  id="passiveIncome"
-                  type="text"
-                  placeholder="e.g., ₹5,000 from FD interest or rent"
-                />
+      <label for="growth">Expected Annual Income Growth (in %)</label>
+      <input id="growth" name="expected_annual_growth" type="number" placeholder="e.g., 8" />
 
-                <label for="growth">Expected Annual Income Growth (in %)</label>
-                <input id="growth" type="number" placeholder="e.g., 8" />
+      <label for="taxSaving">Tax-Saving Investments (80C/80D etc.)</label>
+      <input id="taxSaving" name="tax_saving_investments" type="text" placeholder="e.g., ₹1.5L in PPF, ELSS, health insurance" />
+    </div>
+    <div class="form-buttons">
+      <button class="back-button button btn-navigate-form-step" type="button" step_number="1">Go Back</button>
+      <button class="button btn-navigate-form-step" type="button" step_number="3">
+        <span>Continue</span>
+        <img src="/assests/icons/arrow-right-stretched.svg" height="11px" width="auto" alt="" />
+      </button>
+    </div>
+  </section>
 
-                <label for="taxSaving"
-                  >Tax-Saving Investments (80C/80D etc.)</label
-                >
-                <input
-                  id="taxSaving"
-                  type="text"
-                  placeholder="e.g., ₹1.5L in PPF, ELSS, health insurance"
-                />
-              </div>
+  <!-- Step 3 -->
+  <section id="step-3" class="form-step d-none">
+    <h2 class="form-heading">Expenses and Liabilities</h2>
+    <div class="form-content">
+      <label for="fixed">Fixed Monthly Expenses (in ₹)</label>
+      <input type="number" id="fixed" name="fixed_expenses" placeholder="e.g., ₹25,000 - rent, EMIs" />
 
-              <div class="form-buttons">
-                <button
-                  class="back-button button btn-navigate-form-step"
-                  type="button"
-                  step_number="1"
-                >
-                  Go Back
-                </button>
-                <button
-                  class="button btn-navigate-form-step"
-                  type="button"
-                  step_number="3"
-                >
-                  <span>Continue</span>
-                  <img
-                    src="/assests/icons/arrow-right-stretched.svg"
-                    height="11px"
-                    width="auto"
-                    alt=""
-                  />
-                </button>
-              </div>
-            </section>
-            <!-- Step 3 Content, default hidden on page load. -->
-            <section id="step-3" class="form-step d-none">
-              <h2 class="form-heading">Expenses and Liabilities</h2>
-              <!-- Step 3 input fields -->
-              <div class="form-content">
-                <label for="fixed">Fixed Monthly Expenses (in ₹)</label>
-                <input
-                  type="number"
-                  id="fixed"
-                  placeholder="e.g., ₹25,000 - rent, EMIs"
-                />
+      <label for="variable">Variable Monthly Expenses (in ₹)</label>
+      <input type="number" id="variable" name="variable_expenses" placeholder="e.g., ₹10,000 - groceries, transport, shopping" />
 
-                <label for="variable">Variable Monthly Expenses (in ₹)</label>
-                <input
-                  type="number"
-                  id="variable"
-                  placeholder="e.g., ₹10,000 - groceries, transport, shopping"
-                />
+      <label for="loan">Total Loans & EMI (in ₹)</label>
+      <input type="text" id="loan" name="loans_emi" placeholder="e.g., ₹5L home loan, ₹2L education loan" />
 
-                <label for="loan">Total Loans & EMI (in ₹)</label>
-                <input
-                  type="number"
-                  id="loan"
-                  placeholder="e.g., ₹5L home loan, ₹2L education loan"
-                />
+      <label for="credit">Credit Card Usage per Month (in ₹)</label>
+      <input type="text" id="credit" name="credit_card_usage" placeholder="e.g., ₹12,000 on HDFC credit card" />
 
-                <label for="credit">Credit Card Usage per Month (in ₹)</label>
-                <input
-                  type="number"
-                  id="credit"
-                  placeholder="e.g., ₹12,000 on HDFC credit card"
-                />
+      <label for="insurance">Monthly Insurance Premiums (in ₹)</label>
+      <input type="text" id="insurance" name="insurance_premiums" placeholder="e.g., ₹2,000 - term plan, health policy" />
+    </div>
+    <div class="form-buttons">
+      <button class="back-button button btn-navigate-form-step" type="button" step_number="2">Go Back</button>
+      <button class="button btn-navigate-form-step" type="button" step_number="4">
+        <span>Continue</span>
+        <img src="/assests/icons/arrow-right-stretched.svg" height="11px" width="auto" alt="" />
+      </button>
+    </div>
+  </section>
 
-                <label for="insurance">Monthly Insurance Premiums (in ₹)</label>
-                <input
-                  type="number"
-                  id="insurance"
-                  placeholder="e.g., ₹2,000 - term plan, health policy"
-                />
-              </div>
+  <!-- Step 4 -->
+  <section id="step-4" class="form-step d-none">
+    <h2 class="form-heading">Budget Allocation</h2>
+    <div class="form-content">
+      <label for="utilities">Utilities (Electricity, Water, Gas) (in ₹)</label>
+      <input type="number" id="utilities" name="utilities" placeholder="e.g., ₹2,000 – MSEB bill, cylinder, water" />
 
-              <div class="form-buttons">
-                <button
-                  class="back-button button btn-navigate-form-step"
-                  type="button"
-                  step_number="2"
-                >
-                  Go Back
-                </button>
-                <button
-                  class="button btn-navigate-form-step"
-                  type="button"
-                  step_number="4"
-                >
-                  <span>Continue</span>
-                  <img
-                    src="/assests/icons/arrow-right-stretched.svg"
-                    height="11px"
-                    width="auto"
-                    alt=""
-                  />
-                </button>
-              </div>
-            </section>
-            <!-- Step 4 Content, default hidden on page load. -->
-            <section id="step-4" class="form-step d-none">
-              <h2 class="form-heading">Budget Allocation</h2>
-              <!-- Step 4 input fields -->
-              <div class="form-content">
-                <label for="utilities"
-                  >Utilities (Electricity, Water, Gas) (in ₹)</label
-                >
-                <input
-                  type="number"
-                  id="utilities"
-                  placeholder="e.g., ₹2,000 – MSEB bill, cylinder, water"
-                />
+      <label for="groceries">Groceries (in ₹)</label>
+      <input type="number" id="groceries" name="groceries" placeholder="e.g., ₹5,000 – fruits, vegetables, staples" />
 
-                <label for="groceries">Groceries (in ₹)</label>
-                <input
-                  type="number"
-                  id="groceries"
-                  placeholder="e.g., ₹5,000 – fruits, vegetables, staples"
-                />
+      <label for="transport">Transport & Fuel (in ₹)</label>
+      <input type="number" id="transport" name="transport" placeholder="e.g., ₹3,000 – petrol, cab rides" />
 
-                <label for="transport">Transport & Fuel (in ₹)</label>
-                <input
-                  type="number"
-                  id="transport"
-                  placeholder="e.g., ₹3,000 – petrol, cab rides"
-                />
+      <label for="entertainment">Entertainment & Subscriptions (in ₹)</label>
+      <input type="number" id="entertainment" name="entertainment" placeholder="e.g., ₹1,000 – Netflix, Spotify, weekend outings" />
 
-                <label for="entertainment"
-                  >Entertainment & Subscriptions (in ₹)</label
-                >
-                <input
-                  type="number"
-                  id="entertainment"
-                  placeholder="e.g., ₹1,000 – Netflix, Spotify, weekend outings"
-                />
+      <label for="healthcare">Healthcare & Medicines (in ₹)</label>
+      <input type="number" id="healthcare" name="healthcare" placeholder="e.g., ₹800 – regular checkups, monthly meds" />
+    </div>
+    <div class="form-buttons">
+      <button class="back-button button btn-navigate-form-step" type="button" step_number="3">Go Back</button>
+      <button class="button btn-navigate-form-step" type="button" step_number="5">
+        <span>Continue</span>
+        <img src="/assests/icons/arrow-right-stretched.svg" height="11px" width="auto" alt="" />
+      </button>
+    </div>
+  </section>
 
-                <label for="healthcare">Healthcare & Medicines (in ₹)</label>
-                <input
-                  type="number"
-                  id="healthcare"
-                  placeholder="e.g., ₹800 – regular checkups, monthly meds"
-                />
-              </div>
-              <div class="form-buttons">
-                <button
-                  class="back-button button btn-navigate-form-step"
-                  type="button"
-                  step_number="3"
-                >
-                  Go Back
-                </button>
-                <button
-                  class="button btn-navigate-form-step"
-                  type="button"
-                  step_number="5"
-                >
-                  <span>Continue</span>
-                  <img
-                    src="/assests/icons/arrow-right-stretched.svg"
-                    height="11px"
-                    width="auto"
-                    alt=""
-                  />
-                </button>
-              </div>
-            </section>
-            <!-- Step 5 Content, default hidden on page load. -->
-            <section id="step-5" class="form-step d-none">
-              <h2 class="form-heading">Assets and Net Worth</h2>
-              <!-- Step 5 input fields -->
-              <div class="form-content">
-                <label for="gold">Gold (in ₹)</label>
-                <input
-                  type="number"
-                  id="gold"
-                  placeholder="e.g., ₹1.5L – Gold ornaments & coins"
-                />
+  <!-- Step 5 -->
+  <section id="step-5" class="form-step d-none">
+    <h2 class="form-heading">Assets and Net Worth</h2>
+    <div class="form-content">
+      <label for="gold">Gold (in ₹)</label>
+      <input type="text" id="gold" name="gold" placeholder="e.g., ₹1.5L – Gold ornaments & coins" />
 
-                <label for="fd">Fixed Deposits (in ₹)</label>
-                <input
-                  type="number"
-                  id="fd"
-                  placeholder="e.g., ₹2L – Fixed deposit"
-                />
+      <label for="fd">Fixed Deposits (in ₹)</label>
+      <input type="text" id="fd" name="fixed_deposits" placeholder="e.g., ₹2L – Fixed deposit" />
 
-                <label for="mutual">Mutual Funds (in ₹)</label>
-                <input
-                  type="number"
-                  id="mutual"
-                  placeholder="e.g., ₹75,000 – Axis Bluechip SIP"
-                />
+      <label for="mutual">Mutual Funds (in ₹)</label>
+      <input type="text" id="mutual" name="mutual_funds" placeholder="e.g., ₹75,000 – Axis Bluechip SIP" />
 
-                <label for="realestate">Real Estate (in ₹)</label>
-                <input
-                  type="number"
-                  id="realestate"
-                  placeholder="e.g., ₹40L – Flat in Pune"
-                />
+      <label for="realestate">Real Estate (in ₹)</label>
+      <input type="text" id="realestate" name="real_estate" placeholder="e.g., ₹40L – Flat in Pune" />
 
-                <label for="vehicles">Vehicles (in ₹)</label>
-                <input
-                  type="number"
-                  id="vehicles"
-                  placeholder="e.g., ₹1.2L – bike, ₹6L – car"
-                />
-              </div>
-              <div class="form-buttons">
-                <button
-                  class="back-button button btn-navigate-form-step"
-                  type="button"
-                  step_number="4"
-                >
-                  Go Back
-                </button>
-                <button
-                  class="button btn-navigate-form-step"
-                  type="button"
-                  step_number="6"
-                >
-                  <span>Continue</span>
-                  <img
-                    src="/assests/icons/arrow-right-stretched.svg"
-                    height="11px"
-                    width="auto"
-                    alt=""
-                  />
-                </button>
-              </div>
-            </section>
-            <!-- Step 6 Content, default hidden on page load. -->
-            <section id="step-6" class="form-step d-none">
-              <h2 class="form-heading">Tax and Insurance Information</h2>
-              <!-- Step 6 input fields -->
-              <div class="form-content">
-                <label for="pan">PAN Number</label>
-                <input type="text" id="pan" placeholder="ABCDE1234F" />
+      <label for="vehicles">Vehicles (in ₹)</label>
+      <input type="text" id="vehicles" name="vehicles" placeholder="e.g., ₹1.2L – bike, ₹6L – car" />
+    </div>
+    <div class="form-buttons">
+      <button class="back-button button btn-navigate-form-step" type="button" step_number="4">Go Back</button>
+      <button class="button btn-navigate-form-step" type="button" step_number="6">
+        <span>Continue</span>
+        <img src="/assests/icons/arrow-right-stretched.svg" height="11px" width="auto" alt="" />
+      </button>
+    </div>
+  </section>
 
-                <label for="insurance-type">Insurance Type</label>
-                <select id="insurance-type">
-                  <option value="">Select insurance type</option>
-                  <option value="term">Term Life Insurance</option>
-                  <option value="health">Health Insurance</option>
-                  <option value="ulip">
-                    ULIP (Unit Linked Insurance Plan)
-                  </option>
-                  <option value="vehicle">Vehicle Insurance</option>
-                </select>
+  <!-- Step 6 -->
+  <section id="step-6" class="form-step d-none">
+    <h2 class="form-heading">Tax and Insurance Information</h2>
+    <div class="form-content">
+      <label for="pan">PAN Number</label>
+      <input type="text" id="pan" name="pan_number" placeholder="ABCDE1234F" />
 
-                <label for="premium">Annual Premium (in ₹)</label>
-                <input
-                  type="number"
-                  id="premium"
-                  placeholder="e.g., ₹10,000 per year"
-                />
+      <label for="insurance-type">Insurance Type</label>
+      <select id="insurance-type" name="insurance_type">
+        <option value="">Select insurance type</option>
+        <option value="term">Term Life Insurance</option>
+        <option value="health">Health Insurance</option>
+        <option value="ulip">ULIP (Unit Linked Insurance Plan)</option>
+        <option value="vehicle">Vehicle Insurance</option>
+      </select>
 
-                <label for="coverage">Coverage Amount (in ₹)</label>
-                <input
-                  type="number"
-                  id="coverage"
-                  placeholder="e.g., ₹10L coverage for term plan"
-                />
-              </div>
-              <div class="form-buttons">
-                <button
-                  class="back-button button btn-navigate-form-step"
-                  type="button"
-                  step_number="5"
-                >
-                  Go Back
-                </button>
-                <button
-                  class="button btn-navigate-form-step"
-                  type="button"
-                  step_number="7"
-                >
-                  <span>Continue</span>
-                  <img
-                    src="/assests/icons/arrow-right-stretched.svg"
-                    height="11px"
-                    width="auto"
-                    alt=""
-                  />
-                </button>
-              </div>
-            </section>
-            <!-- Step 7 Content, default hidden on page load. -->
-            <section id="step-7" class="form-step d-none">
-              <h2 class="form-heading">Custom Tags and Additional Notes</h2>
-              <!-- Step 7 input fields -->
-              <div class="form-content">
-                <label for="tags">Tags (separate by commas)</label>
-                <input
-                  type="text"
-                  id="tags"
-                  placeholder="e.g., NRI, Freelancer, Family Support"
-                />
+      <label for="premium">Annual Premium (in ₹)</label>
+      <input type="number" id="premium" name="annual_premium" placeholder="e.g., ₹10,000 per year" />
 
-                <label for="notes">Additional Notes</label>
-                <textarea
-                  id="notes"
-                  placeholder="e.g., Supporting sibling’s education, planning to study abroad"
-                ></textarea>
-              </div>
-              <div class="form-buttons">
-                <button
-                  class="back-button button btn-navigate-form-step"
-                  type="button"
-                  step_number="6"
-                >
-                  Go Back
-                </button>
-                <button class="button submit-btn" type="submit">Submit</button>
-              </div>
-            </section>
-          </form>
-        </div>
+      <label for="coverage">Coverage Amount (in ₹)</label>
+      <input type="number" id="coverage" name="coverage_amount" placeholder="e.g., ₹10L coverage for term plan" />
+    </div>
+    <div class="form-buttons">
+      <button class="back-button button btn-navigate-form-step" type="button" step_number="5">Go Back</button>
+      <button class="button btn-navigate-form-step" type="button" step_number="7">
+        <span>Continue</span>
+        <img src="/assests/icons/arrow-right-stretched.svg" height="11px" width="auto" alt="" />
+      </button>
+    </div>
+  </section>
+
+  <!-- Step 7 -->
+  <section id="step-7" class="form-step d-none">
+    <h2 class="form-heading">Custom Tags and Additional Notes</h2>
+    <div class="form-content">
+      <label for="tags">Tags (separate by commas)</label>
+      <input type="text" id="tags" name="tags" placeholder="e.g., NRI, Freelancer, Family Support" />
+
+      <label for="notes">Additional Notes</label>
+      <textarea id="notes" name="notes" placeholder="e.g., Supporting sibling’s education, planning to study abroad"></textarea>
+    </div>
+    <div class="form-buttons">
+      <button class="back-button button btn-navigate-form-step" type="button" step_number="6">Go Back</button>
+      <button class="button submit-btn" type="submit">Submit</button>
+      </div>
+    </section>
+        </form>
+      </div>
       </div>
     </section>
   </body>
@@ -653,5 +456,7 @@
           navigateToFormStep(stepNumber);
         });
       });
-  </script>
+ 
+ </script>
+
 </html>

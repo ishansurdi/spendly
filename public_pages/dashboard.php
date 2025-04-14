@@ -159,7 +159,7 @@ $uid = $_SESSION['user_id'];
             >
           </li>
           <li>
-            <a href="#">
+            <a href="../backend_process/logout_process.php">
               <img
                 src="../assests/icons/logout-icon.svg"
                 height="26px"

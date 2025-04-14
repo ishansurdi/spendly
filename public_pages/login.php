@@ -109,7 +109,7 @@
 
   <!-- JS Script for Login Error Message: -->
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector(".form"); 
     const errorMessage = document.getElementById("error-message");
 
@@ -124,8 +124,8 @@
         })
         .then(response => response.json())
         .then(data => {
-            errorMessage.classList.remove("success"); // Ensure old success styles are removed
-            errorMessage.classList.add("error"); // Add error class
+            errorMessage.classList.remove("success");
+            errorMessage.classList.add("error");
 
             if (data.status === "success") {
                 errorMessage.classList.remove("error");
@@ -134,8 +134,15 @@
                 setTimeout(() => {
                     window.location.href = "dashboard.php";
                 }, 1500);
+            } else if (data.status === "redirect") {
+                errorMessage.classList.remove("error");
+                errorMessage.classList.add("success");
+                errorMessage.textContent = "Almost there! Redirecting...";
+                setTimeout(() => {
+                    window.location.href = "questions.php"; // should be "questions.php"
+                }, 1500);
             } else {
-                errorMessage.classList.add("error"); // Apply the class again
+                errorMessage.classList.add("error");
                 errorMessage.textContent = data.message;
             }
         })
@@ -146,6 +153,8 @@
         });
     });
 });
+
+
 
 
 </script>

@@ -40,12 +40,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $decrypted_password = decrypt_password($encrypted_password, $user_encryption_key);
     
     if ($password === $decrypted_password) {
+        // Check initial_data_entry status
+        $stmt2 = $conn->prepare("SELECT intial_data_entry FROM login_details WHERE user_id = ?");
+        $stmt2->bind_param("i", $uid);
+        $stmt2->execute();
+        $stmt2->bind_result($initial_data_entry);
+        $stmt2->fetch();
+        $stmt2->close();
+
         // Set session variables
         $_SESSION['user_id'] = $uid;
         $_SESSION['user_email'] = $email;
         $_SESSION['user_name'] = $user_name;
 
-        echo json_encode(["status" => "success", "message" => "Login successful! Redirecting..."]);
+        if ($initial_data_entry === 'No') {
+            echo json_encode(["status" => "redirect", "location" => "questions.php"]);
+        } else {
+            echo json_encode(["status" => "success", "message" => "Login successful! Redirecting..."]);
+        }
     } else {
         echo json_encode(["status" => "error", "message" => "Incorrect password. Please try again."]);
     }

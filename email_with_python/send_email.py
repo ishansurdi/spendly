@@ -15,7 +15,7 @@ def authenticate_google():
             creds.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
-                r"C:/xampp/htdocs/pbl2_sourcecode/testing-code-files/email_with_python/credentials.json", SCOPES
+                r"C:/xampp/htdocs/pbl2_sourcecode/spendly/email_with_python/credentials.json", SCOPES
             )
             creds = flow.run_local_server(port=8080)  # Use port 8080 for web app
         with open("token.json", "w") as token:

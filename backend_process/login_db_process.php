@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($password === $decrypted_password) {
         // Check initial_data_entry status
         $stmt2 = $conn->prepare("SELECT intial_data_entry FROM login_details WHERE user_id = ?");
-        $stmt2->bind_param("i", $uid);
+        $stmt2->bind_param("s", $uid);
         $stmt2->execute();
         $stmt2->bind_result($initial_data_entry);
         $stmt2->fetch();

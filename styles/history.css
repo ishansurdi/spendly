@@ -1,0 +1,104 @@
+body {
+    height: 100%;
+    font-family: "Poppins", sans-serif;
+    cursor: default;
+    scroll-behavior: smooth;
+}
+
+.history-body {
+    width: 1100px;
+    margin: 0 auto;
+}
+
+.history-body h2 {
+    margin-top: 3.6rem;
+    font-size: 2em;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    line-height: 125%;
+    color: #232323e3;
+    text-align: left;
+    margin-bottom: 0.25em;
+}
+
+.history-container {
+    margin-top: 2.4rem;
+    padding-bottom: 3.6rem;
+}
+
+.history-container .table-main {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.table-main .table-header {
+    background-color: var(--secondary-color);
+}
+
+.table-header .table-col {
+    padding: 1.4rem 1.4rem;
+    font-size: 1em;
+    letter-spacing: 0.33px;
+    line-height: 125%;
+    color: #5e5e5e;
+    text-align: left;
+    margin-bottom: 0.25em;
+    font-weight: 500;
+}
+
+.table-main .table-row {}
+
+.table-main .data-income-bg {
+    background-color: #efffef;
+}
+
+.table-main .data-expense-bg {
+    background-color: #fcf2f1;
+}
+
+.table-row .table-data {
+    font-size: 1em;
+    letter-spacing: 0.3px;
+    line-height: 125%;
+    color: #232323c9;
+    text-align: left;
+    font-weight: 500;
+    padding: 1.4rem 1.4rem;
+    word-spacing: -1.2px;
+}
+
+.table-row .data-income-chip {
+    padding: 4px 12px !important;
+    display: inline-flex;
+    gap: 0.25rem;
+    margin-top: 1rem;
+    width: fit-content;
+    text-transform: capitalize;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    line-height: 125%;
+    border-radius: 4rem;
+    border: 1.5px solid #167a440f;
+    background-color: #dcfdd1;
+    color: #167A44;
+}
+
+.table-row .data-expense-chip {
+    padding: 4px 12px !important;
+    display: inline-flex;
+    gap: 0.25rem;
+    margin-top: 1rem;
+    width: fit-content;
+    text-transform: capitalize;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    line-height: 125%;
+    border-radius: 4rem;
+    border: 1.5px solid #ce32340d;
+    background-color: #FEE2E3;
+    color: #CE3234;
+}

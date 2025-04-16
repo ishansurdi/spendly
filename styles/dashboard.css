@@ -205,8 +205,7 @@
 /* DASHBOARD BODY */
 .dashboard-body {
   width: 1200px;
-  margin: 0 96px;
-  /* background-color: red; */
+  margin: 0 auto;
   font-size: 1.4rem;
   margin-top: 1.8rem;
 }

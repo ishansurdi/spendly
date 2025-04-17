@@ -220,6 +220,21 @@ if (isset($_GET['status']) && $_GET['status'] === 'success') {
           <?php include '../backend_process/get_expense_summary.php'; ?></p>
         </div>
       </div>
+
+      <div class="row-2">
+
+        <div class="visual-analytics">
+          <h2>Visual Analytics</h2>
+
+          <div class="visual-container">
+            <div class="box box-1">graph 1</div>
+            <div class="box box-2">graph 2</div>
+            <div class="box box-3">graph 3</div>
+            <div class="box box-4">graph 4</div>
+          </div>
+
+        </div>
+      </div>
     </section>
 
     <!-- FLOATING ACTION BUTTON (ADD MONEY) -->
@@ -250,17 +265,27 @@ if (isset($_GET['status']) && $_GET['status'] === 'success') {
           />
 
           <label for="source" class="add-form-label">Source</label>
-          <input
-            type="text"
-            class="add-form-field"
-            name="source"
-            placeholder="eg- Food, Travel etc"
-            autocomplete="off"
-            autocorrect="off"
-            autocapitalize="off"
-            spellcheck="false"
-            required
-          />
+          <select name="source" required class="add-form-field">
+            <option value="" disabled selected hidden>Select</option>
+            <option value="salary">Salary</option>
+            <option value="freelance">Freelance</option>
+            <option value="business">Business</option>
+            <option value="investments">Investments</option>
+            <option value="gift">Gift</option>
+            <option value="food">Food</option>
+            <option value="transport">Transport</option>
+            <option value="shopping">Shopping</option>
+            <option value="rent">Rent</option>
+            <option value="utilities">Utilities</option>
+            <option value="healthcare">Healthcare</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="travel">Travel</option>
+            <option value="education">Education</option>
+            <option value="insurance">Insurance</option>
+            <option value="savings">Savings</option>
+            <option value="other">Other</option>
+            
+          </select>
 
           <div class="form-actions">
             <button type="button" class="cancel-btn" onclick="closeDialog()">

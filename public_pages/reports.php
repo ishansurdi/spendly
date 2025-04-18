@@ -103,6 +103,48 @@ $uid = $_SESSION['user_id'];
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
+    /* Tooltip styles */
+    .info-icon-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-text {
+  position: absolute;
+  top: -10px; /* vertically aligned with icon */
+  left: 28px; /* shifted to the right of the icon */
+  background-color: #333;
+  color: #fff;
+  padding: 14px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  max-width: 600px;  /* 👈 make it wider */
+  width: max-content;
+  white-space: normal;
+  line-height: 1.6;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 14px;
+  left: -8px; /* now it points to the icon from left */
+  border-width: 8px;
+  border-style: solid;
+  border-color: transparent #333 transparent transparent;
+}
+
+.info-icon-wrapper:hover .tooltip-text {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
   </style>
 
   <title>Reports | Dashboard</title>
@@ -164,7 +206,16 @@ $uid = $_SESSION['user_id'];
       </div>
     </div>
 
-    <h3 style="margin: 40px auto 10px auto; max-width: 800px; width: 90%;">Financial Goals Analysis</h3>
+    <div style="margin: 40px auto 10px auto; max-width: 800px; width: 90%; display: flex; align-items: center; gap: 8px; position: relative;">
+  <h3 style="margin: 0;">Financial Goals Analysis</h3>
+  <div class="info-icon-wrapper">
+    <img id="info-icon" src="../assests/icons/info-icon-svgrepo-com.svg" alt="info" height="15" style="cursor: pointer;" />
+    <div class="tooltip-text hidden">
+      <strong>Disclaimer:</strong> The analysis and recommendations provided in this section are generated using Google Gemini AI. These insights are purely suggestive and should not be treated as definitive financial advice. For any investment or financial decisions, users are strongly advised to consult with certified financial advisors or relevant professionals. Spendly and its developers shall not be held liable for any financial losses, damages, or decisions made based on the AI-generated suggestions.
+    </div>
+  </div>
+</div>
+
 
 
     <div id="loader" class="loader"></div>
@@ -221,5 +272,12 @@ $uid = $_SESSION['user_id'];
       }
     });
   </script>
+  <script>
+    document.getElementById('info-icon').addEventListener('click', () => {
+  document.querySelector('.tooltip-text').classList.toggle('hidden');
+});
+
+
+</script>
 </body>
 </html>

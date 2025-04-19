@@ -218,8 +218,11 @@ $uid = $_SESSION['user_id'];
 
 
 
+
     <div id="loader" class="loader"></div>
     <div id="goals-analysis" class="analysis-output"></div>
+    
+</div>
   </main>
 
   <script>
@@ -279,5 +282,8 @@ $uid = $_SESSION['user_id'];
 
 
 </script>
+
+
+
 </body>
 </html>

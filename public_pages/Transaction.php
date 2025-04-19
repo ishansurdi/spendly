@@ -93,7 +93,9 @@ $uid = $_SESSION['user_id'];
           >
         </li>
         <li>
-          <a href="transaction.php">
+
+          <a href="Transaction.php">
+
             <img
               src="../assests/icons/transaction-icon.svg"
               height="28px"
@@ -126,7 +128,7 @@ $uid = $_SESSION['user_id'];
           >
         </li>
         <li>
-          <a href="#">
+          <a href="history.php">
             <img
               src="../assests/icons/history-icon.svg"
               height="26px"
@@ -223,19 +225,30 @@ if (isset($_GET['status']) && $_GET['status'] === 'success') {
 
       <div class="row-2">
 
-        <div class="visual-analytics">
-          <h2>Visual Analytics</h2>
+      <div class="visual-analytics">
+     <h2>Visual Analytics</h2>
+     <div class="charts-wrapper">
+  <div class="chart-box">
+    <canvas id="incomeExpenseChart"></canvas>
+    <p>Income vs Expense Over Time</p>
+  </div>
+  
+  <div class="chart-box">
+    <canvas id="expensePieChart"></canvas>
+    <p>Expense Categories</p>
+  </div>
 
-          <div class="visual-container">
-            <div class="box box-1">graph 1</div>
-            <div class="box box-2">graph 2</div>
-            <div class="box box-3">graph 3</div>
-            <div class="box box-4">graph 4</div>
-          </div>
+  <div class="chart-box">
+    <canvas id="incomePieChart"></canvas>
+    <p>Income Categories</p>
+  </div>
 
-        </div>
-      </div>
-    </section>
+  <div class="chart-box">
+    <canvas id="breakdownChart"></canvas>
+    <p>Breakdown of Income and Expense</p>
+  </div>
+</div>
+</section>
 
     <!-- FLOATING ACTION BUTTON (ADD MONEY) -->
     <div class="fab" title="Add" onclick="openDialog()">
@@ -264,28 +277,31 @@ if (isset($_GET['status']) && $_GET['status'] === 'success') {
             required
           />
 
-          <label for="source" class="add-form-label">Source</label>
-          <select name="source" required class="add-form-field">
-            <option value="" disabled selected hidden>Select</option>
-            <option value="salary">Salary</option>
-            <option value="freelance">Freelance</option>
-            <option value="business">Business</option>
-            <option value="investments">Investments</option>
-            <option value="gift">Gift</option>
-            <option value="food">Food</option>
-            <option value="transport">Transport</option>
-            <option value="shopping">Shopping</option>
-            <option value="rent">Rent</option>
-            <option value="utilities">Utilities</option>
-            <option value="healthcare">Healthcare</option>
-            <option value="entertainment">Entertainment</option>
-            <option value="travel">Travel</option>
-            <option value="education">Education</option>
-            <option value="insurance">Insurance</option>
-            <option value="savings">Savings</option>
-            <option value="other">Other</option>
-            
-          </select>
+          <label for="category" class="add-form-label">Category</label>
+<select
+  name="category"
+  required class="add-form-field"
+>
+  <option value="" disabled selected>Select a category</option>
+  <option value="Salary">Salary</option>
+  <option value="Freelance">Freelance</option>
+  <option value="Investments">Investments</option>
+  <option value="Business">Business</option>
+  <option value="Gift">Gift</option>
+  <option value="Food">Food</option>
+  <option value="Transport">Transport</option>
+  <option value="Shopping">Shopping</option>
+  <option value="Rent">Rent</option>
+  <option value="Utilities">Utilities</option>
+  <option value="Healthcare">Healthcare</option>
+  <option value="Entertainment">Entertainment</option>
+  <option value="Travel">Travel</option>
+  <option value="Education">Education</option>
+  <option value="Insurance">Insurance</option>
+  <option value="Savings">Savings</option>
+  <option value="Other">Other</option>
+</select>
+
 
           <div class="form-actions">
             <button type="button" class="cancel-btn" onclick="closeDialog()">
@@ -332,5 +348,164 @@ if (isset($_GET['status']) && $_GET['status'] === 'success') {
     }
   };
 </script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  fetch('../backend_process/get_chart_data.php')
+  .then(response => response.json())
+  .then(data => {
+    // 1. Line Chart – Income vs Expense Over Time (grouped by day)
+    const linePeriods = data.line_chart.map(row => row.period);
+    const lineIncome = data.line_chart.map(row => parseFloat(row.income));  // Convert to number
+    const lineExpense = data.line_chart.map(row => parseFloat(row.expense)); // Convert to number
 
+    const incomeExpenseChart = new Chart(document.getElementById('incomeExpenseChart'), {
+        type: 'line',
+        data: {
+            labels: linePeriods,
+            datasets: [
+                {
+                    label: 'Income',
+                    data: lineIncome,
+                    borderColor: 'green',
+                    fill: false
+                },
+                {
+                    label: 'Expense',
+                    data: lineExpense,
+                    borderColor: 'red',
+                    fill: false
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return tooltipItem.dataset.label + ': ' + tooltipItem.raw.toFixed(2);
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    // 2. Pie Chart – Income Category Breakdown
+    const incomeCategories = data.income_categories.map(row => row.category);
+    const incomeTotals = data.income_categories.map(row => parseFloat(row.total));  // Convert to number
+
+    const incomePieChart = new Chart(document.getElementById('incomePieChart'), {
+        type: 'pie',
+        data: {
+            labels: incomeCategories,
+            datasets: [{
+                data: incomeTotals,
+                backgroundColor: [
+                    "#fd7f6f", "#7eb0d5", "#b2e061", "#bd7ebe", 
+                    "#ffb55a", "#ffee65", "#beb9db", "#fdcce5", "#8bd3c7"
+                ],  
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return tooltipItem.label + ': ' + tooltipItem.raw.toFixed(2);
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    // 3. Pie Chart – Expense Category Breakdown
+    const expenseCategories = data.expense_categories.map(row => row.category);
+    const expenseTotals = data.expense_categories.map(row => parseFloat(row.total));  // Convert to number
+
+    const expensePieChart = new Chart(document.getElementById('expensePieChart'), {
+        type: 'pie',
+        data: {
+            labels: expenseCategories,
+            datasets: [{
+                data: expenseTotals,
+                backgroundColor: [
+                    "#ea5545", "#f46a9b", "#ef9b20", "#edbf33", 
+                    "#ede15b", "#bdcf32", "#87bc45", "#27aeef", "#b33dc6"
+                ],
+            }] 
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return tooltipItem.label + ': ' + tooltipItem.raw.toFixed(2);
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    // 4. Bar Chart – Monthly Summary (Income vs Expense by month)
+    const monthlyPeriods = data.monthly_summary.map(row => row.period);
+    const monthlyIncome = data.monthly_summary.map(row => parseFloat(row.income));  // Convert to number
+    const monthlyExpense = data.monthly_summary.map(row => parseFloat(row.expense)); // Convert to number
+
+    const breakdownChart = new Chart(document.getElementById('breakdownChart'), {
+        type: 'bar',
+        data: {
+            labels: monthlyPeriods,
+            datasets: [
+                {
+                    label: 'Income',
+                    data: monthlyIncome,
+                    backgroundColor: 'green',
+                },
+                {
+                    label: 'Expense',
+                    data: monthlyExpense,
+                    backgroundColor: 'red',
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return tooltipItem.dataset.label + ': ' + tooltipItem.raw.toFixed(2);
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+  })
+  .catch(error => {
+    console.error('Error fetching data:', error);
+  });
+</script>
 </html>

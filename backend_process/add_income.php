@@ -66,7 +66,7 @@ try {
     $transaction_id = generateTransactionId($conn);
     $stmt = $conn->prepare("INSERT INTO transactions (transaction_id, user_id, type, amount, category, timestamp, day, previous_balance, after_balance)
                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-   $stmt->bind_param("sssdsssdd", $transaction_id, $uid, $type, $amount, $category, $timestamp, $day, $current_balance, $new_balance);
+    $stmt->bind_param("sssdsssdd", $transaction_id, $uid, $type, $amount, $category, $timestamp, $day, $current_balance, $new_balance);
 
     if (!$stmt->execute()) {
         throw new Exception("Transaction insert failed: " . $stmt->error);

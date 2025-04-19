@@ -116,7 +116,9 @@ $uid = $_SESSION['user_id'];
           >
         </li>
         <li>
-          <a href="./history.php">
+
+          <a href="history.php">
+
             <img
               src="../assests/icons/history-icon.svg"
               height="26px"
@@ -248,159 +250,72 @@ $uid = $_SESSION['user_id'];
       return `${day} ${month}, ${shortYear}`;
     }
 
-    const transactions = [
-      {
-        transaction_id: "TXN620134",
-        user_id: "lbTUuHF8ksCyEqy",
-        type: "income",
-        amount: 20000.0,
-        reason: "rent",
-        category: "",
-        timestamp: "2025-03-23 02:23:32",
-        day: "Saturday",
-        previous_balance: 1900.0,
-        after_balance: 21900.0,
-      },
-      {
-        transaction_id: "TXN620134",
-        user_id: "lbTUuHF8ksCyEqy",
-        type: "income",
-        amount: 20000.0,
-        reason: "rent",
-        category: "",
-        timestamp: "2025-03-23 02:23:32",
-        day: "Saturday",
-        previous_balance: 1900.0,
-        after_balance: 21900.0,
-      },
-      {
-        transaction_id: "TXN501753",
-        user_id: "lbTUuHF8ksCyEqy",
-        type: "expense",
-        amount: 100.0,
-        reason: "food",
-        category: "",
-        timestamp: "2025-04-11 06:05:50",
-        day: "Friday",
-        previous_balance: 2000.0,
-        after_balance: 1900.0,
-      },
-      {
-        transaction_id: "TXN612462",
-        user_id: "lbTUuHF8ksCyEqy",
-        type: "income",
-        amount: 2000.0,
-        reason: "rent",
-        category: "",
-        timestamp: "2025-04-11 06:05:38",
-        day: "Friday",
-        previous_balance: 0.0,
-        after_balance: 2000.0,
-      },
-      {
-        transaction_id: "TXN620134",
-        user_id: "lbTUuHF8ksCyEqy",
-        type: "income",
-        amount: 20000.0,
-        reason: "rent",
-        category: "",
-        timestamp: "2025-04-12 02:23:32",
-        day: "Saturday",
-        previous_balance: 1900.0,
-        after_balance: 21900.0,
-      },
-      {
-        transaction_id: "TXN628517",
-        user_id: "lbTUuHF8ksCyEqy",
-        type: "expense",
-        amount: 1200.0,
-        reason: "food",
-        category: "",
-        timestamp: "2025-04-12 02:23:48",
-        day: "Saturday",
-        previous_balance: 21900.0,
-        after_balance: 20700.0,
-      },
-      {
-        transaction_id: "TXN501753",
-        user_id: "lbTUuHF8ksCyEqy",
-        type: "expense",
-        amount: 856.0,
-        reason: "date",
-        category: "",
-        timestamp: "2025-04-15 23:37:03",
-        day: "Friday",
-        previous_balance: 2000.0,
-        after_balance: 1900.0,
-      },
-      {
-        transaction_id: "TXN620134",
-        user_id: "lbTUuHF8ksCyEqy",
-        type: "income",
-        amount: 20000.0,
-        reason: "rent",
-        category: "",
-        timestamp: "2025-03-23 02:23:32",
-        day: "Saturday",
-        previous_balance: 1900.0,
-        after_balance: 21900.0,
-      },
-      {
-        transaction_id: "TXN628517",
-        user_id: "lbTUuHF8ksCyEqy",
-        type: "expense",
-        amount: 1200.0,
-        reason: "food",
-        category: "",
-        timestamp: "2025-04-12 02:23:48",
-        day: "Saturday",
-        previous_balance: 21900.0,
-        after_balance: 20700.0,
-      },
-      {
-        transaction_id: "TXN501753",
-        user_id: "lbTUuHF8ksCyEqy",
-        type: "expense",
-        amount: 856.0,
-        reason: "date",
-        category: "",
-        timestamp: "2025-04-15 23:37:03",
-        day: "Friday",
-        previous_balance: 2000.0,
-        after_balance: 1900.0,
-      },
-    ];
+    <!-- DYNAMICALLY FETCHING TRANSACTIONS FROM BACKEND -->
+  function getRelativeTime(timestamp) {
+    const inputDate = new Date(timestamp.replace(" ", "T"));
+    const now = new Date();
+    const diff = now - inputDate;
 
-    /*
-    order of transactions array doesn't matter,
+    const seconds = Math.floor(diff / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
 
-    it will always show recent transaction on top based on timestamp
-    */
-    transactions.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+    if (seconds < 60) return "just now";
+    if (minutes < 60) return `${minutes} min${minutes > 1 ? "s" : ""} ago`;
+    if (hours < 24) return `${hours} hour${hours > 1 ? "s" : ""} ago`;
+    if (days === 1) return `yesterday`;
+    if (days < 7) return `${days} day${days > 1 ? "s" : ""} ago`;
 
-    const tbody = document.getElementById("transaction-body");
+    const day = inputDate.getDate();
+    const month = inputDate.toLocaleString("en-US", { month: "long" });
+    const shortYear = inputDate.getFullYear().toString().slice(-2);
 
-    transactions.forEach((txn) => {
-      const tr = document.createElement("tr");
+    return `${day} ${month}, ${shortYear}`;
+  }
 
-      const bgClass =
-        txn.type === "income" ? "data-income-bg" : "data-expense-bg";
-      const typeClass =
-        txn.type === "income" ? "data-income-chip" : "data-expense-chip";
+  async function fetchTransactions() {
+    try {
+      const response = await fetch('../backend_process/history_db_process.php'); // ✅ Backend endpoint
+      const transactions = await response.json();
 
-      tr.className = `table-row ${bgClass}`;
+      if (transactions.error) {
+        console.error(transactions.error);
+        return;
+      }
 
-      tr.innerHTML = `
-    <td class="table-data">${txn.transaction_id}</td>
-    <td class="table-data ${typeClass}">${txn.type}</td>
-    <td class="table-data">₹${txn.amount}</td>
-    <td class="table-data">${txn.category || "—"}</td>
-    <td class="table-data">${getRelativeTime(txn.timestamp)}</td>
-    <td class="table-data">₹${txn.previous_balance}</td>
-    <td class="table-data">₹${txn.after_balance}</td>
-  `;
+      transactions.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
 
-      tbody.appendChild(tr);
-    });
-  </script>
+      const tbody = document.getElementById("transaction-body");
+      tbody.innerHTML = ""; // clear existing rows
+
+      transactions.forEach((txn) => {
+        const tr = document.createElement("tr");
+
+        const bgClass = txn.type === "income" ? "data-income-bg" : "data-expense-bg";
+        const typeClass = txn.type === "income" ? "data-income-chip" : "data-expense-chip";
+
+        tr.className = `table-row ${bgClass}`;
+
+        tr.innerHTML = `
+          <td class="table-data">${txn.transaction_id}</td>
+          <td class="table-data ${typeClass}">${txn.type}</td>
+          <td class="table-data">₹${txn.amount}</td>
+          <td class="table-data">${txn.category || "—"}</td>
+          <td class="table-data">${getRelativeTime(txn.timestamp)}</td>
+          <td class="table-data">₹${txn.previous_balance}</td>
+          <td class="table-data">₹${txn.after_balance}</td>
+        `;
+
+        tbody.appendChild(tr);
+      });
+
+    } catch (error) {
+      console.error("Failed to fetch transactions:", error);
+    }
+  }
+
+  // 🚀 Call it on page load
+  window.onload = fetchTransactions;
+</script>
 </html>

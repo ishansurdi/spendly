@@ -107,6 +107,7 @@ body {
   background: rgba(0, 0, 0, 0.5);
   justify-content: center;
   align-items: center;
+  overflow: visible;
 }
 
 .form-container {
@@ -114,6 +115,13 @@ body {
   padding: 2.4rem 2.8rem;
   border-radius: 0.5rem;
   border: 2px dashed #6f6f6f4f;
+  overflow: visible;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+select {
+  z-index: 1000;
+  position: relative;
 }
 
 .form-container h3 {
@@ -224,6 +232,9 @@ body {
   margin-top: 2.4rem;
   padding-bottom: 4.8rem;
 }
+.visual-analytics {
+  margin-top: 3.6rem;
+}
 
 .visual-analytics h2 {
   margin-top: 3.6rem;
@@ -235,45 +246,41 @@ body {
   text-align: left;
   margin-bottom: 1.5rem;
 }
-
-.visual-analytics .visual-container {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(400px, 1fr));
-  gap: 0.5em;
+.charts-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
   justify-content: center;
+  margin: 2rem;
 }
 
-.visual-container .box {
-  padding: 1.4em 2.8em;
-  border-radius: 0.5em;
-  height: 256px;
-
+.chart-box {
+  flex: 1 1 45%; /* This allows the chart-boxes to grow and shrink and be 45% of the container */
+  max-width: 600px; /* Limits the width */
+  height: 300px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  background-color: #ebefff;
 }
 
-.box-1 {
-  background-color: #f5fcf4;
-  border: 3px solid #05610003;
+.chart-box canvas {
+  width: 100% !important;
+  height: 100% !important;
 }
 
-.box-2 {
-  background-color: #fcf8fb;
-  border: 3px solid #ff00db03;
+.chart-box p {
+  margin-top: 10px;
+  text-align: center;
+  font-weight: 500;
+  color: #333;
 }
 
-.box-3 {
-  background-color: #fff7f5;
-  border: 3px solid #ffe0da08;
-}
-
-.box-4 {
-  background-color: #fffdf1;
-  border: 3px solid #ffd20005;
-}
 
 /* FAB BUTTON (ADD MONEY) */
 .fab {

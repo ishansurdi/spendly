@@ -116,7 +116,9 @@ $uid = $_SESSION['user_id'];
           >
         </li>
         <li>
+
           <a href="history.php">
+
             <img
               src="../assests/icons/history-icon.svg"
               height="26px"

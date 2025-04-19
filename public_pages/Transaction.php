@@ -93,7 +93,9 @@ $uid = $_SESSION['user_id'];
           >
         </li>
         <li>
+
           <a href="Transaction.php">
+
             <img
               src="../assests/icons/transaction-icon.svg"
               height="28px"
@@ -115,7 +117,7 @@ $uid = $_SESSION['user_id'];
           >
         </li>
         <li>
-          <a href="#">
+          <a href="reports.php">
             <img
               src="../assests/icons/report-icon.png"
               height="26px"

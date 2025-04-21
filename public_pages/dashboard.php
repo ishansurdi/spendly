@@ -108,7 +108,7 @@ $uid = $_SESSION['user_id'];
           >
         </li>
         <li>
-          <a href="#">
+          <a href="Budget.php">
             <img
               src="../assests/icons/budget-icon.svg"
               height="26px"

@@ -1,3 +1,16 @@
+<?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+$full_name = $_SESSION['user_name'];
+$email = $_SESSION['user_email'];
+$uid = $_SESSION['user_id'];
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,8 +22,8 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="../styles/index.css" />
-    <link rel="stylesheet" href="/styles/dashboard.css" />
-    <link rel="stylesheet" href="/styles/Budget.css" />
+    <link rel="stylesheet" href="../styles/dashboard.css" />
+    <link rel="stylesheet" href="../styles/Budget.css" />
 
     <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

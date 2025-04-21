@@ -220,20 +220,11 @@ $uid = $_SESSION['user_id'];
         <h3>Your Daily Goals Progress</h3>
 
         <div class="data-container">
-          <div class="chart-box">
-            <canvas id=""></canvas>
-            <p>graph 1</p>
-          </div>
+        <div class="">1</div>
 
-          <div class="chart-box">
-            <canvas id=""></canvas>
-            <p>graph 2</p>
-          </div>
+        <div class="">2</div>
 
-          <div class="chart-box">
-            <canvas id=""></canvas>
-            <p>graph 3</p>
-          </div>
+        <div class="">3</div>
 
           <div class="chart-box">
             <canvas id=""></canvas>

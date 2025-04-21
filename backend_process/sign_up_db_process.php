@@ -76,8 +76,9 @@ function submit_data_to_db($conn, $name, $email, $password) {
 
         // Commit transaction
         $conn->commit();
-        $_SESSION['success'] = "Account created successfully for <b>$name</b>! Your User ID: <b>$uid</b>";
-        return true;
+        $_SESSION['user_id'] = $uid;
+        header("Location: ../public_pages/payment.php");
+        exit();
 
     } catch (Exception $e) {
         $conn->rollback();
@@ -111,7 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Call function to register user
     submit_data_to_db($conn, $name, $email, $password);
-    header("Location: ../public_pages/sign-up.php");
-    exit();
+    // header("Location: ../public_pages/sign-up.php");
+    // exit();
 }
 ?>

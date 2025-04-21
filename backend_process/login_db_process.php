@@ -1,6 +1,9 @@
 <?php
+
+
 session_start();
 include '../db_connection/db_connection.php';
+
 
 // Function to decrypt password securely
 function decrypt_password($encrypted_password, $encryption_key) {
@@ -40,6 +43,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $decrypted_password = decrypt_password($encrypted_password, $user_encryption_key);
     
     if ($password === $decrypted_password) {
+        // Check if user has an active plan
+        $plan_stmt = $conn->prepare("SELECT account_status FROM transactions WHERE user_id = ? ORDER BY created_at DESC LIMIT 1");
+
+        $plan_stmt->bind_param("s", $uid);
+        $plan_stmt->execute();
+        $plan_stmt->store_result();
+
+        if ($plan_stmt->num_rows === 0) {
+            // No transaction found — redirect to plan selection
+            echo json_encode([ "status" => "redirect_payment" ]);
+            $_SESSION['user_id'] = $uid;
+            exit;
+        }
+
+        $plan_stmt->bind_result($account_status);
+        $plan_stmt->fetch();
+        $plan_stmt->close();
+
+        if (($account_status) !== 'Active') {
+            // Plan is inactive — redirect to renewal/payment
+            echo json_encode([ "status" => "redirect_payment" ]);
+            $_SESSION['user_id'] = $uid;
+            exit;
+        }
+
         // Check initial_data_entry status
         $stmt2 = $conn->prepare("SELECT intial_data_entry FROM login_details WHERE user_id = ?");
         $stmt2->bind_param("s", $uid);

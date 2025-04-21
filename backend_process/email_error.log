@@ -31,3 +31,15 @@
 2025-04-04 10:29:58,170 - INFO - file_cache is only supported with oauth2client<4.0.0
 2025-04-04 10:29:58,184 - DEBUG - URL being requested: POST https://gmail.googleapis.com/gmail/v1/users/me/messages/send?alt=json
 2025-04-04 10:29:58,184 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-04-21 10:39:21,024 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-04-21 10:39:21,188 - DEBUG - URL being requested: POST https://gmail.googleapis.com/gmail/v1/users/me/messages/send?alt=json
+2025-04-21 10:39:21,191 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-04-21 10:39:26,794 - ERROR - Google Auth Error: ('invalid_grant: Bad Request', {'error': 'invalid_grant', 'error_description': 'Bad Request'})
+2025-04-21 13:48:55,892 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-04-21 13:48:55,906 - DEBUG - URL being requested: POST https://gmail.googleapis.com/gmail/v1/users/me/messages/send?alt=json
+2025-04-21 13:48:55,907 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-04-21 13:48:58,115 - ERROR - Google Auth Error: ('invalid_grant: Bad Request', {'error': 'invalid_grant', 'error_description': 'Bad Request'})
+2025-04-21 19:04:11,607 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-04-21 19:04:11,655 - DEBUG - URL being requested: POST https://gmail.googleapis.com/gmail/v1/users/me/messages/send?alt=json
+2025-04-21 19:04:11,656 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-04-21 19:04:15,011 - ERROR - Google Auth Error: ('invalid_grant: Bad Request', {'error': 'invalid_grant', 'error_description': 'Bad Request'})

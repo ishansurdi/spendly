@@ -38,8 +38,22 @@ if ($row = $result->fetch_assoc()) {
 }
 $stmt->close();
 
+// Determine eligibility from transactions
+$eligible = false;
+foreach ($transactions as $txn) {
+    if (
+        isset($txn['account_status'], $txn['purchase_plan']) &&
+        strtolower($txn['account_status']) === 'active' &&
+        strtolower($txn['purchase_plan']) !== 'free'
+    ) {
+        $eligible = true;
+        break;
+    }
+}
+
 // Final response
 echo json_encode([
     "transactions" => $transactions,
-    "financial_profile" => $financial_profile
+    "financial_profile" => $financial_profile,
+    "eligible" => $eligible
 ]);

@@ -15,10 +15,9 @@ $uid = $_SESSION['user_id'];
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <link rel="stylesheet" href="../styles/index.css" />
   <link rel="stylesheet" href="../styles/dashboard.css" />
-
+  <title>Reports | Dashboard</title>
   <style>
     body {
       font-family: 'Times New Roman', serif;
@@ -45,15 +44,14 @@ $uid = $_SESSION['user_id'];
     }
 
     .analysis-output {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  margin: 40px auto;         /* Center horizontally + push down */
-  max-width: 800px;          /* Limits width for readability */
-  width: 90%;                /* Responsive width */
-}
-
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin: 40px auto;
+      max-width: 800px;
+      width: 90%;
+    }
 
     .loader {
       border: 6px solid #f3f3f3;
@@ -64,10 +62,6 @@ $uid = $_SESSION['user_id'];
       animation: spin 1s linear infinite;
       margin: 20px auto;
       display: block;
-    }
-
-    .loader.hidden {
-      display: none;
     }
 
     .dashboard-nav-main {
@@ -99,55 +93,73 @@ $uid = $_SESSION['user_id'];
       display: none;
     }
 
+    .loader.hidden {
+      display: none;
+    }
+
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
-    /* Tooltip styles */
+
     .info-icon-wrapper {
-  position: relative;
-  display: inline-block;
-}
+      position: relative;
+      display: inline-block;
+    }
 
-.tooltip-text {
-  position: absolute;
-  top: -10px; /* vertically aligned with icon */
-  left: 28px; /* shifted to the right of the icon */
-  background-color: #333;
-  color: #fff;
-  padding: 14px 20px;
-  border-radius: 6px;
-  font-size: 14px;
-  max-width: 600px;  /* 👈 make it wider */
-  width: max-content;
-  white-space: normal;
-  line-height: 1.6;
-  z-index: 1000;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
+    .tooltip-text {
+      position: absolute;
+      top: -10px;
+      left: 28px;
+      background-color: #333;
+      color: #fff;
+      padding: 14px 20px;
+      border-radius: 6px;
+      font-size: 14px;
+      max-width: 600px;
+      width: max-content;
+      white-space: normal;
+      line-height: 1.6;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
 
-.tooltip-text::after {
-  content: "";
-  position: absolute;
-  top: 14px;
-  left: -8px; /* now it points to the icon from left */
-  border-width: 8px;
-  border-style: solid;
-  border-color: transparent #333 transparent transparent;
-}
+    .tooltip-text::after {
+      content: "";
+      position: absolute;
+      top: 14px;
+      left: -8px;
+      border-width: 8px;
+      border-style: solid;
+      border-color: transparent #333 transparent transparent;
+    }
 
-.info-icon-wrapper:hover .tooltip-text {
-  opacity: 1;
-  pointer-events: auto;
-}
+    .info-icon-wrapper:hover .tooltip-text {
+      opacity: 1;
+      pointer-events: auto;
+    }
 
+    .upgrade-message {
+      text-align: center;
+      font-size: 18px;
+      color: #444;
+      background: #fff8f0;
+      border: 1px solid #f0c674;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 40px auto;
+      max-width: 800px;
+      width: 90%;
+    }
 
+    .upgrade-message a {
+      color: #0056b3;
+      text-decoration: underline;
+    }
   </style>
-
-  <title>Reports | Dashboard</title>
 </head>
 <body>
 
@@ -158,10 +170,7 @@ $uid = $_SESSION['user_id'];
       <h2>Spendly.</h2>
     </div>
     <ul class="sidebar-links">
-      <h4>
-        <span>Main Menu</span>
-        <div class="menu-separator"></div>
-      </h4>
+      <h4><span>Main Menu</span><div class="menu-separator"></div></h4>
       <li><a href="dashboard.php"><img src="../assests/icons/home-icon.svg" height="28px" /> Home</a></li>
       <li><a href="Transaction.php"><img src="../assests/icons/transaction-icon.svg" height="28px" /> Transactions</a></li>
       <li><a href="#"><img src="../assests/icons/budget-icon.svg" height="26px" /> Budget</a></li>
@@ -170,10 +179,7 @@ $uid = $_SESSION['user_id'];
     </ul>
     <div class="other-menu">
       <ul class="sidebar-links">
-        <h4>
-          <span>Others</span>
-          <div class="menu-separator"></div>
-        </h4>
+        <h4><span>Others</span><div class="menu-separator"></div></h4>
         <li><a href="#"><img src="../assests/icons/help-icon.svg" height="26px" /> Help</a></li>
         <li><a href="../backend_process/logout_process.php"><img src="../assests/icons/logout-icon.svg" height="26px" /> Log Out</a></li>
       </ul>
@@ -182,7 +188,7 @@ $uid = $_SESSION['user_id'];
 
   <!-- Main Content -->
   <main class="main-content">
-    <!-- User Dropdown Menu -->
+    <!-- User Dropdown -->
     <div class="dashboard-nav-main">
       <div class="dashboard-items">
         <div class="user-dropdown-wrapper">
@@ -192,12 +198,8 @@ $uid = $_SESSION['user_id'];
           </div>
           <div class="dashboard-dropdown hidden" id="dashboard-dropdown">
             <ul>
-              <li>
-                You are signed in as <br />
-                <span><?= htmlspecialchars($email) ?></span>
-              </li>
-              <li>
-                <img src="../assests/icons/log-out.svg" alt="log out icon" height="20px" />
+              <li>You are signed in as <br /><span><?= htmlspecialchars($email) ?></span></li>
+              <li><img src="../assests/icons/log-out.svg" alt="log out icon" height="20px" />
                 <a href="../backend_process/logout_process.php">Log Out</a>
               </li>
             </ul>
@@ -207,22 +209,17 @@ $uid = $_SESSION['user_id'];
     </div>
 
     <div style="margin: 40px auto 10px auto; max-width: 800px; width: 90%; display: flex; align-items: center; gap: 8px; position: relative;">
-  <h3 style="margin: 0;">Financial Goals Analysis</h3>
-  <div class="info-icon-wrapper">
-    <img id="info-icon" src="../assests/icons/info-icon-svgrepo-com.svg" alt="info" height="15" style="cursor: pointer;" />
-    <div class="tooltip-text hidden">
-      <strong>Disclaimer:</strong> The analysis and recommendations provided in this section are generated using Google Gemini AI. These insights are purely suggestive and should not be treated as definitive financial advice. For any investment or financial decisions, users are strongly advised to consult with certified financial advisors or relevant professionals. Spendly and its developers shall not be held liable for any financial losses, damages, or decisions made based on the AI-generated suggestions.
+      <h3 style="margin: 0;">Financial Goals Analysis</h3>
+      <div class="info-icon-wrapper">
+        <img id="info-icon" src="../assests/icons/info-icon-svgrepo-com.svg" alt="info" height="15" style="cursor: pointer;" />
+        <div class="tooltip-text hidden">
+          <strong>Disclaimer:</strong> The analysis and recommendations provided in this section are generated using Google Gemini AI. These insights are purely suggestive and should not be treated as definitive financial advice. For any investment or financial decisions, users are strongly advised to consult with certified financial advisors or relevant professionals. Spendly and its developers shall not be held liable for any financial losses, damages, or decisions made based on the AI-generated suggestions.
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-
-
-
 
     <div id="loader" class="loader"></div>
     <div id="goals-analysis" class="analysis-output"></div>
-    
-</div>
   </main>
 
   <script>
@@ -232,15 +229,27 @@ $uid = $_SESSION['user_id'];
 
       fetch('../gemini-ai/fetch_user_data.php')
         .then(res => {
-          if (!res.ok) throw new Error("Failed to fetch");
+          if (!res.ok) throw new Error("Failed to fetch user data");
           return res.json();
         })
         .then(data => {
+          if (!data.eligible) {
+            loader.classList.add('hidden');
+            analysisDiv.innerHTML = `
+              <div class="upgrade-message">
+                <strong>Analysis unavailable.</strong><br>
+                Please upgrade your plan to access AI-powered financial reports.<br>
+                <a href="payment.php">Click here to upgrade your plan</a>.
+              </div>`;
+            return;
+          }
+
           if (!data.financial_profile || Object.keys(data.financial_profile).length === 0) {
             loader.classList.add('hidden');
             analysisDiv.textContent = "No financial profile found.";
             return;
           }
+
           return fetch('../gemini-ai/analyze_goals.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -252,13 +261,13 @@ $uid = $_SESSION['user_id'];
           loader.classList.add('hidden');
           if (result && result.message) {
             analysisDiv.innerHTML = result.message;
-          } else {
+          } else if (!analysisDiv.innerHTML.trim()) {
             analysisDiv.innerText = "No analysis returned.";
           }
         })
         .catch(error => {
           loader.classList.add('hidden');
-          analysisDiv.innerText = "Error fetching data: " + error.message;
+          analysisDiv.innerText = "Error: " + error.message;
         });
     });
 
@@ -274,16 +283,10 @@ $uid = $_SESSION['user_id'];
         dropdown.classList.add("hidden");
       }
     });
-  </script>
-  <script>
+
     document.getElementById('info-icon').addEventListener('click', () => {
-  document.querySelector('.tooltip-text').classList.toggle('hidden');
-});
-
-
-</script>
-
-
-
+      document.querySelector('.tooltip-text').classList.toggle('hidden');
+    });
+  </script>
 </body>
 </html>

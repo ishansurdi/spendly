@@ -141,7 +141,15 @@
                 setTimeout(() => {
                     window.location.href = "questions.php"; // should be "questions.php"
                 }, 1500);
-            } else {
+            } else if (data.status === "redirect_payment") {
+              errorMessage.classList.remove("error");
+              errorMessage.classList.add("success");
+              errorMessage.textContent = "Redirecting to payment...";
+              setTimeout(() => {
+                  window.location.href = "payment.php"; // e.g., process_payment.php
+              }, 1500);
+          }
+              else {
                 errorMessage.classList.add("error");
                 errorMessage.textContent = data.message;
             }

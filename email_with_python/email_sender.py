@@ -9,6 +9,7 @@ from email.mime.image import MIMEImage
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from google.auth.exceptions import GoogleAuthError
+from datetime import datetime 
 
 # ✅ Enable Logging with UTF-8 encoding
 logging.basicConfig(filename="email_error.log", level=logging.DEBUG, encoding="utf-8",
@@ -33,8 +34,8 @@ def send_membership_welcome_email(email, first_name, membership_id):
         message["to"] = email
         message["subject"] = "Welcome to Spendly"
         message["from"] = "Founder's Office <do.not.reply.test.2023@gmail.com>"
+        current_date = datetime.today().strftime("%B %d, %Y") 
 
-        current_date = "March 29, 2025"
         html_content = f"""
         <div style='font-family: Arial, sans-serif; padding: 20px;'>
                 <div style='text-align: center;'>

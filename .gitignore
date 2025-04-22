@@ -3,6 +3,11 @@ email_module
 vendor
 email_with_python/credentials.json
 email_with_python/token.json
+email_with_python/email_error.log
+
+backend_process/email_error.log
+
+
 gemini-ai/api-cred.json
 gemini-ai/command.log
 gemini-ai/input.json

@@ -173,8 +173,8 @@ $uid = $_SESSION['user_id'];
       <h4><span>Main Menu</span><div class="menu-separator"></div></h4>
       <li><a href="dashboard.php"><img src="../assests/icons/home-icon.svg" height="28px" /> Home</a></li>
       <li><a href="Transaction.php"><img src="../assests/icons/transaction-icon.svg" height="28px" /> Transactions</a></li>
-      <li><a href="#"><img src="../assests/icons/budget-icon.svg" height="26px" /> Budget</a></li>
-      <li><a href="#"><img src="../assests/icons/report-icon.png" height="26px" /> Reports</a></li>
+      <li><a href="Budget.php"><img src="../assests/icons/budget-icon.svg" height="26px" /> Budget</a></li>
+      <li><a href="reports.php"><img src="../assests/icons/report-icon.png" height="26px" /> Reports</a></li>
       <li><a href="./history.php"><img src="../assests/icons/history-icon.svg" height="26px" /> History</a></li>
     </ul>
     <div class="other-menu">

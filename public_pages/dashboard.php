@@ -61,6 +61,10 @@ $uid = $_SESSION['user_id'];
                 <span><?= htmlspecialchars($email) ?></span>
               </li>
               <li>
+    <button style="padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;" onclick="changeSubscription()">Change Your Subscription Plan</button>
+</li>
+
+              <li>
                 <img
                   src="../assests/icons/log-out.svg"
                   alt="log out icon"
@@ -180,6 +184,9 @@ $uid = $_SESSION['user_id'];
       const dropdown = document.getElementById("dashboard-dropdown");
       dropdown.classList.toggle("hidden");
       console.log("first");
+    }
+    function changeSubscription() {
+      window.location.href = "../public_pages/payment.php";
     }
 
     document.addEventListener("click", function (event) {

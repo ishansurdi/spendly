@@ -2,7 +2,11 @@
 
 
 session_start();
+
 include '../db_connection/db_connection.php';
+
+
+
 
 
 // Function to decrypt password securely
@@ -43,6 +47,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $decrypted_password = decrypt_password($encrypted_password, $user_encryption_key);
     
     if ($password === $decrypted_password) {
+        //Now it's safe to auto-expire plans based on valid user_id
+        $update_expired = $conn->prepare("
+            UPDATE transactions 
+            SET account_status = 'Invalid' 
+            WHERE user_id = ? 
+            AND account_status = 'Active' 
+            AND end_of_plan < CURDATE()
+        ");
+        $update_expired->bind_param("s", $uid);
+        $update_expired->execute();
+        $update_expired->close();
+
+
         // Check if user has an active plan
         $plan_stmt = $conn->prepare("SELECT account_status FROM transactions WHERE user_id = ? ORDER BY created_at DESC LIMIT 1");
 

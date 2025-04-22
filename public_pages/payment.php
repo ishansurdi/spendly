@@ -44,8 +44,6 @@ $user_id = $_SESSION['user_id'];
           </select>
           <div id="price_info" class="text-sm text-gray-600 mt-2"></div>
         </div>
-
-        <input type="hidden" name="purchase_amount" id="purchase_amount" value="0">
       </div>
 
       <!-- RIGHT SECTION: Payment -->
@@ -60,11 +58,15 @@ $user_id = $_SESSION['user_id'];
           </select>
         </div>
 
+        <!-- Hidden Inputs -->
+        <input type="hidden" name="purchase_amount" id="purchase_amount" value="0">
+        <input type="hidden" name="purchase_plan" id="hidden_purchase_plan" />
+
         <!-- UPI Input -->
         <div id="upi_section" class="hidden">
           <label class="block text-sm font-medium text-gray-700 mb-1">Enter UPI ID</label>
           <div class="flex items-center space-x-2">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/UPI-Logo-vector.svg/1024px-UPI-Logo-vector.svg.png" alt="UPI" class="logo-img">
+            <img src="../assests/icons/upi.svg" alt="UPI" class="logo-img">
             <input type="text" name="upi_id" placeholder="e.g., user@upi" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-400">
           </div>
         </div>
@@ -74,8 +76,8 @@ $user_id = $_SESSION['user_id'];
           <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Card Number</label>
             <div class="flex items-center space-x-2">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" class="logo-img" alt="Mastercard">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_2021.svg" class="logo-img" alt="Visa">
+              <img src="../assests/icons/mastercard.svg" class="logo-img" alt="Mastercard">
+              <img src="../assests/icons/visa.svg" class="logo-img" alt="Visa">
               <input type="text" name="debit_card" maxlength="16" placeholder="Enter 16-digit card number" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-400" />
             </div>
           </div>
@@ -108,42 +110,50 @@ $user_id = $_SESSION['user_id'];
 
   <script>
     function updateAmount() {
-    const plan = document.getElementById("purchase_plan").value;
-    const amountInput = document.getElementById("purchase_amount");
-    const priceInfo = document.getElementById("price_info");
+      const plan = document.getElementById("purchase_plan").value;
+      const amountInput = document.getElementById("purchase_amount");
+      const priceInfo = document.getElementById("price_info");
 
-    let basePrice = 0;
-    let gst = 0;
-    let totalPrice = 0;
+      let basePrice = 0;
+      let gst = 0;
+      let totalPrice = 0;
 
-    if (plan === "Free") {
-      basePrice = 0;
-      gst = 0;
-      totalPrice = 0;
-    } else if (plan === "Plus") {
-      basePrice = (299 / 1.18).toFixed(2);  // Calculate base price for ₹299 total
-      gst = (basePrice * 0.18).toFixed(2);  // Calculate GST
-      totalPrice = (parseFloat(basePrice) + parseFloat(gst)).toFixed(2);  // Final price after adding GST
-    } else if (plan === "Premium") {
-      basePrice = (599 / 1.18).toFixed(2);  // Calculate base price for ₹599 total
-      gst = (basePrice * 0.18).toFixed(2);  // Calculate GST
-      totalPrice = (parseFloat(basePrice) + parseFloat(gst)).toFixed(2);  // Final price after adding GST
+      if (plan === "Free") {
+        basePrice = 0;
+        gst = 0;
+        totalPrice = 0;
+      } else if (plan === "Plus") {
+        basePrice = (299 / 1.18).toFixed(2);
+        gst = (basePrice * 0.18).toFixed(2);
+        totalPrice = (parseFloat(basePrice) + parseFloat(gst)).toFixed(2);
+      } else if (plan === "Premium") {
+        basePrice = (599 / 1.18).toFixed(2);
+        gst = (basePrice * 0.18).toFixed(2);
+        totalPrice = (parseFloat(basePrice) + parseFloat(gst)).toFixed(2);
+      }
+
+      amountInput.value = totalPrice;
+      document.getElementById("hidden_purchase_plan").value = plan;
+
+      priceInfo.innerHTML = `
+        <p>Base Price: ₹${basePrice}</p>
+        <p>GST (18%): ₹${gst}</p>
+        <p>Total: ₹${totalPrice}</p>
+        <p class="font-semibold mt-2">Total Amount to be paid: ₹${totalPrice}</p>
+      `;
     }
-
-    amountInput.value = totalPrice;
-    priceInfo.innerHTML = `
-      <p>Base Price: ₹${basePrice}</p>
-      <p>GST (18%): ₹${gst}</p>
-      <p>Total: ₹${totalPrice}</p>
-      <p class="font-semibold mt-2">Total Amount to be paid: ₹${totalPrice}</p>
-    `;
-  }
 
     function togglePaymentFields() {
       const method = document.getElementById("payment_method").value;
       document.getElementById("upi_section").classList.toggle("hidden", method !== "UPI");
       document.getElementById("card_section").classList.toggle("hidden", method !== "Card");
     }
+
+    // Ensure the selected plan is submitted via hidden input
+    document.querySelector("form").addEventListener("submit", function (e) {
+      const selectedPlan = document.getElementById("purchase_plan").value;
+      document.getElementById("hidden_purchase_plan").value = selectedPlan;
+    });
   </script>
 
 </body>

@@ -105,7 +105,7 @@ $uid = $_SESSION['user_id'];
           >
         </li>
         <li>
-          <a href="#">
+          <a href="report.php">
             <img
               src="../assests/icons/report-icon.png"
               height="26px"

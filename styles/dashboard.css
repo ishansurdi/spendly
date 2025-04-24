@@ -72,15 +72,29 @@
   border-radius: 0.25rem;
 }
 
-.dashboard-dropdown ul li:nth-child(2) {
+.dashboard-dropdown ul .subscription-btn {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
+.dashboard-dropdown ul .subscription-btn:hover {
+  background-color: #f0f0f0;
+  border-radius: 0;
+}
+
+.dashboard-dropdown ul li:nth-child(3) {
   color: #dd0000;
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   cursor: pointer;
   gap: 0.5rem;
 }
 
-.dashboard-dropdown ul li:nth-child(2):hover {
+.dashboard-dropdown ul li:nth-child(3):hover {
   background-color: #f0f0f0;
   border-radius: 0;
 }
@@ -182,11 +196,12 @@
   overflow-x: hidden;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  overflow: hidden;          /* Hide both x and y scroll */
+  
 }
 
 .sidebar-links::-webkit-scrollbar {
   display: none;
-
   background: transparent;
   /* Chrome/Safari */
   height: 0;

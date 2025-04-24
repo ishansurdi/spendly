@@ -56,6 +56,14 @@ $uid = $_SESSION['user_id'];
                  <!--From database-->
                  <span><?= htmlspecialchars($email) ?></span>
               </li>
+              <li class="subscription-btn" onclick="changeSubscription()">
+                <img
+                  src="../assests/icons/subscription-5e.svg"
+                  alt="credit card icon"
+                  height="22px"
+                />
+                Change Your Subscription Plan
+              </li>
               <li>
                 <img
                   src="../assests/icons/log-out.svg"
@@ -350,6 +358,11 @@ if (isset($_GET['status']) && $_GET['status'] === 'success') {
       }, 3000); // 3000 milliseconds = 3 seconds
     }
   };
+</script>
+<script>
+   function changeSubscription() {
+      window.location.href = "../public_pages/payment.php";
+    }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>

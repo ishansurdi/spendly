@@ -53,6 +53,7 @@ $uid = $_SESSION['user_id'];
       <ul class="sidebar-links">
         <h4><span>Others</span><div class="menu-separator"></div></h4>
         <li><a href="/index.html#contact"><img src="../assests/icons/help-icon.svg" height="26px" /> Help</a></li>
+        
         <li><a href="../backend_process/logout_process.php"><img src="../assests/icons/logout-icon.svg" height="26px" /> Log Out</a></li>
       </ul>
     </div>
@@ -79,6 +80,14 @@ $uid = $_SESSION['user_id'];
                 <!-- UPDATE -->
                 <!--From database-->
                 <span><?= htmlspecialchars($email) ?></span>
+              </li>
+              <li class="subscription-btn" onclick="changeSubscription()">
+                <img
+                  src="../assests/icons/subscription-5e.svg"
+                  alt="credit card icon"
+                  height="22px"
+                />
+                Change Your Subscription Plan
               </li>
               <li>
                 <img
@@ -224,4 +233,9 @@ $uid = $_SESSION['user_id'];
     });
   </script>
 </body>
+<script>
+   function changeSubscription() {
+      window.location.href = "../public_pages/payment.php";
+    }
+</script>
 </html>

@@ -58,6 +58,14 @@ $uid = $_SESSION['user_id'];
                 <!--From database-->
                 <span><?= htmlspecialchars($email) ?></span>
               </li>
+              <li class="subscription-btn" onclick="changeSubscription()">
+                <img
+                  src="../assests/icons/subscription-5e.svg"
+                  alt="credit card icon"
+                  height="22px"
+                />
+                Change Your Subscription Plan
+              </li>
               <li>
                 <img
                   src="../assests/icons/log-out.svg"
@@ -350,4 +358,9 @@ $uid = $_SESSION['user_id'];
       document.getElementById(modalId).style.display = "none";
     }
   </script>
+  <script>
+   function changeSubscription() {
+      window.location.href = "../public_pages/payment.php";
+    }
+</script>
 </html>

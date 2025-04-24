@@ -64,7 +64,7 @@ try {
 
     // Step 2: Insert into transactions
     $transaction_id = generateTransactionId($conn);
-    $stmt = $conn->prepare("INSERT INTO transactions (transaction_id, user_id, type, amount, category, timestamp, day, previous_balance, after_balance)
+    $stmt = $conn->prepare("INSERT INTO transactions_dash (transaction_id, user_id, type, amount, category, timestamp, day, previous_balance, after_balance)
                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
    $stmt->bind_param("sssdsssdd", $transaction_id, $uid, $type, $amount, $category, $timestamp, $day, $current_balance, $new_balance);
 

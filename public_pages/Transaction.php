@@ -196,7 +196,7 @@ if (isset($_GET['status']) && $_GET['status'] === 'success') {
         <h3><?= htmlspecialchars($full_name) ?>'s Income & Expenses</h3>
       </div>
 
-      <h2>Hello <?= htmlspecialchars($full_name) ?> 👋</h2>
+      <!-- <h2>Hello <?= htmlspecialchars($full_name) ?> 👋</h2> -->
       <div class="row-1">
         <div class="income-box">
           <div class="income-head">
@@ -262,7 +262,7 @@ if (isset($_GET['status']) && $_GET['status'] === 'success') {
 </section>
 
     <!-- FLOATING ACTION BUTTON (ADD MONEY) -->
-    <div class="fab" title="Add" onclick="openDialog()">
+    <div class="fab" title="Add" onclick="openDialog('dialogOverlay')">
       <img src="../assests/icons/plus.svg" height="28px" alt="plus symbol" />
       <p>Add Money</p>
     </div>
@@ -315,7 +315,7 @@ if (isset($_GET['status']) && $_GET['status'] === 'success') {
 
 
           <div class="form-actions">
-            <button type="button" class="cancel-btn" onclick="closeDialog()">
+            <button type="button" class="cancel-btn" onclick="closeDialog('dialogOverlay')">
               Cancel
             </button>
             <button type="submit" class="save-btn">Save</button>
@@ -325,44 +325,50 @@ if (isset($_GET['status']) && $_GET['status'] === 'success') {
     </div>
   </body>
   <script>
-    function toggleDropdown() {
-      const dropdown = document.getElementById("dashboard-dropdown");
-      dropdown.classList.toggle("hidden");
-      console.log("first");
-    }
+  function toggleDropdown() {
+    const dropdown = document.getElementById("dashboard-dropdown");
+    dropdown.classList.toggle("hidden");
+  }
 
-    document.addEventListener("click", function (event) {
-      const trigger = document.querySelector(".dashboard-items-user");
-      const dropdown = document.getElementById("dashboard-dropdown");
-      if (!trigger.contains(event.target) && !dropdown.contains(event.target)) {
-        dropdown.classList.add("hidden");
-      }
-    });
-  </script>
-
-  <script>
-    function openDialog() {
-      document.getElementById("dialogOverlay").style.display = "flex";
+  document.addEventListener("click", function (event) {
+    const trigger = document.querySelector(".dashboard-items-user");
+    const dropdown = document.getElementById("dashboard-dropdown");
+    if (!trigger.contains(event.target) && !dropdown.contains(event.target)) {
+      dropdown.classList.add("hidden");
     }
+  });
+</script>
 
-    function closeDialog() {
-      document.getElementById("dialogOverlay").style.display = "none";
-    }
-  </script>
-  <script>
+<script>
+  // Open any dialog by ID
+  function openDialog(id) {
+    document.getElementById(id).style.display = "flex";
+  }
+
+  // Close any dialog by ID
+  function closeDialog(id) {
+    document.getElementById(id).style.display = "none";
+  }
+
+  // Hide all modals on page load
   window.onload = function () {
+    const modals = document.querySelectorAll('.overlay');
+    modals.forEach(modal => modal.style.display = 'none');
+
     const msg = document.getElementById("statusMessage");
     if (msg) {
       setTimeout(() => {
         msg.style.display = "none";
-      }, 3000); // 3000 milliseconds = 3 seconds
+      }, 3000); // Hide message after 3 seconds
     }
   };
 </script>
+
 <script>
    function changeSubscription() {
       window.location.href = "../public_pages/payment.php";
     }
+
 </script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
@@ -411,7 +417,7 @@ if (isset($_GET['status']) && $_GET['status'] === 'success') {
         }
     });
 
-    // 2. Pie Chart – Income Category Breakdown
+// 2. Pie Chart – Income Category Breakdown
     const incomeCategories = data.income_categories.map(row => row.category);
     const incomeTotals = data.income_categories.map(row => parseFloat(row.total));  // Convert to number
 
@@ -445,7 +451,7 @@ if (isset($_GET['status']) && $_GET['status'] === 'success') {
         }
     });
 
-    // 3. Pie Chart – Expense Category Breakdown
+// 3. Pie Chart – Expense Category Breakdown
     const expenseCategories = data.expense_categories.map(row => row.category);
     const expenseTotals = data.expense_categories.map(row => parseFloat(row.total));  // Convert to number
 

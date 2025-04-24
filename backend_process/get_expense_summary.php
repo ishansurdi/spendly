@@ -15,7 +15,7 @@ include '../db_connection/db_connection.php';
 $uid = $_SESSION['user_id'];
 
 $sql = "SELECT SUM(amount) AS total_expenses 
-        FROM transactions 
+        FROM transactions_dash 
         WHERE user_id = ? 
         AND type = 'expense' 
         AND MONTH(timestamp) = MONTH(CURRENT_DATE()) 

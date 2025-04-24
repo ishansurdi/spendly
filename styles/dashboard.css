@@ -102,7 +102,7 @@
   height: 100%;
   width: 85px;
   display: flex;
-  overflow-x: hidden;
+  overflow-x: visible !important;
   flex-direction: column;
   background-color: #26397e;
   padding: 25px 20px;

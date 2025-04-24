@@ -176,12 +176,12 @@ a {
 }
 
 .hero-main .hero-demo {
-    margin-top: 2.8em;
+    margin-top: 8.4rem;
 }
 
 .hero-main .hero-demo img {
     border-radius: 14px;
-    border: 2px solid #b6c0e1;
+    border: 1.5px solid #7e7e7e30;
 }
 
 /* FEATURES SECTION  */
@@ -575,7 +575,7 @@ a {
     justify-content: center;
     gap: 2px;
 
-    transition: all 400ms ease-in-out;
+    transition: all 500ms ease-in-out;
 }
 
 .micdrop-container .micdrop-cta:hover {

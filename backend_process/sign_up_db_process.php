@@ -41,7 +41,7 @@ function submit_data_to_db($conn, $name, $email, $password) {
     $uid = generate_random_uid();
     $user_encryption_key = generate_user_encryption_key();
     $encrypted_password = encrypt_password($password, $user_encryption_key);
-    $creation_day = date('l'); // Get current day (e.g., Monday)
+    $creation_day = date('l');
 
     // Start database transaction
     $conn->begin_transaction();

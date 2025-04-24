@@ -11,7 +11,7 @@ from googleapiclient.discovery import build
 from google.auth.exceptions import GoogleAuthError
 from datetime import datetime 
 
-# ✅ Enable Logging with UTF-8 encoding
+#Enable Logging with UTF-8 encoding
 logging.basicConfig(filename="email_error.log", level=logging.DEBUG, encoding="utf-8",
                     format="%(asctime)s - %(levelname)s - %(message)s")
 
@@ -91,7 +91,7 @@ def send_membership_welcome_email(email, first_name, membership_id):
         raw_message = base64.urlsafe_b64encode(message.as_bytes()).decode()
         service.users().messages().send(userId="me", body={"raw": raw_message}).execute()
 
-        # ✅ Use UTF-8 encoding for printing
+        #Use UTF-8 encoding for printing
         sys.stdout = codecs.getwriter("utf-8")(sys.stdout.detach())
         print("✔ Email sent successfully to", email)
 

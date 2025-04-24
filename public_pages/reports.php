@@ -15,151 +15,23 @@ $uid = $_SESSION['user_id'];
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+   <!-- FAVICON -->
+   <link rel="icon" href="./assests/favicon.ico" type="image/x-icon" />
+
   <link rel="stylesheet" href="../styles/index.css" />
   <link rel="stylesheet" href="../styles/dashboard.css" />
-  <title>Reports | Dashboard</title>
-  <style>
-    body {
-      font-family: 'Times New Roman', serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      min-height: 100vh;
-    }
+  <link rel="stylesheet" href="../styles/report.css" />
 
-    .sidebar {
-      flex-shrink: 0;
-      z-index: 1;
-    }
+   <!-- GOOGLE FONTS -->
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
 
-    .main-content {
-      flex-grow: 1;
-      padding: 30px;
-      background-color: #f5f5f5;
-      min-height: 100vh;
-      position: relative;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .analysis-output {
-      background: white;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      margin: 40px auto;
-      max-width: 800px;
-      width: 90%;
-    }
-
-    .loader {
-      border: 6px solid #f3f3f3;
-      border-top: 6px solid #333;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      animation: spin 1s linear infinite;
-      margin: 20px auto;
-      display: block;
-    }
-
-    .dashboard-nav-main {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      z-index: 1000;
-    }
-
-    .dashboard-items-user {
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-    }
-
-    .dashboard-dropdown {
-      position: absolute;
-      top: 40px;
-      right: 0;
-      background-color: white;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      padding: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      z-index: 1001;
-    }
-
-    .dashboard-dropdown.hidden {
-      display: none;
-    }
-
-    .loader.hidden {
-      display: none;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    .info-icon-wrapper {
-      position: relative;
-      display: inline-block;
-    }
-
-    .tooltip-text {
-      position: absolute;
-      top: -10px;
-      left: 28px;
-      background-color: #333;
-      color: #fff;
-      padding: 14px 20px;
-      border-radius: 6px;
-      font-size: 14px;
-      max-width: 600px;
-      width: max-content;
-      white-space: normal;
-      line-height: 1.6;
-      z-index: 1000;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      pointer-events: none;
-    }
-
-    .tooltip-text::after {
-      content: "";
-      position: absolute;
-      top: 14px;
-      left: -8px;
-      border-width: 8px;
-      border-style: solid;
-      border-color: transparent #333 transparent transparent;
-    }
-
-    .info-icon-wrapper:hover .tooltip-text {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .upgrade-message {
-      text-align: center;
-      font-size: 18px;
-      color: #444;
-      background: #fff8f0;
-      border: 1px solid #f0c674;
-      padding: 20px;
-      border-radius: 8px;
-      margin: 40px auto;
-      max-width: 800px;
-      width: 90%;
-    }
-
-    .upgrade-message a {
-      color: #0056b3;
-      text-decoration: underline;
-    }
-  </style>
+  <title>Reports | Spendly</title>
 </head>
 <body>
 
@@ -180,15 +52,50 @@ $uid = $_SESSION['user_id'];
     <div class="other-menu">
       <ul class="sidebar-links">
         <h4><span>Others</span><div class="menu-separator"></div></h4>
-        <li><a href="#"><img src="../assests/icons/help-icon.svg" height="26px" /> Help</a></li>
+        <li><a href="/index.html#contact"><img src="../assests/icons/help-icon.svg" height="26px" /> Help</a></li>
         <li><a href="../backend_process/logout_process.php"><img src="../assests/icons/logout-icon.svg" height="26px" /> Log Out</a></li>
       </ul>
     </div>
   </aside>
 
-  <!-- Main Content -->
-  <main class="main-content">
-    <!-- User Dropdown -->
+  <!-- Navigation Menu Bar -->
+  <nav class="dashboard-nav-main">
+      <div class="dashboard-items">
+        <div class="user-dropdown-wrapper">
+          <div class="dashboard-items-user" onclick="toggleDropdown()">
+            <!-- UPDATE -->
+            <!--From database-->
+            <p class="username"><?= htmlspecialchars($full_name) ?></p>
+            <img
+              src="../assests/icons/triangle.png"
+              height="11px"
+              alt="dropdown icon"
+            />
+          </div>
+          <div class="dashboard-dropdown hidden" id="dashboard-dropdown">
+            <ul>
+              <li>
+                You are signed in as <br />
+                <!-- UPDATE -->
+                <!--From database-->
+                <span><?= htmlspecialchars($email) ?></span>
+              </li>
+              <li>
+                <img
+                  src="../assests/icons/log-out.svg"
+                  alt="log out icon"
+                  height="20px"
+                />
+                <a href="../backend_process/logout_process.php">Log Out</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  
+    <!-- Main Content -->
+  <!-- <main class="main-content">
     <div class="dashboard-nav-main">
       <div class="dashboard-items">
         <div class="user-dropdown-wrapper">
@@ -220,7 +127,35 @@ $uid = $_SESSION['user_id'];
 
     <div id="loader" class="loader"></div>
     <div id="goals-analysis" class="analysis-output"></div>
-  </main>
+  </main> -->
+
+  <div class="report-body">
+      <div class="section-head">
+        <h3>Financial Goal Analysis</h3>
+        <div class="info-icon-wrapper">
+          <img
+            class="info-icon"
+            height="20px"
+            width="auto"
+            src="../assests/icons/report-info.svg"
+            alt="info icon"
+          />
+          <div class="tooltip">
+            <strong>Disclaimer:</strong> The analysis and recommendations
+            provided in this section are generated using Google Gemini AI. These
+            insights are purely suggestive and should not be treated as
+            definitive financial advice. For any investment or financial
+            decisions, users are strongly advised to consult with certified
+            financial advisors or relevant professionals. Spendly and its
+            developers shall not be held liable for any financial losses,
+            damages, or decisions made based on the AI-generated suggestions.
+          </div>
+        </div>
+      </div>
+
+      <div id="loader" class="loader"></div>
+      <div id="goals-analysis" class="analysis-output"></div>
+    </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {

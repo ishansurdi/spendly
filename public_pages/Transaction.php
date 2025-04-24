@@ -31,7 +31,7 @@ $uid = $_SESSION['user_id'];
       rel="stylesheet"
     />
 
-    <title>Dashboard | Spendly</title>
+    <title>Transaction | Spendly</title>
   </head>
   <body>
     <!-- Navigation Menu Bar -->
@@ -93,9 +93,7 @@ $uid = $_SESSION['user_id'];
           >
         </li>
         <li>
-
           <a href="Transaction.php">
-
             <img
               src="../assests/icons/transaction-icon.svg"
               height="28px"
@@ -106,7 +104,7 @@ $uid = $_SESSION['user_id'];
           >
         </li>
         <li>
-          <a href="#">
+          <a href="Budget.php">
             <img
               src="../assests/icons/budget-icon.svg"
               height="26px"
@@ -146,7 +144,7 @@ $uid = $_SESSION['user_id'];
             <div class="menu-separator"></div>
           </h4>
           <li>
-            <a href="#">
+            <a href="/index.html#contact">
               <img
                 src="../assests/icons/help-icon.svg"
                 height="26px"
@@ -186,6 +184,10 @@ if (isset($_GET['status']) && $_GET['status'] === 'success') {
 
     <section class="transaction-body">
       <!--From database-->
+      <div class="transaction-heading">
+        <h3><?= htmlspecialchars($full_name) ?>'s Income & Expenses</h3>
+      </div>
+
       <h2>Hello <?= htmlspecialchars($full_name) ?> 👋</h2>
       <div class="row-1">
         <div class="income-box">
@@ -227,6 +229,7 @@ if (isset($_GET['status']) && $_GET['status'] === 'success') {
 
       <div class="visual-analytics">
      <h2>Visual Analytics</h2>
+     <p>Track, compare, and analyze your income and expenses over time  through easy-to-read <br> graphs and breakdowns.</p>
      <div class="charts-wrapper">
   <div class="chart-box">
     <canvas id="incomeExpenseChart"></canvas>

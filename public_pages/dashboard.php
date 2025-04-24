@@ -34,7 +34,7 @@ $uid = $_SESSION['user_id'];
       rel="stylesheet"
     />
 
-    <title>Dashboard | Spendly</title>
+    <title>Home | Spendly</title>
   </head>
 
   <body>
@@ -60,10 +60,6 @@ $uid = $_SESSION['user_id'];
                 <!--From database-->
                 <span><?= htmlspecialchars($email) ?></span>
               </li>
-              <li>
-    <button style="padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;" onclick="changeSubscription()">Change Your Subscription Plan</button>
-</li>
-
               <li>
                 <img
                   src="../assests/icons/log-out.svg"
@@ -152,7 +148,7 @@ $uid = $_SESSION['user_id'];
             <div class="menu-separator"></div>
           </h4>
           <li>
-            <a href="#">
+            <a href="/index.html#contact">
               <img
                 src="../assests/icons/help-icon.svg"
                 height="26px"
@@ -177,7 +173,154 @@ $uid = $_SESSION['user_id'];
       </div>
     </aside>
 
-    <section class="dashboard-body">this is main dashboard</section>
+    <section class="dashboard-body">
+      <h2>
+        Hello Himanshu Pal
+        <img
+          src="/assests/icons/emoji-wave.png"
+          alt="emoji wave"
+          height="36px"
+        />
+      </h2>
+
+      <div class="section-head">
+        <h3>Quick Shortcuts</h3>
+        <p>
+          Essential shortcuts for seamless navigation throughout the Spendly app
+          and dashboard, providing quick access to all key functionality.
+        </p>
+      </div>
+
+      <div class="row-1">
+        <a class="transaction-box" href="./Transaction.php">
+          <div class="header">
+            <h3>Transactions</h3>
+            <img src="/assests/icons/transaction-icon.svg" alt="info icon" />
+          </div>
+          <div class="content">
+            <p>
+              Add income & recording expenses, or exploring visual analytics.
+            </p>
+          </div>
+        </a>
+        <a class="history-box" href="./history.php">
+          <div class="header">
+            <h3>History</h3>
+            <img src="/assests/icons/history-icon.svg" alt="history icon" />
+          </div>
+          <div class="content">
+            <p>View your complete transaction history of income/expense</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="row-2">
+        <div class="question-box">
+          <div>
+            <h3>Update Financial Data</h3>
+            <p>Review & update the financial data you first submitted</p>
+          </div>
+          <div class="question-img">
+            <img
+              src="/assests/icons/question-icon.png"
+              alt="question icon"
+              height="44px"
+              width="44px"
+            />
+          </div>
+        </div>
+        <a class="report-box" href="./reports.php">
+          <div class="header">
+            <h3>Reports</h3>
+            <img src="/assests/icons/reports.svg" alt="info icon" />
+          </div>
+          <div class="content">
+            <p>
+              Get AI-powered financial insights from Gemini that analyzes your
+              transactions and data.
+            </p>
+          </div>
+        </a>
+        <a class="budget-box" href="./budget.php">
+          <div class="header">
+            <h3>Budget & Goals</h3>
+            <img src="/assests/icons/goals.svg" alt="info icon" />
+          </div>
+          <div class="content">
+            <p>
+              Monitor your progress toward daily, weekly, and monthly financial
+              goals.
+            </p>
+          </div>
+        </a>
+      </div>
+
+      <div class="section-head">
+        <h3>Other Settings</h3>
+        <p>
+          Need to update your plan, get help, or sign out? Manage it all from
+          here.
+        </p>
+      </div>
+      <div class="row-3">
+        <div class="subscription-box" onclick="changeSubscription()">
+          <div>
+            <h3>Subscription Plan</h3>
+            <p>Update your plan to match your usage</p>
+          </div>
+          <div class="subscription-img">
+            <img
+              src="/assests/icons/subscription.svg"
+              alt="question icon"
+              height="42px"
+              width="42px"
+            />
+          </div>
+        </div>
+        <a class="help-box" href="/index.html#contact">
+          <div>
+            <h3>Need Help?</h3>
+            <p>Questions or issues, Reach out to Spendly support</p>
+          </div>
+          <div class="help-img">
+            <img
+              src="/assests/icons/help-icon.svg"
+              alt="feedback icon"
+              height="42px"
+              width="42px"
+            />
+          </div>
+        </a>
+        <a class="feedback-box" href="/index.html#contact">
+          <div>
+            <h3>Drop Feedback</h3>
+            <p>Give feedback & help us get better</p>
+          </div>
+          <div class="feedback-img">
+            <img
+              src="/assests/icons/feedback.svg"
+              alt="feedback icon"
+              height="42px"
+              width="42px"
+            />
+          </div>
+        </a>
+        <a class="logout-box" href="../backend_process/logout_process.php">
+          <div>
+            <h3>Logout</h3>
+            <p>Logging out will end your current session securely.</p>
+          </div>
+          <div class="logout-img">
+            <img
+              src="/assests/icons/log-out-white.svg"
+              alt="feedback icon"
+              height="42px"
+              width="42px"
+            />
+          </div>
+        </a>
+      </div>
+    </section>
   </body>
   <script>
     function toggleDropdown() {

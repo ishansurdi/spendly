@@ -171,16 +171,26 @@
   list-style: none;
   margin-top: 28px;
   height: 100%;
-  overflow-y: auto;
-  scrollbar-width: none;
 
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+
+  /* Firefox */
+  /* Internet Explorer 10+ */
+  overflow-y: hidden;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .sidebar-links::-webkit-scrollbar {
   display: none;
+
+  background: transparent;
+  /* Chrome/Safari */
+  height: 0;
+  width: 0;
 }
 
 .sidebar-links li a {

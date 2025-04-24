@@ -146,7 +146,7 @@ $uid = $_SESSION['user_id'];
             <div class="menu-separator"></div>
           </h4>
           <li>
-            <a href="#">
+            <a href="/index.html#contact">
               <img
                 src="../assests/icons/help-icon.svg"
                 height="26px"

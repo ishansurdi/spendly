@@ -434,9 +434,102 @@ a {
     background-color: #464646;
 }
 
+/* CONTACT US SECTION */
+.contact-main {
+    padding: 9.6em 0;
+    margin: 0 auto;
+}
+
+.contact-container {
+    margin: 0 auto;
+    width: 1200px;
+}
+
+.contact-container .contact-capsule {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    gap: 0.5em;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+    color: #232323;
+    border: 1px solid #dadada;
+    width: fit-content;
+    padding: 6px 20px;
+    border-radius: 1.8em;
+    text-transform: uppercase;
+    margin-bottom: 1.2em;
+}
+
+.contact-container .contact-heading {
+    font-size: 2.4em;
+    letter-spacing: 0.3px;
+    line-height: 125%;
+    color: #232323e3;
+    text-align: left;
+    margin-bottom: 0.25em;
+}
+
+.contact-container .contact-para {
+    font-size: 1em;
+    letter-spacing: 0.2px;
+    color: #686868;
+    line-height: 145%;
+    text-align: left;
+    width: 842px;
+    margin-bottom: 2.8em;
+}
+
+.contact-container .contact-list {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    justify-content: space-around;
+    list-style-type: none;
+}
+
+.contact-container .contact-list .contact-item {
+    border: 2px solid #dddddd26;
+    padding: 1.8rem;
+    width: 33%;
+    height: 284px;
+    border-radius: 0.5rem;
+    background-color: #f0f1f9;
+}
+
+.contact-list .contact-item .contact-img {
+    background-color: #d2d7f7;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.contact-list .contact-item h3 {
+    font-size: 1.4em;
+    letter-spacing: 0.6px;
+    line-height: 125%;
+    margin-top: 1.2em;
+    margin-bottom: 0.25em;
+    color: #464646;
+    font-weight: 600;
+}
+
+.contact-list .contact-item p {
+    font-size: 1em;
+    letter-spacing: 0.2px;
+    color: #686868;
+    line-height: 145%;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.45rem;
+}
+
 
 /* MICDROP SECTION */
-.micdrop-main {}
+.micdrop-main {
+    background-color: #f0f0f0;
+}
 
 .micdrop-container {
     width: 1200px;

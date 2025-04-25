@@ -718,3 +718,7 @@
   max-height: 90vh;
   overflow-y: auto;
 }
+
+.ques-main{
+  padding: 1.8rem 3.6rem;
+}

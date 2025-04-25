@@ -694,3 +694,31 @@
 .row-3 .logout-box .logout-img {
   align-self: flex-end;
 }
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+}
+
+.modal-container {
+  background-color: #fff;
+  padding: 2.4rem 2.8rem;
+  border-radius: 0.5rem;
+  border: 2px dashed #6f6f6f4f;
+  overflow: visible;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.ques-main{
+  padding: 1.8rem 3.6rem;
+}

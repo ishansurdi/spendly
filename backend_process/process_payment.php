@@ -14,8 +14,8 @@ $update_expired = $conn->prepare("
     SET account_status = 'Invalid' 
     WHERE user_id = ? 
     AND account_status = 'Active' 
-    AND end_of_plan < CURDATE()
-");
+    AND end_of_plan < CURDATE()"
+);
 $update_expired->bind_param("s", $user_id);
 $update_expired->execute();
 $update_expired->close();

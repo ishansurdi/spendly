@@ -42,14 +42,14 @@
     </div>
 
     <!-- USER ID -->
-    <div class="user-id">User Id: Lorem ipsum dolor sit.</div>
+    <div class="user-id">User Id: random123</div>
 
     <main class="payment-main">
       <div class="payment-container">
         <div class="payment-left">
           <div class="left-header">
             <img
-              src="/assests/logo-signup.png"
+              src="./assests/logo-signup.png"
               alt="spendly logo"
               height="56px"
               width="auto"
@@ -57,13 +57,14 @@
             <h1>Spendly — Payment</h1>
             <p>Choose a plan to upgrade with a payment.</p>
           </div>
-          <form>
+          <form action="./backend_process/process_payment.php" method="POST">
+            
             <label>
               <input type="radio" name="plan" value="299" />
               <div class="plan-option">
                 <div class="plan-img">
                   <img
-                    src="/assests/spendly-plus.png"
+                    src="./assests/spendly-plus.png"
                     height="50px"
                     width="50px"
                     alt="spendly plus"
@@ -81,7 +82,7 @@
               <div class="plan-option">
                 <div class="plan-img">
                   <img
-                    src="/assests/spendly-pro.png"
+                    src="./assests/spendly-pro.png"
                     height="50px"
                     width="50px"
                     alt="spendly plus"
@@ -118,16 +119,16 @@
               <div class="card-icons">
                 <span
                   ><img
-                    src="/assests/icons/mastercard.png"
+                    src="./assests/icons/mastercard.png"
                     alt="mastercard"
                     height="36px"
                 /></span>
                 <span
-                  ><img src="/assests/icons/visa.png" alt="visa" height="36px"
+                  ><img src="./assests/icons/visa.png" alt="visa" height="36px"
                 /></span>
                 <span
                   ><img
-                    src="/assests/icons/rupay.png"
+                    src="./assests/icons/rupay.png"
                     alt="rupay"
                     height="36px"
                 /></span>

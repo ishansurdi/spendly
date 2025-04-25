@@ -1,0 +1,339 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: "Poppins", sans-serif;
+    cursor: default;
+    scroll-behavior: smooth;
+    background-color: var(--secondary-color);
+}
+
+.payment-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.payment-main .payment-container {
+    display: flex;
+    gap: 5.6rem;
+    align-items: flex-start;
+    justify-content: center;
+    width: 1500px;
+    margin: 0 auto;
+}
+
+.payment-container .payment-left {
+    max-width: 500px;
+    width: 100%;
+}
+
+.payment-left .left-header {
+    margin-bottom: 1.4em;
+}
+
+.left-header h1 {
+    line-height: 125%;
+    margin-bottom: 0.25em;
+    color: #354ead;
+    font-weight: 600;
+    font-size: 1.8rem;
+    letter-spacing: 0.3px;
+}
+
+.left-header p {
+    font-size: 1em;
+    letter-spacing: 0.2px;
+    color: #686868;
+    line-height: 145%;
+    text-align: left;
+}
+
+form {
+    max-width: 400px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.plan-option {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: #fff;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border 0.3s ease;
+}
+
+.plan-option:hover {
+    border-color: #ccc;
+}
+
+input[type="radio"]:checked + .plan-option {
+    border-color: var(--primary-color);
+}
+
+.plan-img {}
+
+.plan-img img {
+    border-radius: 6px;
+}
+
+.plan-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.plan-title {
+    color: #232323e3;
+    font-weight: 600;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.price-display p {
+    font-size: 1em;
+    letter-spacing: 0.2px;
+    color: #686868;
+    line-height: 145%;
+    text-align: left;
+    margin-top: 3.6em;
+}
+
+.price-display h3 {
+    font-size: 3.2rem;
+    letter-spacing: 0.6px;
+    line-height: 125%;
+    color: #232323e3;
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+
+
+.payment-container .payment-right {
+    margin-top: 1.4rem;
+    max-width: 500px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.top-pay-btn {
+    background-color: var(--primary-color);
+    color: #fff;
+    width: 400px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: var(--secondary-color);
+    background-color: var(--primary-color);
+    padding: 0.8em 1.5rem;
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25em;
+    transition: all 400ms ease-in-out;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    font-size: 1rem;
+    border-radius: 6px;
+}
+
+.top-pay-btn:hover {
+    background-color: #586dbb;
+}
+
+.or-text {
+    text-align: center;
+    margin: 12px 0;
+    font-size: 15px;
+    letter-spacing: 0.2px;
+    color: #686868;
+    line-height: 145%;
+}
+
+form {
+    margin: 1.8rem 0;
+
+    max-width: 500px;
+}
+
+label {
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: 0.2px;
+    color: #686868;
+    line-height: 145%;
+    margin-top: 0.5rem;
+    width: 100%;
+}
+
+input,
+select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    width: 500px;
+}
+
+.card-inputs {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.card-number {
+    flex: 1;
+}
+
+.card-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.card-icons img {
+    border-radius: 0.25rem;
+}
+
+.card-details {
+    display: flex;
+    gap: 10px;
+}
+
+.submit-btn {
+    border: none;
+    border-radius: 6px;
+    margin-top: 10px;
+
+    background-color: var(--primary-color);
+    color: #fff;
+    width: 400px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: var(--secondary-color);
+    background-color: var(--primary-color);
+    padding: 0.8em 1.5rem;
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25em;
+    transition: all 400ms ease-in-out;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    font-size: 1rem;
+    border-radius: 6px;
+}
+
+.submit-btn:hover {
+    background-color: #586dbb;
+}
+
+.submit-btn:disabled,
+.top-pay-btn:disabled {
+    background-color: #bdbdbd;
+}
+
+/* Responsive tweaks */
+@media (max-width: 480px) {
+    .card-details {
+        flex-direction: column;
+    }
+
+    .card-inputs {
+        flex-direction: column;
+    }
+
+    .card-icons {
+        justify-content: flex-start;
+    }
+}
+
+
+
+
+/*  */
+/* QR Modal Styles */
+.qr-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+}
+
+.qr-modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 500px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 2.4rem 2.8rem;
+}
+
+.qr-header h2 {
+    font-size: 1.4em;
+    letter-spacing: 0.3px;
+    line-height: 125%;
+    color: #232323e3;
+    text-align: left;
+    margin-bottom: 0.25em;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.qr-header p {
+    line-height: 125%;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #5f5f5f;
+    letter-spacing: 0.5px;
+}
+
+.timer {
+    margin-top: 20px;
+    font-size: 18px;
+    font-size: 1.2em;
+    letter-spacing: 0.3px;
+    line-height: 125%;
+    color: #5f5f5f;
+    text-align: left;
+    margin-bottom: 0.25em;
+    font-weight: 500;
+    margin-bottom: 1.2rem;
+}
+
+#qrCode img {
+    height: 356px;
+    width: 100%;
+    margin: 1.8rem 0;
+}

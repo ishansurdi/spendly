@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- FAVICON -->
+    <link rel="icon" href="./assests/favicon.ico" type="image/x-icon" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="stylesheet" href="./styles/payment.css" />
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Payemnt Spendly</title>
+    <meta
+      name="description"
+      content="Our intuitive tool helps you track expenses, set budgets, monitor spending, analyze trends, and reach your savings goals—all in one place."
+    />
+  </head>
+  <body>
+    <!-- QR Code Modal -->
+    <div class="qr-modal" id="qrModal">
+      <div class="qr-modal-content">
+        <div class="qr-header">
+          <h2>Scan the QR to Pay</h2>
+          <p>Use any UPI app to scan the QR code and complete the payment.</p>
+        </div>
+        <div id="qrCode"></div>
+        <!-- QR code will be generated here -->
+        <div class="timer">
+          <p>Pay before <span id="timerText">10</span> seconds</p>
+        </div>
+      </div>
+    </div>
+
+    <main class="payment-main">
+      <div class="payment-container">
+        <div class="payment-left">
+          <div class="left-header">
+            <img
+              src="/assests/logo-signup.png"
+              alt="spendly logo"
+              height="56px"
+              width="auto"
+            />
+            <h1>Spendly — Payment</h1>
+            <p>Choose a plan to upgrade with a payment.</p>
+          </div>
+          <form>
+            <label>
+              <input type="radio" name="plan" value="299" />
+              <div class="plan-option">
+                <div class="plan-img">
+                  <img
+                    src="/assests/spendly-plus.png"
+                    height="50px"
+                    width="50px"
+                    alt="spendly plus"
+                  />
+                </div>
+                <div class="plan-text">
+                  <div class="plan-title">Spendly Plus</div>
+                  <div>₹299 / month</div>
+                </div>
+              </div>
+            </label>
+
+            <label>
+              <input type="radio" name="plan" value="599" />
+              <div class="plan-option">
+                <div class="plan-img">
+                  <img
+                    src="/assests/spendly-pro.png"
+                    height="50px"
+                    width="50px"
+                    alt="spendly plus"
+                  />
+                </div>
+                <div class="plan-text">
+                  <div class="plan-title">Spendly Pro</div>
+                  <div>₹599 / month</div>
+                </div>
+              </div>
+            </label>
+          </form>
+
+          <div class="price-display">
+            <p>total amount to be paid:</p>
+            <h3 id="priceTag">₹0</h3>
+          </div>
+        </div>
+        <div class="payment-right">
+          <button class="top-pay-btn">Pay Using UPI</button>
+          <p class="or-text">or pay using a bank account</p>
+
+          <form action="">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" placeholder="" />
+
+            <label>Card Details</label>
+            <div class="card-inputs">
+              <input
+                type="text"
+                placeholder="1234 1234 1234 1234"
+                class="card-number"
+              />
+              <div class="card-icons">
+                <span
+                  ><img
+                    src="/assests/icons/mastercard.png"
+                    alt="mastercard"
+                    height="36px"
+                /></span>
+                <span
+                  ><img src="/assests/icons/visa.png" alt="visa" height="36px"
+                /></span>
+                <span
+                  ><img
+                    src="/assests/icons/rupay.png"
+                    alt="rupay"
+                    height="36px"
+                /></span>
+              </div>
+            </div>
+
+            <div class="card-details">
+              <input type="text" placeholder="MM / YY" />
+              <input type="text" placeholder="CVC" />
+            </div>
+
+            <label for="card-name">Card Holder Name</label>
+            <input type="text" id="card-name" placeholder="" />
+
+            <label for="country">Country or Region</label>
+            <select id="country">
+              <option selected>United States</option>
+              <option>China</option>
+              <option>India</option>
+              <option>Canada</option>
+              <option>Germany</option>
+            </select>
+            <input type="text" placeholder="Postal Code" />
+
+            <button type="submit" class="submit-btn">Pay ₹599</button>
+          </form>
+        </div>
+      </div>
+    </main>
+  </body>
+  <!-- <script>
+    const radios = document.querySelectorAll(
+      'input[type="radio"][name="plan"]'
+    );
+    const priceTag = document.getElementById("priceTag");
+    const submitBtn = document.querySelector(".submit-btn");
+    const topPayBtn = document.querySelector(".top-pay-btn");
+
+    // Disable buttons initially
+    window.addEventListener("DOMContentLoaded", () => {
+      submitBtn.disabled = true;
+      topPayBtn.disabled = true;
+      submitBtn.textContent = "Pay";
+    });
+
+    radios.forEach((radio) => {
+      radio.addEventListener("change", () => {
+        const selectedPrice = `₹${radio.value}`;
+        priceTag.textContent = selectedPrice;
+        submitBtn.textContent = `Pay ${selectedPrice}`;
+
+        // Enable buttons once a plan is selected
+        submitBtn.disabled = false;
+        topPayBtn.disabled = false;
+      });
+    });
+  </script> -->
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+
+  <script>
+    const radios = document.querySelectorAll(
+      'input[type="radio"][name="plan"]'
+    );
+    const priceTag = document.getElementById("priceTag");
+    const submitBtn = document.querySelector(".submit-btn");
+    const topPayBtn = document.querySelector(".top-pay-btn");
+    const qrModal = document.getElementById("qrModal");
+    const timerText = document.getElementById("timerText");
+
+    let countdown;
+
+    window.addEventListener("DOMContentLoaded", () => {
+      submitBtn.disabled = true;
+      topPayBtn.disabled = true;
+      submitBtn.textContent = "Pay";
+    });
+
+    radios.forEach((radio) => {
+      radio.addEventListener("change", () => {
+        const selectedPrice = `₹${radio.value}`;
+        priceTag.textContent = selectedPrice;
+        submitBtn.textContent = `Pay ${selectedPrice}`;
+
+        submitBtn.disabled = false;
+        topPayBtn.disabled = false;
+      });
+    });
+
+    topPayBtn.addEventListener("click", () => {
+      qrModal.style.display = "flex";
+
+      const qrcode = new QRCode(document.getElementById("qrCode"), {
+        text: "upi://pay?pa=example@upi&pn=Spendly&mc=1234&tid=5678&tr=1234567890&tn=Payment+for+Spendly&am=599&cu=INR",
+        width: 200,
+        height: 200,
+      });
+
+      let timeLeft = 10;
+      timerText.textContent = timeLeft;
+
+      countdown = setInterval(() => {
+        timeLeft--;
+        timerText.textContent = timeLeft;
+
+        if (timeLeft <= 0) {
+          clearInterval(countdown);
+          window.location.href = "/"; // Redirect after 10 seconds
+        }
+      }, 1000);
+    });
+
+    window.addEventListener("click", (e) => {
+      if (e.target === qrModal) {
+        qrModal.style.display = "none";
+        clearInterval(countdown);
+      }
+    });
+  </script>
+</html>

@@ -76,8 +76,10 @@ function submit_data_to_db($conn, $name, $email, $password) {
 
         // Commit transaction
         $conn->commit();
+        $_SESSION['success'] = "Account for $name created with user ID $uid. Redirecting to payment page...";
+        $_SESSION['redirect_to_payment'] = true;
         $_SESSION['user_id'] = $uid;
-        header("Location: ../public_pages/payment.php");
+        header("Location: ../public_pages/sign-up.php");
         exit();
 
     } catch (Exception $e) {

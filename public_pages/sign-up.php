@@ -85,14 +85,21 @@
 
               <!-- Display Error and Success Messages -->
               <?php
-                if (isset($_SESSION['error'])) {
-                    echo "<p style='color: red;'>" . $_SESSION['error'] . "</p>";
-                    unset($_SESSION['error']); // Clear message after displaying
-                }
                 if (isset($_SESSION['success'])) {
-                    echo "<p style='color: green;'>" . $_SESSION['success'] . "</p>";
-                    unset($_SESSION['success']);
-                }
+                  echo "<p id='success-msg' style='color: green;'>" . $_SESSION['success'] . "</p>";
+                  unset($_SESSION['success']);
+                  
+                  // If redirection is requested
+                  if (isset($_SESSION['redirect_to_payment']) && $_SESSION['redirect_to_payment']) {
+                      echo "<script>
+                          setTimeout(function() {
+                              window.location.href = 'payment.php';
+                          }, 10000);
+                      </script>";
+                      unset($_SESSION['redirect_to_payment']);
+                  }
+              }
+              
                 ?>
             </div>
 

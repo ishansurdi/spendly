@@ -175,9 +175,9 @@ $uid = $_SESSION['user_id'];
 
     <section class="dashboard-body">
       <h2>
-        Hello Himanshu Pal
+        <span>Welcome back,</span> <?= htmlspecialchars($full_name) ?>!
         <img
-          src="/assests/icons/emoji-wave.png"
+          src="../assests/icons/emoji-wave.png"
           alt="emoji wave"
           height="36px"
         />
@@ -195,7 +195,7 @@ $uid = $_SESSION['user_id'];
         <a class="transaction-box" href="./Transaction.php">
           <div class="header">
             <h3>Transactions</h3>
-            <img src="/assests/icons/transaction-icon.svg" alt="info icon" />
+            <img src="../assests/icons/transaction-icon.svg" alt="info icon" />
           </div>
           <div class="content">
             <p>
@@ -206,7 +206,7 @@ $uid = $_SESSION['user_id'];
         <a class="history-box" href="./history.php">
           <div class="header">
             <h3>History</h3>
-            <img src="/assests/icons/history-icon.svg" alt="history icon" />
+            <img src="../assests/icons/history-icon.svg" alt="history icon" />
           </div>
           <div class="content">
             <p>View your complete transaction history of income/expense</p>
@@ -222,7 +222,7 @@ $uid = $_SESSION['user_id'];
           </div>
           <div class="question-img">
             <img
-              src="/assests/icons/question-icon.png"
+              src="../assests/icons/question-icon.png"
               alt="question icon"
               height="44px"
               width="44px"
@@ -232,7 +232,7 @@ $uid = $_SESSION['user_id'];
         <a class="report-box" href="./reports.php">
           <div class="header">
             <h3>Reports</h3>
-            <img src="/assests/icons/reports.svg" alt="info icon" />
+            <img src="../assests/icons/reports.svg" alt="info icon" />
           </div>
           <div class="content">
             <p>
@@ -244,7 +244,7 @@ $uid = $_SESSION['user_id'];
         <a class="budget-box" href="./budget.php">
           <div class="header">
             <h3>Budget & Goals</h3>
-            <img src="/assests/icons/goals.svg" alt="info icon" />
+            <img src="../assests/icons/goals.svg" alt="info icon" />
           </div>
           <div class="content">
             <p>
@@ -270,7 +270,7 @@ $uid = $_SESSION['user_id'];
           </div>
           <div class="subscription-img">
             <img
-              src="/assests/icons/subscription.svg"
+              src="../assests/icons/subscription.svg"
               alt="question icon"
               height="42px"
               width="42px"
@@ -284,7 +284,7 @@ $uid = $_SESSION['user_id'];
           </div>
           <div class="help-img">
             <img
-              src="/assests/icons/help-icon.svg"
+              src="../assests/icons/help-icon.svg"
               alt="feedback icon"
               height="42px"
               width="42px"
@@ -298,7 +298,7 @@ $uid = $_SESSION['user_id'];
           </div>
           <div class="feedback-img">
             <img
-              src="/assests/icons/feedback.svg"
+              src="../assests/icons/feedback.svg"
               alt="feedback icon"
               height="42px"
               width="42px"
@@ -312,7 +312,7 @@ $uid = $_SESSION['user_id'];
           </div>
           <div class="logout-img">
             <img
-              src="/assests/icons/log-out-white.svg"
+              src="../assests/icons/log-out-white.svg"
               alt="feedback icon"
               height="42px"
               width="42px"

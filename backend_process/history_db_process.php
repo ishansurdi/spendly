@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 
 $sql = "SELECT transaction_id, type, amount, category, timestamp, previous_balance, after_balance 
-        FROM transactions 
+        FROM transactions_dash 
         WHERE user_id = ?";
         
 $stmt = $conn->prepare($sql);

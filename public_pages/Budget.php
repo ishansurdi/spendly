@@ -114,7 +114,7 @@ $uid = $_SESSION['user_id'];
           >
         </li>
         <li>
-          <a href="/budget.html">
+          <a href="#">
             <img
               src="../assests/icons/budget-icon.svg"
               height="26px"
@@ -125,7 +125,7 @@ $uid = $_SESSION['user_id'];
           >
         </li>
         <li>
-          <a href="report.php">
+          <a href="reports.php">
             <img
               src="../assests/icons/report-icon.png"
               height="26px"
@@ -178,189 +178,244 @@ $uid = $_SESSION['user_id'];
         </ul>
       </div>
     </aside>
+<!-- FAB BUTTON -->
+<div class="fab" onclick="openDialog('budgetFormModal')">
+  <img src="../assests/icons/plus.svg" height="28px" alt="Add Budget" />
+  Add Budget
+</div>
+<!-- BUDGET FORM MODAL -->
+<div id="budgetMessage" class="success-message" style="display:none;"></div>
+<div class="overlay" id="budgetFormModal">
+  <div class="Budget-container">
+    <h3>Set Your Budget</h3>
 
-    <section class="budget-body">
-      <h2>find out your goal progress</h2>
+    <form class="budget-form" method ="POST" action="../backend_process/save_budget.php">
 
-      <div class="budget-container">
-        <div class="box" onclick="openDialog('dailyModal')">
-          <h3 class="box-heading">Daily Goals</h3>
-          <p class="box-desc">
-            Track today's spending and stick to your budget.
-          </p>
+      <label for="budgetAmount">Amount</label>
+      <input type="number" id="budgetAmount" name="budgetAmount" placeholder="Enter amount" required />
 
-          <div class="button-group">
-            <div class="chevron-right-btn" onclick="openDialog('dailyModal')">
-              <img src="/assests/icons/chevron-right.svg" alt="" />
-            </div>
-          </div>
-        </div>
-        <div class="box" onclick="openDialog('weeklyModal')">
-          <h3 class="box-heading">Weekly Goals</h3>
-          <p class="box-desc">
-            Review expenses and adjust habits for better saving.
-          </p>
+      <label for="budgetCategory">Category</label>
+      <select id="budgetCategory" name="budgetCategory" required>
+      <option value="" disabled selected>Select a category</option>
+  <option value="Salary">Salary</option>
+  <option value="Freelance">Freelance</option>
+  <option value="Investments">Investments</option>
+  <option value="Business">Business</option>
+  <option value="Gift">Gift</option>
+  <option value="Food">Food</option>
+  <option value="Transport">Transport</option>
+  <option value="Shopping">Shopping</option>
+  <option value="Rent">Rent</option>
+  <option value="Utilities">Utilities</option>
+  <option value="Healthcare">Healthcare</option>
+  <option value="Entertainment">Entertainment</option>
+  <option value="Travel">Travel</option>
+  <option value="Education">Education</option>
+  <option value="Insurance">Insurance</option>
+  <option value="Savings">Savings</option>
+  <option value="Other">Other</option>
+</select>
+      </select>
 
-          <div class="button-group">
-            <div class="chevron-right-btn" onclick="openDialog('weeklyModal')">
-              <img src="/assests/icons/chevron-right.svg" alt="" />
-            </div>
-          </div>
-        </div>
-        <div class="box" onclick="openDialog('monthlyModal')">
-          <h3 class="box-heading">Monthly Goals</h3>
-          <p class="box-desc">
-            Measure progress toward savings and financial milestones.
-          </p>
-
-          <div class="button-group">
-            <div class="chevron-right-btn" onclick="openDialog('monthlyModal')">
-              <img src="/assests/icons/chevron-right.svg" alt="" />
-            </div>
-          </div>
-        </div>
+      <div class="form-actions">
+        <button type="button" class="cancel-btn" onclick="closeDialog('budgetFormModal')">Cancel</button>
+        <button type="submit" class="save-btn">Save</button>
       </div>
-    </section>
+    </form>
+  </div>
+</div>
+    <div class="dashboard">
+    <h1>Budget Dashboard</h1>
 
-    <!-- DIALOG BOX FOR DAILY GOALS -->
-    <div class="overlay" id="dailyModal">
-      <div class="form-container">
-        <h3>Your Daily Goals Progress</h3>
+    <div class="overview-section">
+      <div class="overview-card">
+        <h2>Budget Overview</h2>
+        <div class="budget-details">
+  <div>
+    <p>Total Budget</p>
+    <h3 id="totalBudget">₹0.00</h3>
+  </div>
+  <div>
+    <p>Spent</p>
+    <h3 id="totalSpent" class="spent">₹0.00</h3>
+  </div>
+  <div>
+    <p>Remaining</p>
+    <h3 id="remainingBudget" class="remaining">₹0.00</h3>
+  </div>
+</div>
 
-        <div class="data-container">
-        <div class="">1</div>
-
-        <div class="">2</div>
-
-        <div class="">3</div>
-
-          <div class="chart-box">
-            <canvas id=""></canvas>
-            <p>graph 4</p>
-          </div>
-        </div>
-
-        <div class="form-actions">
-          <button
-            type="button"
-            class="cancel-btn"
-            onclick="closeDialog('dailyModal')"
-          >
-            Cancel
-          </button>
-          <button type="submit" class="save-btn">Save</button>
-        </div>
+      </div>
+      <div class="chart-placeholder">
+        <canvas id="budgetChart" width="150" height="150"></canvas>
       </div>
     </div>
 
-    <!-- DIALOG BOX FOR WEEKLY GOALS -->
-    <div class="overlay" id="weeklyModal">
-      <div class="form-container">
-        <h3>Your Weekly Goals Progress</h3>
+    <div class="history-table-container">
+    <table class="history-table">
+  <thead>
+    <tr>
+      <th>Budget ID</th>
+      <th>Category</th>
+      <th>Amount</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody id="budget-history">
+    <!-- Data will populate here -->
+  </tbody>
+</table>
 
-        <div class="data-container">
-          <div class="chart-box">
-            <canvas id=""></canvas>
-            <p>graph 1</p>
-          </div>
+</div>
 
-          <div class="chart-box">
-            <canvas id=""></canvas>
-            <p>graph 2</p>
-          </div>
-
-          <div class="chart-box">
-            <canvas id=""></canvas>
-            <p>graph 3</p>
-          </div>
-
-          <div class="chart-box">
-            <canvas id=""></canvas>
-            <p>graph 4</p>
-          </div>
-        </div>
-
-        <div class="form-actions">
-          <button
-            type="button"
-            class="cancel-btn"
-            onclick="closeDialog('weeklyModal')"
-          >
-            Cancel
-          </button>
-          <button type="submit" class="save-btn">Save</button>
-        </div>
-      </div>
     </div>
+    <script>
+      function openDialog(id) {
+  const modal = document.getElementById(id);
+  if (modal) modal.style.display = "flex";
+}
 
-    <!-- DIALOG BOX FOR MONTHLY GOALS -->
-    <div class="overlay" id="monthlyModal">
-      <div class="form-container">
-        <h3>Your Monthly Goals Progress</h3>
-
-        <div class="data-container">
-          <div class="chart-box">
-            <canvas id=""></canvas>
-            <p>graph 1</p>
-          </div>
-
-          <div class="chart-box">
-            <canvas id=""></canvas>
-            <p>graph 2</p>
-          </div>
-
-          <div class="chart-box">
-            <canvas id=""></canvas>
-            <p>graph 3</p>
-          </div>
-
-          <div class="chart-box">
-            <canvas id=""></canvas>
-            <p>graph 4</p>
-          </div>
-        </div>
-
-        <div class="form-actions">
-          <button
-            type="button"
-            class="cancel-btn"
-            onclick="closeDialog('monthlyModal')"
-          >
-            Cancel
-          </button>
-          <button type="submit" class="save-btn">Save</button>
-        </div>
-      </div>
-    </div>
-  </body>
-  <script>
-    function toggleDropdown() {
-      const dropdown = document.getElementById("dashboard-dropdown");
-      dropdown.classList.toggle("hidden");
-      console.log("first");
-    }
-
-    document.addEventListener("click", function (event) {
-      const trigger = document.querySelector(".dashboard-items-user");
-      const dropdown = document.getElementById("dashboard-dropdown");
-      if (!trigger.contains(event.target) && !dropdown.contains(event.target)) {
-        dropdown.classList.add("hidden");
-      }
-    });
-  </script>
-
-  <script>
-    function openDialog(modalId) {
-      document.getElementById(modalId).style.display = "flex";
-    }
-
-    function closeDialog(modalId) {
-      document.getElementById(modalId).style.display = "none";
-    }
-  </script>
-  <script>
-   function changeSubscription() {
-      window.location.href = "../public_pages/payment.php";
-    }
+function closeDialog(id) {
+  const modal = document.getElementById(id);
+  if (modal) modal.style.display = "none";
+}
 </script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+  function getFormattedDate(timestamp) {
+    const inputDate = new Date(timestamp.replace(" ", "T"));
+    const day = inputDate.getDate();
+    const month = inputDate.toLocaleString("en-US", { month: "long" });
+    const year = inputDate.getFullYear();
+
+    return `${day} ${month} ${year}`;
+  }
+
+  async function fetchBudgetHistory() {
+    try {
+      const response = await fetch("../backend_process/get_budget_history.php"); // ✅ Backend endpoint
+      const budgetHistory = await response.json();
+
+      if (!Array.isArray(budgetHistory)) {
+        console.error("Invalid data format");
+        return;
+      }
+
+      // Sort budgets by created_at date
+      budgetHistory.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
+      const tbody = document.getElementById("budget-history");
+      if (!tbody) {
+        console.error("Could not find the tbody element.");
+        return;
+      }
+      tbody.innerHTML = ""; // Clear existing rows
+
+      budgetHistory.forEach((budget) => {
+        const tr = document.createElement("tr");
+
+        tr.innerHTML = `
+          <td class="table-data">${budget.budget_id}</td>
+          <td class="table-data">${budget.category}</td>
+          <td class="table-data">₹${parseFloat(budget.amount).toFixed(2)}</td>
+          <td class="table-data">${getFormattedDate(budget.created_at)}</td>
+        `;
+
+        tbody.appendChild(tr);
+      });
+    } catch (error) {
+      console.error("Failed to fetch budget history:", error);
+    }
+  }
+
+  // 🚀 Call it on page load
+  fetchBudgetHistory();
+});
+
+</script>
+
+
+
+<script>
+fetch("../backend_process/save_budget.php", {
+    method: "POST",
+    body: formData
+})
+    .then(res => {
+        console.log(res); // Check the raw response
+        return res.json(); // Parse the JSON response
+    })
+    .then(data => {
+        const msgDiv = document.getElementById("budgetMessage");
+
+        // Display success or error message
+        if (data.status === "success") {
+            msgDiv.textContent = data.message;
+            msgDiv.style.color = "green";
+        } else {
+            msgDiv.textContent = data.message;
+            msgDiv.style.color = "red";
+        }
+
+        msgDiv.style.display = "block"; // Show the message
+
+        form.reset();
+        closeDialog("budgetFormModal");
+
+        setTimeout(() => {
+            msgDiv.style.display = "none";
+        }, 5000);
+    })
+    .catch(error => {
+        console.error("Error:", error);
+    });
+
+</script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  fetch('../backend_process/get_budget_data.php')
+    .then(res => res.json())
+    .then(data => {
+      if (data.status === 'success') {
+        // Update Overview UI
+        document.getElementById('totalBudget').textContent = `₹${data.total_budget.toFixed(2)}`;
+        document.getElementById('totalSpent').textContent = `₹${data.spent.toFixed(2)}`;
+        document.getElementById('remainingBudget').textContent = `₹${data.remaining.toFixed(2)}`;
+
+        // Draw Chart
+        const ctx = document.getElementById('budgetChart').getContext('2d');
+        new Chart(ctx, {
+          type: 'doughnut',
+          data: {
+            labels: ['Spent', 'Remaining'],
+            datasets: [{
+              data: [data.spent, data.remaining],
+              backgroundColor: ['#ff4d4d', '#4caf50'],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            plugins: {
+              legend: {
+                position: 'bottom'
+              }
+            },
+            cutout: '70%'
+          }
+        });
+      } else {
+        console.error('Failed to load budget data:', data.message);
+      }
+    })
+    .catch(error => {
+      console.error('Error fetching budget data:', error);
+    });
+});
+</script>
+
+
+  </script>
 </html>

@@ -23,7 +23,7 @@ $query1 = "
         DATE_FORMAT(timestamp, '%Y-%m-%d') AS period,
         SUM(CASE WHEN type = 'income' THEN amount ELSE 0 END) AS income,
         SUM(CASE WHEN type = 'expense' THEN amount ELSE 0 END) AS expense
-    FROM transactions
+    FROM transactions_dash
     WHERE user_id = ?
     GROUP BY period
     ORDER BY period
@@ -40,7 +40,7 @@ $stmt1->close();
 // 2. Pie Chart – Income Category Breakdown
 $query2 = "
     SELECT category, SUM(amount) AS total
-    FROM transactions
+    FROM transactions_dash
     WHERE user_id = ? AND type = 'income'
     GROUP BY category
 ";
@@ -56,7 +56,7 @@ $stmt2->close();
 // 3. Pie Chart – Expense Category Breakdown
 $query3 = "
     SELECT category, SUM(amount) AS total
-    FROM transactions
+    FROM transactions_dash
     WHERE user_id = ? AND type = 'expense'
     GROUP BY category
 ";
@@ -75,7 +75,7 @@ $query4 = "
         DATE_FORMAT(timestamp, '%Y-%m') AS period,
         SUM(CASE WHEN type = 'income' THEN amount ELSE 0 END) AS income,
         SUM(CASE WHEN type = 'expense' THEN amount ELSE 0 END) AS expense
-    FROM transactions
+    FROM transactions_dash
     WHERE user_id = ?
     GROUP BY period
     ORDER BY period

@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "../db_connection/db_connection.php";
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
@@ -8,6 +9,18 @@ if (!isset($_SESSION['user_id'])) {
 $full_name = $_SESSION['user_name'];
 $email = $_SESSION['user_email'];
 $uid = $_SESSION['user_id'];
+
+// Fetch financial profile data
+$sql = "SELECT * FROM financial_profiles WHERE user_id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $uid);
+$stmt->execute();
+$result = $stmt->get_result();
+
+$profile_data = $result->num_rows > 0 ? $result->fetch_assoc() : [];
+
+$stmt->close();
+$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +35,7 @@ $uid = $_SESSION['user_id'];
     <!-- CSS -->
     <link rel="stylesheet" href="../styles/index.css" />
     <link rel="stylesheet" href="../styles/Transaction.css" />
-    <link rel="stylesheet" href="/styles/questions.css" />
+    <link rel="stylesheet" href="../styles/questions.css" />
     <link rel="stylesheet" href="../styles/dashboard.css" />
 
     <!-- GOOGLE FONTS -->
@@ -412,7 +425,7 @@ $uid = $_SESSION['user_id'];
                     <input
                       type="number"
                       name="weekly_goals"
-                      placeholder="e.g., Save ₹500 on groceries, skip ordering food"
+                      value="<?= htmlspecialchars($profile_data['weekly_goals'] ?? '') ?>"
                     />
 
                     <label>Monthly Financial Goals</label>
@@ -420,6 +433,7 @@ $uid = $_SESSION['user_id'];
                       type="number"
                       name="monthly_goals"
                       placeholder="e.g., Invest ₹5,000 in SIP, save ₹2,000 on outings"
+                      value="<?= htmlspecialchars($profile_data['monthly_goals'] ?? '') ?>"
                     />
 
                     <label>Yearly Financial Goals</label>
@@ -427,6 +441,7 @@ $uid = $_SESSION['user_id'];
                       type="number"
                       name="yearly_goals"
                       placeholder="e.g., Save ₹1.2L overall, build ₹50K emergency fund"
+                      value="<?= htmlspecialchars($profile_data['yearly_goals'] ?? '') ?>"
                     />
 
                     <label>Short-Term Goals (1-3 years)</label>
@@ -434,6 +449,7 @@ $uid = $_SESSION['user_id'];
                       type="text"
                       name="short_term_goals"
                       placeholder="e.g., Buy a two-wheeler, ₹80K for solo trip"
+                      value="<?= htmlspecialchars($profile_data['short_term_goals'] ?? '') ?>"
                     />
 
                     <label>Long-Term Goals (5+ years)</label>
@@ -441,14 +457,17 @@ $uid = $_SESSION['user_id'];
                       type="text"
                       name="long_term_goals"
                       placeholder="e.g., Buy a flat in Pune, ₹15L for higher studies"
+                       value="<?= htmlspecialchars($profile_data['long_term_goals'] ?? '') ?>"
                     />
 
                     <label>Investment Interests</label>
-                    <select name="investment_interest">
+                    <select name="investment_interest" value="<?= htmlspecialchars($profile_data['investment_interest'] ?? 'Mutual Funds') ?>">
+                      
                       <option>Stocks (NSE/BSE)</option>
                       <option>Mutual Funds</option>
                       <option>PPF/FD/LIC</option>
                       <option>Gold</option>
+                      
                     </select>
 
                     <label>Risk Tolerance</label>
@@ -486,6 +505,8 @@ $uid = $_SESSION['user_id'];
                       name="primary_income_source"
                       type="text"
                       placeholder="e.g., Software job at TCS, freelance projects"
+                      value="<?= htmlspecialchars($profile_data['primary_income_source'] ?? '') ?>"
+                      
                     />
 
                     <label for="monthlyIncome">Monthly Income (in ₹)</label>
@@ -494,6 +515,7 @@ $uid = $_SESSION['user_id'];
                       name="monthly_income"
                       type="text"
                       placeholder="e.g., ₹60,000"
+                      value="<?= htmlspecialchars($profile_data['monthly_income'] ?? '') ?>"
                     />
 
                     <label for="passiveIncome"
@@ -504,6 +526,7 @@ $uid = $_SESSION['user_id'];
                       name="passive_income"
                       type="number"
                       placeholder="e.g., ₹5,000 from FD interest or rent"
+                      value="<?= htmlspecialchars($profile_data['passive_income'] ?? '') ?>"
                     />
 
                     <label for="growth"
@@ -514,6 +537,7 @@ $uid = $_SESSION['user_id'];
                       name="expected_annual_growth"
                       type="number"
                       placeholder="e.g., 8"
+                      value="<?= htmlspecialchars($profile_data['expected_annual_growth'] ?? '') ?>"
                     />
 
                     <label for="taxSaving"
@@ -524,6 +548,7 @@ $uid = $_SESSION['user_id'];
                       name="tax_saving_investments"
                       type="text"
                       placeholder="e.g., ₹1.5L in PPF, ELSS, health insurance"
+                      value="<?= htmlspecialchars($profile_data['tax_saving_investments'] ?? '') ?>"
                     />
                   </div>
                   <div class="form-buttons">
@@ -560,6 +585,7 @@ $uid = $_SESSION['user_id'];
                       id="fixed"
                       name="fixed_expenses"
                       placeholder="e.g., ₹25,000 - rent, EMIs"
+                      value="<?= htmlspecialchars($profile_data['fixed_expenses'] ?? '') ?>"
                     />
 
                     <label for="variable"
@@ -570,6 +596,7 @@ $uid = $_SESSION['user_id'];
                       id="variable"
                       name="variable_expenses"
                       placeholder="e.g., ₹10,000 - groceries, transport, shopping"
+                      value="<?= htmlspecialchars($profile_data['variable_expenses'] ?? '') ?>"
                     />
 
                     <label for="loan">Total Loans & EMI (in ₹)</label>
@@ -578,6 +605,7 @@ $uid = $_SESSION['user_id'];
                       id="loan"
                       name="loans_emi"
                       placeholder="e.g., ₹5L home loan, ₹2L education loan"
+                      value="<?= htmlspecialchars($profile_data['loans_emi'] ?? '') ?>"
                     />
 
                     <label for="credit"
@@ -588,6 +616,7 @@ $uid = $_SESSION['user_id'];
                       id="credit"
                       name="credit_card_usage"
                       placeholder="e.g., ₹12,000 on HDFC credit card"
+                      value="<?= htmlspecialchars($profile_data['credit_card_usage'] ?? '') ?>"
                     />
 
                     <label for="insurance"
@@ -598,6 +627,7 @@ $uid = $_SESSION['user_id'];
                       id="insurance"
                       name="insurance_premiums"
                       placeholder="e.g., ₹2,000 - term plan, health policy"
+                      value="<?= htmlspecialchars($profile_data['insurance_premiums'] ?? '') ?>"
                     />
                   </div>
                   <div class="form-buttons">
@@ -636,6 +666,7 @@ $uid = $_SESSION['user_id'];
                       id="utilities"
                       name="utilities"
                       placeholder="e.g., ₹2,000 – MSEB bill, cylinder, water"
+                      value="<?= htmlspecialchars($profile_data['utilities'] ?? '') ?>"
                     />
 
                     <label for="groceries">Groceries (in ₹)</label>
@@ -644,6 +675,7 @@ $uid = $_SESSION['user_id'];
                       id="groceries"
                       name="groceries"
                       placeholder="e.g., ₹5,000 – fruits, vegetables, staples"
+                      value="<?= htmlspecialchars($profile_data['groceries'] ?? '') ?>"
                     />
 
                     <label for="transport">Transport & Fuel (in ₹)</label>
@@ -652,6 +684,7 @@ $uid = $_SESSION['user_id'];
                       id="transport"
                       name="transport"
                       placeholder="e.g., ₹3,000 – petrol, cab rides"
+                      value="<?= htmlspecialchars($profile_data['transport'] ?? '') ?>"
                     />
 
                     <label for="entertainment"
@@ -662,6 +695,7 @@ $uid = $_SESSION['user_id'];
                       id="entertainment"
                       name="entertainment"
                       placeholder="e.g., ₹1,000 – Netflix, Spotify, weekend outings"
+                      value="<?= htmlspecialchars($profile_data['entertainment'] ?? '') ?>"
                     />
 
                     <label for="healthcare"
@@ -672,6 +706,7 @@ $uid = $_SESSION['user_id'];
                       id="healthcare"
                       name="healthcare"
                       placeholder="e.g., ₹800 – regular checkups, monthly meds"
+                      value="<?= htmlspecialchars($profile_data['healthcare'] ?? '') ?>"
                     />
                   </div>
                   <div class="form-buttons">
@@ -708,6 +743,7 @@ $uid = $_SESSION['user_id'];
                       id="gold"
                       name="gold"
                       placeholder="e.g., ₹1.5L – Gold ornaments & coins"
+                      value="<?= htmlspecialchars($profile_data['gold'] ?? '') ?>"
                     />
 
                     <label for="fd">Fixed Deposits (in ₹)</label>
@@ -716,6 +752,7 @@ $uid = $_SESSION['user_id'];
                       id="fd"
                       name="fixed_deposits"
                       placeholder="e.g., ₹2L – Fixed deposit"
+                      value="<?= htmlspecialchars($profile_data['fixed_deposits'] ?? '') ?>"
                     />
 
                     <label for="mutual">Mutual Funds (in ₹)</label>
@@ -724,6 +761,7 @@ $uid = $_SESSION['user_id'];
                       id="mutual"
                       name="mutual_funds"
                       placeholder="e.g., ₹75,000 – Axis Bluechip SIP"
+                      value="<?= htmlspecialchars($profile_data['mutual_funds'] ?? '') ?>"
                     />
 
                     <label for="realestate">Real Estate (in ₹)</label>
@@ -732,6 +770,7 @@ $uid = $_SESSION['user_id'];
                       id="realestate"
                       name="real_estate"
                       placeholder="e.g., ₹40L – Flat in Pune"
+                      value="<?= htmlspecialchars($profile_data['real_estate'] ?? '') ?>"
                     />
 
                     <label for="vehicles">Vehicles (in ₹)</label>
@@ -740,6 +779,7 @@ $uid = $_SESSION['user_id'];
                       id="vehicles"
                       name="vehicles"
                       placeholder="e.g., ₹1.2L – bike, ₹6L – car"
+                      value="<?= htmlspecialchars($profile_data['vehicles'] ?? '') ?>"
                     />
                   </div>
                   <div class="form-buttons">
@@ -776,6 +816,7 @@ $uid = $_SESSION['user_id'];
                       id="pan"
                       name="pan_number"
                       placeholder="ABCDE1234F"
+                      value="<?= htmlspecialchars($profile_data['pan_number'] ?? '') ?>"
                     />
 
                     <label for="insurance-type">Insurance Type</label>
@@ -795,6 +836,7 @@ $uid = $_SESSION['user_id'];
                       id="premium"
                       name="annual_premium"
                       placeholder="e.g., ₹10,000 per year"
+                      value="<?= htmlspecialchars($profile_data['annual_premium'] ?? '') ?>"
                     />
 
                     <label for="coverage">Coverage Amount (in ₹)</label>
@@ -803,6 +845,7 @@ $uid = $_SESSION['user_id'];
                       id="coverage"
                       name="coverage_amount"
                       placeholder="e.g., ₹10L coverage for term plan"
+                      value="<?= htmlspecialchars($profile_data['coverage_amount'] ?? '') ?>"
                     />
                   </div>
                   <div class="form-buttons">
@@ -839,6 +882,7 @@ $uid = $_SESSION['user_id'];
                       id="tags"
                       name="tags"
                       placeholder="e.g., NRI, Freelancer, Family Support"
+                      value="<?= htmlspecialchars($profile_data['tags'] ?? '') ?>"
                     />
 
                     <label for="notes">Additional Notes</label>
@@ -846,6 +890,7 @@ $uid = $_SESSION['user_id'];
                       id="notes"
                       name="notes"
                       placeholder="e.g., Supporting sibling’s education, planning to study abroad"
+                      value="<?= htmlspecialchars($profile_data['notes'] ?? '') ?>"
                     ></textarea>
                   </div>
                   <div class="form-buttons">
@@ -1010,47 +1055,47 @@ $uid = $_SESSION['user_id'];
 
   <script>
     // UPDATE THESE VALUES TO SEE UPDATION OF VALUES IN FORM
-    const savedData = {
-      weekly_goals: 500,
-      monthly_goals: 5000,
-      yearly_goals: 120000,
-      short_term_goals: "Buy a two-wheeler",
-      long_term_goals: "Buy a flat in Pune",
-      investment_interest: "Mutual Funds",
-      risk_tolerance: "Medium (Mutual Funds)",
+    // const savedData = {
+    //   weekly_goals: 500,
+    //   monthly_goals: 5000,
+    //   yearly_goals: 120000,
+    //   short_term_goals: "Buy a two-wheeler",
+    //   long_term_goals: "Buy a flat in Pune",
+    //   investment_interest: "Mutual Funds",
+    //   risk_tolerance: "Medium (Mutual Funds)",
 
-      primary_income_source: "Software engineer at netflix",
-      monthly_income: 100000,
-      passive_income: 10000,
-      expected_annual_growth: 8,
-      tax_saving_investments: "₹5L in PPF",
+    //   primary_income_source: "Software engineer at netflix",
+    //   monthly_income: 100000,
+    //   passive_income: 10000,
+    //   expected_annual_growth: 8,
+    //   tax_saving_investments: "₹5L in PPF",
 
-      fixed_expenses: 25000,
-      variable_expenses: 11000,
-      loans_emi: "₹2L home loan",
-      credit_card_usage: "₹5000 in hdfc credit card",
-      insurance_premiums: "₹4000 - LIC",
+    //   fixed_expenses: 25000,
+    //   variable_expenses: 11000,
+    //   loans_emi: "₹2L home loan",
+    //   credit_card_usage: "₹5000 in hdfc credit card",
+    //   insurance_premiums: "₹4000 - LIC",
 
-      utilities: 3000,
-      groceries: 3500,
-      transport: 2000,
-      entertainment: 1500,
-      healthcare: 2000,
+    //   utilities: 3000,
+    //   groceries: 3500,
+    //   transport: 2000,
+    //   entertainment: 1500,
+    //   healthcare: 2000,
 
-      gold: "₹1.5L – Gold ornaments",
-      fixed_deposits: "₹1.2L – Fixed deposit",
-      mutual_funds: "₹15,000 – Axis Bluechip SIP",
-      real_estate: "₹60L – Flat in mumbai",
-      vehicles: "₹8L car",
+    //   gold: "₹1.5L – Gold ornaments",
+    //   fixed_deposits: "₹1.2L – Fixed deposit",
+    //   mutual_funds: "₹15,000 – Axis Bluechip SIP",
+    //   real_estate: "₹60L – Flat in mumbai",
+    //   vehicles: "₹8L car",
 
-      pan_number: "QWERT9876X",
-      insurance_type: "health",
-      annual_premium: 12000,
-      coverage_amount: 7000,
+    //   pan_number: "QWERT9876X",
+    //   insurance_type: "health",
+    //   annual_premium: 12000,
+    //   coverage_amount: 7000,
 
-      tags: "FAMILY, MONEY, HAPPY, FREEDOM, BYE",
-      notes: "THIS IS A NOTE HAHHAHH",
-    };
+    //   tags: "FAMILY, MONEY, HAPPY, FREEDOM, BYE",
+    //   notes: "THIS IS A NOTE HAHHAHH",
+    // };
 
     for (const key in savedData) {
       const field = document.querySelector(`[name="${key}"]`);

@@ -30,7 +30,7 @@ def send_membership_welcome_email(email, first_name, membership_id):
         creds = Credentials.from_authorized_user_file(TOKEN_PATH)
         service = build("gmail", "v1", credentials=creds)
 
-        message = MIMEMultipart()
+        message = MIMEMultipart() # MIME - Multipurpose Internet Mail Extensions
         message["to"] = email
         message["subject"] = "Welcome to Spendly"
         message["from"] = "Founder's Office <do.not.reply.test.2023@gmail.com>"

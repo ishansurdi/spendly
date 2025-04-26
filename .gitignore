@@ -17,7 +17,7 @@ pdf-report-generate
 
 testing
 
-db-and-tables-file.sql
+
 .gitignore
 
 # other ignores

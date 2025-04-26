@@ -19,7 +19,7 @@ function generate_user_encryption_key() {
 // Function to encrypt password securely
 function encrypt_password($password, $encryption_key) {
     $key = hex2bin($encryption_key); // Convert hex to binary
-    $iv = substr(hash('sha256', $key), 0, 16); // Ensure IV is exactly 16 bytes
+    $iv = substr(hash('sha256', $key), 0, 16); 
     return openssl_encrypt($password, 'AES-256-CBC', $key, 0, $iv);
 }
 

@@ -1,6 +1,6 @@
 import json
-import re
-from google import genai  # Import the Google GenAI library
+import re # Regular expression 
+from google import genai  
 
 # Load Gemini API key from api-cred.json
 def load_api_key():
@@ -18,7 +18,7 @@ def clean_and_format_response(text):
     # Replace bullet points (*) with bolded headings
     text = re.sub(r'\n\s*[\*\-]\s+', r'\n<b>• </b>', text)
 
-    # Replace numbered points (1., 2., etc.) with bolded number + period
+    
     text = re.sub(r'(?<=\n)(\d+)\.\s+', r'<b>\1. </b>', text)
 
     # Replace subpoints like * with plain dashes and indent if needed

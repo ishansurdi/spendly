@@ -3,11 +3,13 @@
 | Project Name | Spendly - Personal Finance Tracker |
 |--------------|------------------------------------|
 |Project Type  | Academic                           |
+|Academic Affiliation| Dr. Vishwanath Karad MIT World Peace University (as of April 2025)|
 | Difficulty   | Medium                             |
 | Duration     | January 2025 - April 2025          |
 | Developers   | [Ishan Surdi](https://github.com/ishansurdi)  |      
 |              |[Vrushali Deshpande](https://github.com/709vrushali) |
 |              |[Himanshu Pal](https://github.com/gabbar-singhh)|
+|              |[Soham Borate](https://github.com/sam5808)|
 
 ## Table of Contents
 - [Spendly Project Documentation](#spendly-project-documentation)

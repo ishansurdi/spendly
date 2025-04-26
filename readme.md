@@ -5,9 +5,9 @@
 |Project Type  | Academic                           |
 | Difficulty   | Medium                             |
 | Duration     | January 2025 - April 2025          |
-| Developers   | [Ishan](https://github.com/ishan)  |      
-|              |[Vrushali](https://github.com/709vrushali) |
-|              |[Himanshu](https://github.com/gabbar-singhh)|
+| Developers   | [Ishan Surdi](https://github.com/ishansurdi)  |      
+|              |[Vrushali Deshpande](https://github.com/709vrushali) |
+|              |[Himanshu Pal](https://github.com/gabbar-singhh)|
 
 ## Table of Contents
 - [Spendly Project Documentation](#spendly-project-documentation)

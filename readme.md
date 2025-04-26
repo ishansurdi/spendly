@@ -10,7 +10,7 @@
 |              |[Vrushali Deshpande](https://github.com/709vrushali) |
 |              |[Himanshu Pal](https://github.com/gabbar-singhh)|
 |              |[Soham Borate](https://github.com/sam5808)|
-
+|License       |[Apache License 2.0](https://github.com/ishansurdi/spendly/blob/main/LICENSE)
 ## Table of Contents
 - [Spendly Project Documentation](#spendly-project-documentation)
   - [Table of Contents](#table-of-contents)

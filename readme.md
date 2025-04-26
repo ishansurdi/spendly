@@ -3,7 +3,7 @@
 | Project Name | Spendly - Personal Finance Tracker |
 |--------------|------------------------------------|
 |Project Type  | Academic                           |
-|Academic Affiliation| Dr. Vishwanath Karad MIT World Peace University, Pune (as on April 2025)|
+|Academic Affiliation| Dr. Vishwanath Karad MIT - World Peace University, Pune (as on April 2025)|
 | Difficulty   | Medium                             |
 | Duration     | January 2025 - April 2025          |
 | Developers   | [Ishan Surdi](https://github.com/ishansurdi)  |      
